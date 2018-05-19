@@ -7,14 +7,14 @@ const dbURI = 'mongodb://localhost/hotcities';
 
 mongoose.connect(dbURI);
 
-module.exports {
+module.exports = {
 
-  City = City,
-  Record = Record,
+  City: City,
+  Record: Record,
 
-  connection = mongoose.connection,
+  connection: mongoose.connection,
 
-  fetchCurrent = callback) => {
+  fetchCurrent: callback => {
     Record.findOne({}, {}, { sort: { timestamp: -1}}, (err, record) => {
       City.findById({ _id: record.city }, (err, city) => {
         callback({
