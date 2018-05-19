@@ -13,11 +13,11 @@ const CitySchema = new mongoose.Schema({
 });
 
 CitySchema.virtual('coords').get(function() {
-  return formatcoords(lat, lon).format('DD MM ss X', {latLonSeparator: ', ',  decimalPlaces: 0});
+  return formatcoords(this.lat, this.lon).format('DD MM ss X', {latLonSeparator: ', ',  decimalPlaces: 0});
 });
 
 CitySchema.virtual('view').get(function() {
-  return return randomItem(this.photos);
+  return randomItem(this.photos);
 });
 
 

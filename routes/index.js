@@ -1,5 +1,5 @@
 const express = require('express');
-// const _ = require('underscore');
+const _ = require('underscore');
 
 const openweathermap = require('../openweathermap');
 const flickr = require('../flickr');
@@ -12,7 +12,6 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
   db.fetchCurrent(data => {
-    console.log(data);
     res.render('index', data);
   });
 });

@@ -1,16 +1,16 @@
 doctype html
-html(lang='en', style='background-image: url(#{city.view})')
+html(lang='en', style='background-image: url(#{view})')
   head
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width')
     title='HotCities'
     block css
-      link(rel='stylesheet', href='/components/bootstrap/dist/css/bootstrap.css')
-      link(rel='stylesheet', href='/stylesheets/style.css')
       link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Quicksand:300')
+      link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap.css')
+      link(rel='stylesheet', href='/stylesheets/style.css')
     block js
-      script(src='/components/jquery/dist/jquery.js')
-      script(src='/components/bootstrap/dist/js/bootstrap.min.js')
+      script(src='/bower_components/jquery/dist/jquery.js')
+      script(src='/bower_components/bootstrap/dist/js/bootstrap.min.js')
 
   body
     div.container-fluid

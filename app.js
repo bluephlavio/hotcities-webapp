@@ -21,6 +21,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/bower_components',  express.static(path.join(__dirname, 'bower_components')));
 
 app.use('/', indexRouter);
 
@@ -42,7 +43,8 @@ app.use(function(err, req, res, next) {
 
 
 datafetcher.start(5000, data => {
-  console.log(data);
+  // console.log(data);
 });
+
 
 module.exports = app;

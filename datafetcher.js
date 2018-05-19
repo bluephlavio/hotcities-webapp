@@ -24,7 +24,7 @@ function selectByName(data, name) {
 }
 
 function selectPhotos(photos) {
-  return photos.slice(0, photos.length / 10);
+  return photos.slice(0, Math.max(photos.length / 100, 1));
 }
 
 
@@ -38,10 +38,10 @@ module.exports = {
         db.City.findOneAndUpdate({ _id: winner.city._id }, { photos: selectPhotos(photos) }, {}, (err, city) => {
           let record = new db.Record({
             city: city._id,
-            temp: winner.weather.temp
+            temp: winner.weather.main.temp
           });
           record.save(() => {
-            callback(winner);
+            callback(db.mergeData(city, record));
           });
         });
       });
