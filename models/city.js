@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const formatcoords = require('formatcoords');
+const randomItem = require('random-item');
 
 
 const CitySchema = new mongoose.Schema({
@@ -13,6 +14,10 @@ const CitySchema = new mongoose.Schema({
 
 CitySchema.virtual('coords').get(function() {
   return formatcoords(lat, lon).format('DD MM ss X', {latLonSeparator: ', ',  decimalPlaces: 0});
+});
+
+CitySchema.virtual('photo').get(function() {
+  return randomItem(this.photos);
 });
 
 
