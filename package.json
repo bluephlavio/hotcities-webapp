@@ -1,26 +1,16 @@
 {
   "name": "hotcities",
-  "version": "0.1.0",
-  "description": "world hottest city now",
-  "main": "index.js",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bluephlavio/hotcities.git"
-  },
-  "keywords": [
-    "hot",
-    "cities",
-    "city",
-    "world",
-    "weather"
-  ],
-  "author": "Flavio Grandin",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/bluephlavio/hotcities/issues"
-  },
-  "homepage": "https://github.com/bluephlavio/hotcities#readme"
+  "dependencies": {
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "http-errors": "~1.6.2",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.0"
+  }
 }
