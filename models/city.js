@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const formatCoords = require('format-coords');
+const formatcoords = require('formatcoords');
 
 
 const CitySchema = new mongoose.Schema({
@@ -12,7 +12,7 @@ const CitySchema = new mongoose.Schema({
 });
 
 CitySchema.virtual('coords').get(function() {
-  return formatCoords(lat, lon).format('DD MM ss X', {latLonSeparator: ', ',  decimalPlaces: 0});
+  return formatcoords(lat, lon).format('DD MM ss X', {latLonSeparator: ', ',  decimalPlaces: 0});
 });
 
 
