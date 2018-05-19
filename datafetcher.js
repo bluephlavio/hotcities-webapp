@@ -24,7 +24,7 @@ function selectByName(data, name) {
 }
 
 function selectPhotos(photos) {
-  return photos.slice(0, Math.max(photos.length / 100, 1));
+  return photos.slice(0, Math.max(photos.length / 5, 1));
 }
 
 

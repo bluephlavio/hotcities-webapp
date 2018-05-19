@@ -1,15 +1,16 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var favicon = require('serve-favicon');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const favicon = require('serve-favicon');
 
-var datafetcher = require('./datafetcher');
+const db = require('./db');
+const datafetcher = require('./datafetcher');
 
-var indexRouter = require('./routes/index');
+const indexRouter = require('./routes/index');
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -41,9 +42,13 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+const minPopulation = 500000;
+const period = 5000;
 
-datafetcher.start(5000, data => {
-  // console.log(data);
+db.init(minPopulation, () => {
+  datafetcher.start(period, data => {
+    // console.log(data);
+  });
 });
 
 

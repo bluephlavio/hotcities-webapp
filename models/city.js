@@ -17,7 +17,8 @@ CitySchema.virtual('coords').get(function() {
 });
 
 CitySchema.virtual('view').get(function() {
-  return randomItem(this.photos);
+  let photo = randomItem(this.photos);
+  return photo;
 });
 
 

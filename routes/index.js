@@ -12,7 +12,11 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
   db.fetchCurrent(data => {
-    res.render('index', data);
+    if (data) {
+      res.render('index', data);
+    } else {
+      res.end('No record found!');
+    }
   });
 });
 
