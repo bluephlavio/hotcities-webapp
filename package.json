@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "node ./bin/www"
   },
   "dependencies": {
     "async": "^2.6.0",
@@ -19,10 +19,10 @@
     "random-item": "^1.0.0",
     "request": "^2.86.0",
     "serve-favicon": "^2.5.0",
-    "underscore": "^1.9.0"
+    "underscore": "^1.9.0",
+    "all-the-cities": "^2.0.1"
   },
   "devDependencies": {
-    "all-the-cities": "^2.0.1",
     "bower": "^1.8.4"
   }
 }
