@@ -7,7 +7,7 @@ const City = require('./models/city');
 const Record = require('./models/record');
 
 // const dbUri = 'mongodb://localhost/hotcities';
-const dbUri = process.env.DB_URI;
+const dbUri = process.env.MONGODB_URI;
 const connection = mongoose.connection;
 
 function fetchCities(minPopulation) {
