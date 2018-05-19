@@ -16,8 +16,8 @@ CitySchema.virtual('coords').get(function() {
   return formatcoords(lat, lon).format('DD MM ss X', {latLonSeparator: ', ',  decimalPlaces: 0});
 });
 
-CitySchema.virtual('photo').get(function() {
-  return randomItem(this.photos);
+CitySchema.virtual('view').get(function() {
+  return return randomItem(this.photos);
 });
 
 
