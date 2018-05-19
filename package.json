@@ -6,11 +6,17 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "async": "^2.6.0",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.16.0",
     "http-errors": "~1.6.2",
     "jade": "~1.11.0",
-    "morgan": "~1.9.0"
+    "mongoose": "^5.1.1",
+    "morgan": "~1.9.0",
+    "underscore": "^1.9.0"
+  },
+  "devDependencies": {
+    "all-the-cities": "^2.0.1"
   }
 }
