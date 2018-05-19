@@ -1,3 +1,10 @@
+@mOrange: #f49e42;
+@mBlack: #000000;
+@mWhite: #cccccc;
+@mBig: 48pt;
+@mMedium: 24pt;
+@mSmall: 16pt;
+
 html {
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -8,41 +15,51 @@ html {
   background-attachment: fixed;
   transition: background 0.5s linear;
 }
+
 body {
   background: transparent;
-  color: #cccccc;
+  color: @mWhite;
   font-family: 'Quicksand', sans-serif;
 }
+
 .header {
-  background: #000000;
-  color: #f49e42;
+  background: @mBlack;
+  color: @mOrange;
   text-align: center;
 }
+
 .title {
-  font-size: 48pt;
+  font-size: @mBig;
 }
+
 .description {
-  color: #f49e42;
-  font-size: 16pt;
+  color: @mOrange;
+  font-size: @mSmall;
   margin-top: -25px;
 }
+
 .info {
-  background: linear-gradient(to bottom, #f49e42 0%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(to bottom,  @mOrange 0%, rgba(0, 0, 0, 0) 100%);
   color: black;
 }
+
 .city-info {
   border-right: 2px solid #000;
   text-align: right;
 }
+
 .city-name {
-  font-size: 48pt;
+  font-size: @mBig;
 }
+
 .city-coords {
-  font-size: 24pt;
+  font-size: @mMedium;
 }
+
 .weather-info {
   text-align: left;
 }
+
 .weather-temp {
-  font-size: 48pt;
+  font-size: @mBig;
 }
