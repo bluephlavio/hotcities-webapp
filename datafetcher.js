@@ -9,10 +9,10 @@ const db = require('./db');
 
 function selectByTemp(data) {
   let hottest = _.max(data, entry => {
-    return entry.weather.temp;
+    return entry.weather.main.temp;
   });
   let hottests = _.filter(data, entry => {
-    return entry.weather.temp == hottest.weather.temp;
+    return entry.weather.main.temp == hottest.weather.main.temp;
   });
   return randomItem(hottests);
 }
@@ -32,8 +32,8 @@ module.exports = {
 
   query: function(callback) {
     openweathermap.query(data => {
-      // let hottest = selectByTemp(weather);
-      let winner = selectByName(data, 'Dubai');
+      let winner = selectByTemp(data);
+      // let winner = selectByName(data, 'Dubai');
       flickr.query(winner.city, photos => {
         db.City.findOneAndUpdate({ _id: winner.city._id }, { photos: selectPhotos(photos) }, {}, (err, city) => {
           let record = new db.Record({
