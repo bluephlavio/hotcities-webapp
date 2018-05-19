@@ -1,0 +1,28 @@
+{
+  "name": "hotcities",
+  "description": "world hottest city now",
+  "main": "",
+  "authors": [
+    "Flavio Grandin"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "world",
+    "hot",
+    "city",
+    "cities"
+  ],
+  "homepage": "https://github.com/bluephlavio/hotcities",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "bootstrap": "^4.1.1"
+  }
+}
