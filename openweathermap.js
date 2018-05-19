@@ -35,7 +35,7 @@ module.exports = {
       let availables = _.map(data.list, entry => {
         return entry.name;
       });
-      db.CityModel.find({ name: {$in: availables}}, (err, cities) => {
+      db.City.find({ name: {$in: availables}}, (err, cities) => {
         let weather = _.map(cities, city => {
           return fetchWeatherInfo(data, city);
         });
