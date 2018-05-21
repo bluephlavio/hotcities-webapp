@@ -9,16 +9,10 @@ const CitySchema = new mongoose.Schema({
   lon: { type: Number },
   country: { type: String },
   population: { type: Number },
-  photos: { type: [String], default: [] }
 });
 
 CitySchema.virtual('coords').get(function() {
   return formatcoords(this.lat, this.lon).format('DD MM ss X', {latLonSeparator: ', ',  decimalPlaces: 0});
-});
-
-CitySchema.virtual('view').get(function() {
-  let photo = randomItem(this.photos);
-  return photo;
 });
 
 
