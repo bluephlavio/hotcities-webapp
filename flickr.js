@@ -3,25 +3,24 @@ const request = require('request');
 const _ = require('underscore');
 
 
-function queryUrl(city) {
+function queryUrl(params) {
   return buildUrl('https://api.flickr.com/', {
     path: 'services/rest/',
-    queryParams: {
+    queryParams: _.defaults(params, {
       method: 'flickr.photos.search',
-      api_key: 'fb3e98ab019a7e337d5b471bca29d4b3',
+      api_key: process.env.FLICKR_KEY,
       format: 'json',
       nojsoncallback: 1,
       sort: 'relevance',
-      accuracy: 11,
-      text: city.name,
-    }
+      accuracy: 11
+    })
   });
 }
 
 
 module.exports = {
 
-  query: function(city, callback) {
+  query: function(params, callback) {
     request.get(queryUrl(city), (error, response, body) => {
       let data = JSON.parse(body);
       let photos = _.map(data.photos.photo, photo => {
