@@ -1,17 +1,11 @@
 const express = require('express');
-const _ = require('underscore');
-
-const openweathermap = require('../openweathermap');
-const flickr = require('../flickr');
-
-const mongoose = require('mongoose');
-const db = require('../db');
-
 const router = express.Router();
+
+const db = require('../db');
 
 
 router.get('/api/cities/', (req, res) => {
-  db.City.find({}, (error, cities) => {
+  db.City.find({}).exec( (error, cities) => {
     res.json(cities);
   });
 });
@@ -31,37 +25,6 @@ router.get('/api/records/', (req, res) => {
 router.get('/api/records/current', (req, res) => {
   db.Record.findOne({}).sort({ timestamp: -1 }).exec( (error, current) => {
     res.json(current);
-  });
-});
-
-router.get('/', (req, res) => {
-  db.fetchCurrent(data => {
-    if (data) {
-      res.render('index', data);
-    } else {
-      res.end('No record found!');
-    }
-  });
-});
-
-router.get('/openweathermap', (req, res) => {
-  openweathermap.query(weather => {
-    res.json(weather);
-  })
-});
-
-router.get('/flickr', (req, res) => {
-  flickr.query({
-    name: req.query.name,
-  }, photos => {
-    if (req.query.display) {
-      res.setHeader('Content-Type', 'text/html');
-      res.end(_.map(photos, photo => {
-        return `<img src="${photo}" />`;
-      }).join('\n'));
-    } else {
-      res.json(photos);
-    }
   });
 });
 
