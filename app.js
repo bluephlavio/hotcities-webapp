@@ -8,7 +8,7 @@ const favicon = require('serve-favicon');
 const db = require('./db');
 const datafetcher = require('./datafetcher');
 
-const indexRouter = require('./routes/index');
+const api = require('./routes/api');
 
 const app = express();
 
@@ -24,7 +24,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bower_components',  express.static(path.join(__dirname, 'bower_components')));
 
-app.use('/', indexRouter);
+app.use('/api', api);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -46,9 +46,9 @@ const minPopulation = 500000;
 const period = 5000;
 
 db.init(minPopulation, () => {
-  datafetcher.start(period, data => {
-    // console.log(data);
-  });
+//   datafetcher.start(period, data => {
+//     // console.log(data);
+//   });
 });
 
 
