@@ -20,14 +20,15 @@ function queryUrl(params) {
 
 module.exports = {
 
-  query: function(params, callback) {
-    request.get(queryUrl(city), (error, response, body) => {
+  query: (params, callback) => {
+    request.get(queryUrl(params), (err, res, body) => {
       let data = JSON.parse(body);
-      let photos = _.map(data.photos.photo, photo => {
-        return `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_b.jpg`
-      });
-      callback(photos);
+      callback(data);
     });
+  },
+
+  buildPhotoUrl: (farm, server, id, secret) => {
+    return `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}_b.jpg`
   }
 
 }

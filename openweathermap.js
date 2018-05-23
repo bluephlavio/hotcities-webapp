@@ -15,7 +15,7 @@ function queryUrl(zoom) {
 module.exports = {
 
   query: callback => {
-    request(queryUrl(zoom), (error, responde, body) => {
+    request(queryUrl(zoom), (err, res, body) => {
       let data = JSON.parse(body);
       callback(data);
     });
