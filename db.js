@@ -6,16 +6,21 @@ const mongoose = require('mongoose');
 const City = require('./models/city');
 const Record = require('./models/record');
 
-mongoose.connect(process.env.MONGODB_URI);
-
-mongoose.connection.on('connected', () => {
-  console.log('Connected to the database.');
-});
-
-mongoose.connection.on('disconnected', () => {
-  console.log('Disconnected from the database.');
-});
+mongoose.Promise = global.Promise;
 
 module.exports.connection = mongoose.connection;
+module.exports.open = () => {
+  return mongoose.connect(process.env.MONGODB_URI)
+    .then(() => {
+      console.log('Connected to the database.');
+    });
+};
+module.exports.close = () => {
+  return mongoose.connection.close()
+    .then(() => {
+      console.log('Disconnected from the database.');
+    });
+}
+
 module.exports.City = City;
 module.exports.Record = Record;
