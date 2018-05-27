@@ -1,34 +1,37 @@
-const buildUrl = require('build-url');
+require('dotenv')
+  .config();
+
 const request = require('request');
+const buildUrl = require('build-url');
 const _ = require('underscore');
 
-
-function queryUrl(city) {
+function queryUrl(params) {
   return buildUrl('https://api.flickr.com/', {
     path: 'services/rest/',
-    queryParams: {
+    queryParams: _.defaults(params, {
       method: 'flickr.photos.search',
-      api_key: 'fb3e98ab019a7e337d5b471bca29d4b3',
+      api_key: process.env.FLICKR_KEY,
       format: 'json',
       nojsoncallback: 1,
       sort: 'relevance',
-      accuracy: 11,
-      text: city.name,
-    }
+      accuracy: 11
+    })
   });
 }
 
-
 module.exports = {
 
-  query: function(city, callback) {
-    request.get(queryUrl(city), (error, response, body) => {
-      let data = JSON.parse(body);
-      let photos = _.map(data.photos.photo, photo => {
-        return `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_b.jpg`
+  query: params => {
+    return new Promise((resolve, reject) => {
+      request.get(queryUrl(params), (err, res, body) => {
+        let data = JSON.parse(body);
+        resolve(data);
       });
-      callback(photos);
     });
+  },
+
+  buildPhotoUrl: (farm, server, id, secret) => {
+    return `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}_b.jpg`
   }
 
 }
