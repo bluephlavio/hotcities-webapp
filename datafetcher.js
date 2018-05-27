@@ -6,46 +6,63 @@ const flickr = require('./flickr');
 
 const db = require('./db');
 
-
-function selectByTemp(data) {
-  let hottest = _.max(data, entry => {
-    return entry.weather.main.temp;
+function selectWeatherRecord(openweathermap_data, cities) {
+  let names = _.map(cities, city => {
+    return city.name;
   });
-  let hottests = _.filter(data, entry => {
-    return entry.weather.main.temp == hottest.weather.main.temp;
+  let availables = _.filter(openweathermap_data.list, entry => {
+    return _.contains(names, entry.name);
   });
-  return randomItem(hottests);
+  let temperatures = _.map(availables, entry => {
+    return entry.main.temp;
+  });
+  let maxTemp = _.max(temperatures);
+  let candidates = _.filter(availables, entry => {
+    return entry.main.temp == maxTemp;
+  });
+  return randomItem(candidates);
 }
 
-function selectByName(data, name) {
-  return _.find(data, entry => {
-    return entry.city.name.toLowerCase() == name.toLowerCase();
-  });
-}
-
-function selectPhotos(photos) {
-  return photos.slice(0, Math.max(photos.length / 5, 1));
+function selectPhoto(flickr_data) {
+  let photos = flickr_data.photos.photo;
+  let candidates = photos.slice(0, Math.max(photos.length, 1));
+  return randomItem(candidates);
 }
 
 
 module.exports = {
 
-  query: function(callback) {
-    openweathermap.query(data => {
-      let winner = selectByTemp(data);
-      // let winner = selectByName(data, 'Dubai');
-      flickr.query(winner.city, photos => {
-        db.City.findOneAndUpdate({ _id: winner.city._id }, { photos: selectPhotos(photos) }, {}, (err, city) => {
-          let record = new db.Record({
-            city: city._id,
-            temp: winner.weather.main.temp
-          });
-          record.save(() => {
-            callback(db.mergeData(city, record));
-          });
-        });
+  query: () => {
+    return Promise.all([openweathermap.query(), db.City.find({})])
+      .then(results => {
+        return selectWeatherRecord(results[0], results[1]);
+      })
+      .then(weather => {
+        return Promise.all([weather, flickr.query({
+          text: weather.name
+        }), db.City.findOne({
+          name: weather.name
+        })]);
+      })
+      .then(results => {
+        let weather = results[0];
+        let photo = selectPhoto(results[1]);
+        let city = results[2];
+        return {
+          city: city._id,
+          temp: weather.main.temp,
+          view: flickr.buildPhotoUrl(photo.farm, photo.server, photo.id, photo.secret)
+        }
+      })
+      .then(record => {
+        return db.Record.create(record);
+      })
+      .then(record => {
+        console.log(record);
+      })
+      .catch(error => {
+        console.log(error);
       });
-    });
   },
 
   start: function(period, callback) {

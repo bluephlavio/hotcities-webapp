@@ -1,7 +1,9 @@
-const buildUrl = require('build-url');
-const request = require('request');
-const _ = require('underscore');
+require('dotenv')
+  .config();
 
+const request = require('request');
+const buildUrl = require('build-url');
+const _ = require('underscore');
 
 function queryUrl(params) {
   return buildUrl('https://api.flickr.com/', {
@@ -17,13 +19,14 @@ function queryUrl(params) {
   });
 }
 
-
 module.exports = {
 
-  query: (params, callback) => {
-    request.get(queryUrl(params), (err, res, body) => {
-      let data = JSON.parse(body);
-      callback(data);
+  query: params => {
+    return new Promise((resolve, reject) => {
+      request.get(queryUrl(params), (err, res, body) => {
+        let data = JSON.parse(body);
+        resolve(data);
+      });
     });
   },
 
