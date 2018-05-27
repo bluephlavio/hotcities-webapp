@@ -55,24 +55,31 @@ module.exports = {
         }
       })
       .then(record => {
-        return db.Record.create(record);
+        return Promise.all([db.Record.create(record), db.City.findById(record.city)]);
       })
-      .then(record => {
-        console.log(record);
+      .then(results => {
+        let record = results[0];
+        let city = results[1];
+        city.records.push(record._id);
+        return Promise.all([record, city.save()]);
       })
       .catch(error => {
         console.log(error);
       });
   },
 
-  start: function(period, callback) {
-    function loop() {
-      module.exports.query(data => {
-        setTimeout(loop, period);
-        callback(data);
-      });
-    }
-    loop();
+  start: (period, callback) => {
+    (function loop() {
+      module.exports.query()
+        .then(results => {
+          let record = results[0];
+          let city = results[1];
+          if (callback) {
+            callback(record, city);
+          }
+          setTimeout(loop, period);
+        });
+    })();
   }
 
 }

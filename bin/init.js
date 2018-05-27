@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 const db = require('../db');
 
-const minPopulation = 1000000;
+const minPopulation = 500000;
 
 function clean() {
   console.log('Dropping database...');
@@ -25,11 +25,11 @@ function populate() {
     });
 }
 
-async function init() {
-  await db.open();
-  await clean();
-  await populate();
-  await db.close();
+function init() {
+  db.open()
+    .then(clean)
+    .then(populate)
+    .then(db.close);
 }
 
 init();
