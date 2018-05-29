@@ -1,5 +1,5 @@
-const createError = require('http-errors');
 const express = require('express');
+const createError = require('http-errors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
@@ -10,22 +10,12 @@ const datafetcher = require('./datafetcher');
 
 const app = express();
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-
-app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico'), {
-  maxAge: 0
-}));
+app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico'), { maxAge: 0 }));
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({
-  extended: false
-}));
+app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-app.use('/bower_components', express.static(path.join(__dirname, 'bower_components')));
-
+app.use(express.static(path.join(__dirname, 'client/build/')));
 app.use('/api', require('./routes/api'));
 app.use('/external-api', require('./routes/external-api'));
 
@@ -50,7 +40,9 @@ const period = 5000;
 db.open()
   .then(() => {
     datafetcher.start(period);
+  }).
+  catch(error => {
+    console.log(error);
   });
-
 
 module.exports = app;
