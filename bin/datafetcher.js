@@ -1,3 +1,6 @@
+require('dotenv')
+  .config();
+
 const _ = require('underscore');
 const randomItem = require('random-item');
 

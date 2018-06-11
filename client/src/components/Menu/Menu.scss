@@ -1,0 +1,11 @@
+@import '../../shared.scss';
+
+.menu {
+  ul {
+  display: inline-block;
+  }
+  .nav-item {
+    text-align: center;
+    font-size: $small;
+  }
+}

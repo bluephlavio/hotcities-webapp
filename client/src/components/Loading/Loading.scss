@@ -1,0 +1,12 @@
+@import '../../shared.scss';
+
+.loading {
+  height: 100%;
+  padding: $p;
+  font-size: $medium;
+  color: $dark-color;
+  padding: $p;
+  .fa {
+    padding: $p;
+  }
+}

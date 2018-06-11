@@ -1,0 +1,49 @@
+@import '../../shared.scss';
+
+.view {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  hr {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(left,
+      rgba($light-color, 0.0),
+      rgba($light-color, 0.75),
+      rgba($light-color, 0.0));
+  }
+  .view-photo {
+    flex: 1;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: sepia(1) grayscale(1);
+  }
+  .view-info {
+    flex: 0;
+    padding: $p;
+    background-color: $dark-color;
+    h2 {
+      font-size: $big;
+    }
+    ul {
+      text-align: right;
+      list-style-type: none;
+      li {
+        font-size: $small;
+      }
+      span {
+        padding: 0px 10px;
+        white-space: nowrap;
+        a {
+          text-decoration: none;
+        }
+      }
+      span.fa {
+        text-align: center;
+        width: 40px;
+        border-left: 1px dashed $light-color;
+      }
+    }
+  }
+}

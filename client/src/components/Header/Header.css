@@ -1,0 +1,13 @@
+@import url("https://fonts.googleapis.com/css?family=Poiret+One|Quicksand:300");
+.header {
+  background-color: #070400;
+  flex: 0; }
+  .header nav.navbar {
+    padding: 10px 20px; }
+  .header button.navbar-toggler {
+    color: #f4931d; }
+  .header .title {
+    font-size: 32pt; }
+  .header .motto {
+    letter-spacing: 5px;
+    font-size: 14pt; }

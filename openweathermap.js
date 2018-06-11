@@ -1,6 +1,3 @@
-require('dotenv')
-  .config();
-
 const request = require('request');
 const buildUrl = require('build-url');
 const _ = require('underscore');

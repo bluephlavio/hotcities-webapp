@@ -1,0 +1,19 @@
+@import '../../shared.scss';
+
+.header {
+  background-color: $dark-color;
+  flex: 0;
+  nav.navbar {
+    padding: $p;
+  }
+  button.navbar-toggler {
+      color: $light-color;
+  }
+  .title {
+    font-size: $big;
+  }
+  .motto {
+    letter-spacing: 5px;
+    font-size: $small;
+  }
+}

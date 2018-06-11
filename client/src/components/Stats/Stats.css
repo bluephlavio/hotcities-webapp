@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Poiret+One|Quicksand:300");
-.app {
-  display: flex;
-  flex-direction: column;
+.stats {
   height: 100%; }
+  .stats #map {
+    height: 100%; }

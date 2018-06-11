@@ -1,4 +1,6 @@
-data/
+data/*
+data/dump/
+!data/README.md
 
 node_modules
 client/node_modules

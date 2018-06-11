@@ -1,0 +1,30 @@
+@import 'shared.scss';
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  font-family: "Poiret One", sans-serif;
+  color: $light-color;
+}
+
+a {
+  color: $light-color;
+  text-decoration: none;
+  span {
+    color: $light-color;
+  }
+}
+
+a:hover {
+  color: $link-color;
+  span {
+    color: $link-color;
+  }
+}
+
+#root {
+  height: 100%;
+}

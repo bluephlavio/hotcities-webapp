@@ -1,5 +1,22 @@
+@import url("https://fonts.googleapis.com/css?family=Poiret+One|Quicksand:300");
+html {
+  height: 100%; }
+
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-}
+  height: 100%;
+  font-family: "Poiret One", sans-serif;
+  color: #f4931d; }
+
+a {
+  color: #f4931d;
+  text-decoration: none; }
+  a span {
+    color: #f4931d; }
+
+a:hover {
+  color: #2c3d5e; }
+  a:hover span {
+    color: #2c3d5e; }
+
+#root {
+  height: 100%; }
