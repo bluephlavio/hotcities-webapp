@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const formatcoords = require('formatcoords');
 const randomItem = require('random-item');
 
 const CitySchema = new mongoose.Schema({
