@@ -77,8 +77,16 @@ router.get('/records', (req, res) => {
 			as: 'city'
 		})
 		.unwind('$city')
-		.replaceRoot({
-			$mergeObjects: ['$$ROOT', '$city']
+		.addFields({
+			name: '$city.name',
+			localname: '$city.localname',
+			country: '$city.country',
+			countrycode: '$city.countrycode',
+			timezone: '$city.timezone',
+			lang: '$city.lang',
+			population: '$city.population',
+			lng: '$city.lng',
+			lat: '$city.lat'
 		})
 		.project({
 			_id: 0,
@@ -111,8 +119,16 @@ router.get('/records/current', (req, res) => {
 			as: 'city'
 		})
 		.unwind('$city')
-		.replaceRoot({
-			$mergeObjects: ['$$ROOT', '$city']
+		.addFields({
+			name: '$city.name',
+			localname: '$city.localname',
+			country: '$city.country',
+			countrycode: '$city.countrycode',
+			timezone: '$city.timezone',
+			lang: '$city.lang',
+			population: '$city.population',
+			lng: '$city.lng',
+			lat: '$city.lat'
 		})
 		.project({
 			_id: 0,
@@ -121,6 +137,7 @@ router.get('/records/current', (req, res) => {
 		})
 		.exec()
     .then(data => {
+			data = data[0];
 			if (req.query.geojson == 'true') {
 				data = geojson.parse(data, {Point: ['lat', 'lng']});
 			}
