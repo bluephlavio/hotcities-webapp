@@ -5,16 +5,15 @@ const RecordSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
-  city: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'City'
-  },
+  geonameid: {
+		type: Number
+	},
   temp: {
     type: Number
   },
-  view: {
-    type: String
-  }
+	view: {
+		type: String
+	}
 });
 
 module.exports = mongoose.model('Record', RecordSchema);

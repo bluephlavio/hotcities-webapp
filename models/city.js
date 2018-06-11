@@ -3,25 +3,36 @@ const formatcoords = require('formatcoords');
 const randomItem = require('random-item');
 
 const CitySchema = new mongoose.Schema({
+	geonameid: {
+		type: Number
+	},
   name: {
     type: String
   },
-  lat: {
+	localname: {
+		type: String
+	},
+  lng: {
     type: Number
   },
-  lon: {
+  lat: {
     type: Number
   },
   country: {
     type: String
   },
+	countrycode: {
+		type: String
+	},
   population: {
     type: Number
   },
-  records: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Record'
-  }]
+	lang: {
+		type: String
+	},
+	timezone: {
+		type: String
+	}
 });
 
 module.exports = mongoose.model('City', CitySchema);
