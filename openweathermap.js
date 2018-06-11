@@ -10,7 +10,7 @@ function queryUrl(params) {
     path: 'data/2.5/box/city',
     queryParams: _.defaults(params, {
       appid: process.env.OPENWEATHERMAP_KEY,
-      bbox: [-180, -90, 180, 90, 10]
+      bbox: [-180, -90, 180, 90, 12]
     })
   });
 }
