@@ -102,55 +102,61 @@ router.get('/records/current', (req, res) => {
 });
 
 router.get('/records/cities', (req, res) => {
-	db.Record.aggregate()
-		.group({
-			_id: '$geonameid',
-			records: { $sum: 1 },
-			recordtemp: { $max: '$temp' }
+	db.Record.count()
+		.then(count => {
+			return db.Record.aggregate()
+				.group({
+					_id: '$geonameid',
+					records: { $sum: 1 / count },
+					recordtemp: { $max: '$temp' }
+				})
+				.lookup({
+					from: 'cities',
+					localField: '_id',
+					foreignField: 'geonameid',
+					as: 'city'
+				})
+				.unwind('$city')
+				.addFields({
+					'city.records': '$records',
+					'city.recordtemp': '$recordtemp'
+				})
+				.replaceRoot('$city')
+				.project({
+					_id: 0
+				})
+				.exec();
 		})
-		.lookup({
-			from: 'cities',
-			localField: '_id',
-			foreignField: 'geonameid',
-			as: 'city'
-		})
-		.unwind('$city')
-		.addFields({
-			'city.records': '$records',
-			'city.recordtemp': '$recordtemp'
-		})
-		.replaceRoot('$city')
-		.project({
-			_id: 0
-		})
-		.exec()
 		.then(data => {
 			res.json(data);
 		});
 });
 
 router.get('/records/countries', (req, res) => {
-	db.Record.aggregate()
-		.lookup({
-			from: 'cities',
-			localField: 'geonameid',
-			foreignField: 'geonameid',
-			as: 'city'
+	db.Record.count()
+		.then(count => {
+			return db.Record.aggregate()
+				.lookup({
+					from: 'cities',
+					localField: 'geonameid',
+					foreignField: 'geonameid',
+					as: 'city'
+				})
+				.unwind('$city')
+				.group({
+					_id: '$city.country',
+					records: { $sum: 1 / count },
+					recordtemp: { $max: '$temp' },
+					recordcities: { $addToSet: '$city.name' }
+				})
+				.addFields({
+					country: '$_id',
+				})
+				.project({
+					_id: 0
+				})
+				.exec();
 		})
-		.unwind('$city')
-		.group({
-			_id: '$city.country',
-			records: { $sum: 1 },
-			recordtemp: { $max: '$temp' },
-			recordcities: { $addToSet: '$city.name' }
-		})
-		.addFields({
-			country: '$_id',
-		})
-		.project({
-			_id: 0
-		})
-		.exec()
 		.then(data => {
 			res.json(data);
 		});
