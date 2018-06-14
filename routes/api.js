@@ -107,8 +107,8 @@ router.get('/records/cities', (req, res) => {
 			return db.Record.aggregate()
 				.group({
 					_id: '$geonameid',
-					records: { $sum: 1 / count },
-					recordtemp: { $max: '$temp' }
+					recordFrac: { $sum: 1 / count },
+					recordTemp: { $max: '$temp' }
 				})
 				.lookup({
 					from: 'cities',
@@ -118,8 +118,8 @@ router.get('/records/cities', (req, res) => {
 				})
 				.unwind('$city')
 				.addFields({
-					'city.records': '$records',
-					'city.recordtemp': '$recordtemp'
+					'city.recordFrac': '$recordFrac',
+					'city.recordTemp': '$recordTemp'
 				})
 				.replaceRoot('$city')
 				.project({
@@ -145,15 +145,18 @@ router.get('/records/countries', (req, res) => {
 				.unwind('$city')
 				.group({
 					_id: '$city.country',
-					records: { $sum: 1 / count },
-					recordtemp: { $max: '$temp' },
-					recordcities: { $addToSet: '$city.name' }
+					recordFrac: { $sum: 1 / count },
+					recordTemp: { $max: '$temp' },
+					recordCities: {
+						$addToSet: '$city.geonameid'
+					}
 				})
 				.addFields({
 					country: '$_id',
+					countrycode: '$city.countrycode'
 				})
 				.project({
-					_id: 0
+					_id: 0,
 				})
 				.exec();
 		})
