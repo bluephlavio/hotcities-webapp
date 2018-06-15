@@ -85,6 +85,7 @@ db.open()
 		});
 	})
 	.then(record => {
+		console.log(record);
 		db.close()
 	})
 	.catch(error => {
