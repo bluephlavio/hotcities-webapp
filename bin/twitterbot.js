@@ -14,7 +14,7 @@ const Twitter = new twit({
 	access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
 
-const flickrRegex =
+const flickrUrlRegex =
 	/https:\/\/farm(\d)\.staticflickr\.com\/(\d+)\/(\d+)_(\w+)_\w\.(\w+)/g;
 
 db.open()
@@ -24,7 +24,7 @@ db.open()
 			.exec()
 	})
 	.then(record => {
-		let match = flickrRegex.exec(record.view);
+		let match = flickrUrlRegex.exec(record.view);
 		return Promise.all([
 			record,
 			db.City.findOne({ geonameid: record.geonameid }),
