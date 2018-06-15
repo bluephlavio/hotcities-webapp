@@ -1,33 +1,33 @@
-## Import
+# Import
 
-# countries
+## countries
 mongoimport -d geonames -c countries --type tsv --file countryInfo.txt --columnsHaveTypes --fieldFile countries-header.txt --parseGrace autoCast
 
-# cities
+## cities
 mongoimport -d geonames -c cities --type tsv --file cities15000.txt --columnsHaveTypes --fieldFile cities-header.txt --parseGrace autoCast
 
-# alternatenames
+## alternatenames
 mongoimport -d geonames -c alternatenames --type tsv --file alternateNamesV2.txt --columnsHaveTypes --fieldFile alternatenames-header.txt --parseGrace autoCast
 
 
-## Indexes
+# Indexes
 
-# countries
+## countries
 
 db.countries.createIndex({ISO: 1})
 
-# cities
+## cities
 
 db.cities.createIndex({geonameid: 1})
 
-# alternatenames
+## alternatenames
 
 db.alternatenames.createIndex({geonameid: 1})
 
 
-## Aggregation
+# Aggregation
 
-# alternatnames
+## alternatnames
 
 db.alternatenames.aggregate([
 	{ $match:
@@ -45,7 +45,7 @@ db.alternatenames.aggregate([
 	{ $out: "alternatenames" }
 ])
 
-# cities
+## cities
 
 db.cities.aggregate([
 	{ $lookup:
