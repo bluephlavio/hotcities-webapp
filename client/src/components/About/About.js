@@ -19,7 +19,7 @@ const About = (props) => {
 			</p>
 			<p>
 				<b>Where it fetch data from. </b>
-				It uses <a href="geonames.org" target="_blanck">geonames.org</a> for geographical data, <a href="opeweathermap.org" target="_blanck">openweathermap.org</a> for weather data and <a href="flickr.com" target="_blanck">flickr.com</a> for geolocated images.
+				It uses <a href="http://geonames.org" target="_blanck">geonames.org</a> for geographical data, <a href="http://openweathermap.org" target="_blanck">openweathermap.org</a> for weather data and <a href="http://flickr.com" target="_blanck">flickr.com</a> for geolocated images.
 			</p>
 			<p>
 				<b>Follow. </b>
