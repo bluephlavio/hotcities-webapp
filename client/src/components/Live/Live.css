@@ -1,3 +1,32 @@
-@import url("https://fonts.googleapis.com/css?family=Poiret+One|Quicksand:300");
+@import url("https://fonts.googleapis.com/css?family=Quicksand:300");
+.live-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center; }
+  .live-item .live-item-value {
+    flex: 0;
+    white-space: nowrap;
+    padding: 0 10px;
+    font-size: 14pt;
+    text-align: right; }
+  .live-item .live-item-icon {
+    width: 30px;
+    text-align: center;
+    border-left: 1px dashed #f4931d; }
+
+.live-details {
+  margin: 0;
+  padding: 10px 20px; }
+
+.live-view {
+  flex: 1;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: sepia(1) grayscale(1); }
+
 .live {
+  display: flex;
+  flex-direction: column;
   height: 100%; }

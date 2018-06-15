@@ -1,19 +1,34 @@
-@import '../../shared.scss';
+@import '../../_variables.scss';
 
 .header {
-  background-color: $dark-color;
-  flex: 0;
-  nav.navbar {
-    padding: $p;
-  }
-  button.navbar-toggler {
-      color: $light-color;
-  }
-  .title {
-    font-size: $big;
-  }
-  .motto {
-    letter-spacing: 5px;
-    font-size: $small;
-  }
+	background-color: $primary-color;
+	color: $accent-color;
+	flex: 0;
+
+	nav {
+		display: flex;
+		flex-direction: row;
+		align-items: baseline;
+		padding: $padding;
+
+		.navbar-header {
+			a {
+				color: $accent-color;
+			}
+
+			.title {
+				font-size: $big;
+			}
+
+			.motto {
+				font-size: $small;
+				letter-spacing: 5px;
+				color: $link-color;
+			}
+		}
+	}
+}
+
+.header-menu {
+	font-size: $small;
 }

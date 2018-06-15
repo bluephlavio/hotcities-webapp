@@ -1,22 +1,43 @@
-@import url("https://fonts.googleapis.com/css?family=Poiret+One|Quicksand:300");
+@import url("https://fonts.googleapis.com/css?family=Quicksand:300");
 html {
   height: 100%; }
 
 body {
   height: 100%;
-  font-family: "Poiret One", sans-serif;
+  font-family: "Quicksand", sans-serif;
   color: #f4931d; }
 
-a {
-  color: #f4931d;
-  text-decoration: none; }
-  a span {
-    color: #f4931d; }
+h1 {
+  margin: 0; }
 
-a:hover {
-  color: #2c3d5e; }
-  a:hover span {
+a {
+  color: #2c3d5e;
+  text-decoration: none; }
+  a:hover {
+    color: #f4931d;
+    text-decoration: none; }
+
+button {
+  background: none;
+  color: inherit;
+  border: 0; }
+  button:hover {
     color: #2c3d5e; }
+  button:focus {
+    outline: none; }
+
+p {
+  text-align: justify; }
+
+ul {
+  list-style-type: none; }
+
+hr {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(to left, rgba(244, 147, 29, 0), #f4931d, rgba(244, 147, 29, 0));
+  margin: 0;
+  padding: 0; }
 
 #root {
   height: 100%; }

@@ -1,13 +1,21 @@
-@import url("https://fonts.googleapis.com/css?family=Poiret+One|Quicksand:300");
+@import url("https://fonts.googleapis.com/css?family=Quicksand:300");
 .header {
-  background-color: #070400;
+  background-color: #fff;
+  color: #f4931d;
   flex: 0; }
-  .header nav.navbar {
+  .header nav {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
     padding: 10px 20px; }
-  .header button.navbar-toggler {
-    color: #f4931d; }
-  .header .title {
-    font-size: 32pt; }
-  .header .motto {
-    letter-spacing: 5px;
-    font-size: 14pt; }
+    .header nav .navbar-header a {
+      color: #f4931d; }
+    .header nav .navbar-header .title {
+      font-size: 32pt; }
+    .header nav .navbar-header .motto {
+      font-size: 14pt;
+      letter-spacing: 5px;
+      color: #2c3d5e; }
+
+.header-menu {
+  font-size: 14pt; }

@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand:300');
+$primary-color: #fff;
+$secondary-color: #fff;
+$accent-color: #f4931d;
+$link-color: #2c3d5e;
+$font: 'Quicksand', sans-serif;
+$big: 32pt;
+$medium: 20pt;
+$small: 14pt;
+$v-padding: 10px;
+$h-padding: 20px;
+$padding: $v-padding $h-padding;
+$big-h-padding: 4 * $h-padding;
+$big-v-padding: 4 * $v-padding;
+$big-padding: $big-v-padding $big-h-padding;

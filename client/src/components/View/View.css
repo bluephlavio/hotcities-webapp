@@ -1,35 +1,7 @@
-@import url("https://fonts.googleapis.com/css?family=Poiret+One|Quicksand:300");
+@import url("https://fonts.googleapis.com/css?family=Quicksand:300");
 .view {
-  display: flex;
-  flex-direction: column;
-  height: 100%; }
-  .view hr {
-    border: 0;
-    height: 1px;
-    background: linear-gradient(left, rgba(244, 147, 29, 0), rgba(244, 147, 29, 0.75), rgba(244, 147, 29, 0)); }
-  .view .view-photo {
-    flex: 1;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    filter: sepia(1) grayscale(1); }
-  .view .view-info {
-    flex: 0;
-    padding: 10px 20px;
-    background-color: #070400; }
-    .view .view-info h2 {
-      font-size: 32pt; }
-    .view .view-info ul {
-      text-align: right;
-      list-style-type: none; }
-      .view .view-info ul li {
-        font-size: 14pt; }
-      .view .view-info ul span {
-        padding: 0px 10px;
-        white-space: nowrap; }
-        .view .view-info ul span a {
-          text-decoration: none; }
-      .view .view-info ul span.fa {
-        text-align: center;
-        width: 40px;
-        border-left: 1px dashed #f4931d; }
+  flex: 1;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: sepia(1) grayscale(1); }

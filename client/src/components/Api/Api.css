@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Quicksand:300");
-.footer {
-  flex: 0;
+.api {
+  flex: 1;
+  height: 100%;
   background-color: #fff;
-  color: #f4931d; }
-
-.footer-social {
+  color: #f4931d;
+  font-size: 14pt;
   padding: 10px 20px;
-  text-align: center; }
+  overflow-x: auto; }

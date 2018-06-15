@@ -1,8 +1,27 @@
-@import '../../shared.scss';
+@import '../../_variables.scss';
 
 .stats {
-  height: 100%;
-  #map {
-    height: 100%;
-  }
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+
+	.view {
+		flex: 1;
+		display: flex;
+	}
+}
+
+.map {
+	flex: 1;
+}
+
+.ranking {
+	flex: 0;
+	margin: 0;
+	padding: $padding;
+	overflow-x: auto;
+
+	.fa-circle {
+		padding: 0 10px;
+	}
 }

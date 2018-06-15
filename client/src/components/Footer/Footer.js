@@ -1,22 +1,36 @@
-import React, { Component } from "react";
-import Menu from "../Menu/Menu";
+import React from "react";
 import './Footer.css';
 
-class Footer extends Component {
-  render() {
-    return (
-      <div className="footer">
-        <nav className="navbar navbar-default navbar-expand-md navbar-dark">
-          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <Menu />
-          </div>
-        </nav>
-      </div>
-    );
-  }
+const Social = (props) => {
+	return (
+		<div className="footer-social">
+			<ul className="nav justify-content-center">
+				<li className="nav-item">
+					<button className="btn btn-social-icon">
+						<a href="https://twitter.com/intent/user?screen_name=hotcitiesworld" target="_blank" rel="noopener noreferrer">
+							<span className="fab fa-twitter"></span>
+						</a>
+					</button>
+				</li>
+				<li className="nav-item">
+					<button className="btn btn-social-icon">
+						<a href="https://github.com/bluephlavio/hotcities" target="_blank" rel="noopener noreferrer">
+							<span className="fab fa-github"></span>
+						</a>
+					</button>
+				</li>
+			</ul>
+		</div>
+	);
+}
+
+const Footer = (props) => {
+	return (
+		<footer className="footer">
+			<hr />
+			<Social />
+		</footer>
+	);
 }
 
 export default Footer;

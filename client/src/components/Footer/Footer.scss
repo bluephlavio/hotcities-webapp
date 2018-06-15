@@ -1,6 +1,12 @@
-@import '../../shared.scss';
+@import '../../_variables.scss';
 
 .footer {
-  flex: 0;
-  background-color: $dark-color;
+	flex: 0;
+	background-color: $primary-color;
+	color: $accent-color;
+}
+
+.footer-social {
+	padding: $padding;
+	text-align: center;
 }

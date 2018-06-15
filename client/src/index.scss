@@ -1,30 +1,59 @@
-@import 'shared.scss';
+@import './_variables.scss';
 
 html {
-  height: 100%;
+	height: 100%;
 }
 
 body {
-  height: 100%;
-  font-family: "Poiret One", sans-serif;
-  color: $light-color;
+	height: 100%;
+	font-family: $font;
+	color: $accent-color;
+}
+
+h1 {
+	margin: 0;
 }
 
 a {
-  color: $light-color;
-  text-decoration: none;
-  span {
-    color: $light-color;
-  }
+	color: $link-color;
+	text-decoration: none;
+
+	&:hover {
+		color: $accent-color;
+		text-decoration: none;
+	}
 }
 
-a:hover {
-  color: $link-color;
-  span {
-    color: $link-color;
-  }
+button {
+	background: none;
+	color: inherit;
+	border: 0;
+
+	&:hover {
+		color: $link-color;
+	}
+
+	&:focus {
+		outline: none;
+	}
+}
+
+p {
+	text-align: justify;
+}
+
+ul {
+	list-style-type: none;
+}
+
+hr {
+	border: 0;
+	height: 1px;
+	background: linear-gradient(to left, rgba($accent-color, 0), rgba($accent-color, 1), rgba($accent-color, 0));
+	margin: 0;
+	padding: 0;
 }
 
 #root {
-  height: 100%;
+	height: 100%;
 }

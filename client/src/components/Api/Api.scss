@@ -1,0 +1,11 @@
+@import '../../_variables.scss';
+
+.api {
+	flex: 1;
+	height: 100%;
+	background-color: $secondary-color;
+	color: $accent-color;
+	font-size: $small;
+	padding: $padding;
+	overflow-x: auto;
+}

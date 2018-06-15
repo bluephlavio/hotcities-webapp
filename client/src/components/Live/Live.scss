@@ -1,5 +1,41 @@
-@import '../../shared.scss';
+@import '../../_variables.scss';
+
+.live-item {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+
+	.live-item-value {
+		flex: 0;
+		white-space: nowrap;
+		padding: 0 10px;
+		font-size: $small;
+		text-align: right;
+	}
+
+	.live-item-icon {
+		width: 30px;
+		text-align: center;
+		border-left: 1px dashed $accent-color;
+	}
+}
+
+.live-details {
+	margin: 0;
+	padding: $padding;
+}
+
+.live-view {
+	flex: 1;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	filter: sepia(1) grayscale(1);
+}
 
 .live {
-  height: 100%;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
 }
