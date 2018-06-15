@@ -1,16 +1,17 @@
 const mongoose = require('mongoose');
 
 const RecordSchema = new mongoose.Schema({
-  timestamp: {
-    type: Date,
-    default: Date.now
-  },
-  geonameid: {
+	timestamp: {
+		type: Date,
+		default: Date.now
+	},
+	geonameid: {
+		type: Number,
+		ref: 'City'
+	},
+	temp: {
 		type: Number
 	},
-  temp: {
-    type: Number
-  },
 	view: {
 		type: String
 	}
