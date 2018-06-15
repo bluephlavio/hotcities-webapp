@@ -13,7 +13,7 @@ class Main extends Component {
 				<Switch>
 					<Route exact path="/" component={Live} />
 					<Route exact path="/stats" component={Stats} />
-					<Route exact path="/api" component={Api} />
+					<Route exact path="/apidocs" component={Api} />
 					<Route exact path="/about" component={About} />
 				</Switch>
 			</div>
