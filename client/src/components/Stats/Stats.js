@@ -23,7 +23,7 @@ class Ranking extends Component {
 		super(props);
 		this.state = {
 			rankFn: this.rankByRecordFrac,
-			expanded: true
+			expanded: false
 		};
 	}
 

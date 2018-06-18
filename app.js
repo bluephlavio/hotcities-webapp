@@ -17,7 +17,7 @@ app.use(logger('dev'));
 
 app.use('/api', require('./routes/api'));
 app.use('/external-api', require('./routes/external-api'));
-app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join(__dirname, 'client', 'build')));
 
 
 module.exports = app;
