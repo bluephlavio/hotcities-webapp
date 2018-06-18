@@ -35,7 +35,6 @@ class Live extends Component {
 				return res.json();
 			})
 			.then(record => {
-				console.log(record);
 				return Promise.all([
 					record,
 					fetch('/api/cities/' + record.geonameid)
@@ -48,7 +47,6 @@ class Live extends Component {
 				let record = results[0];
 				let city = results[1];
 				let views = results[2];
-				console.log(record, city, views);
 				this.setState({
 					data: {
 						name: city.name,

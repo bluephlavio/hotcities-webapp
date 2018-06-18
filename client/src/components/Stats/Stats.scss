@@ -12,10 +12,10 @@
 }
 
 .ranking {
-	flex: 0;
 	margin: 0;
 	padding: $padding;
-	overflow-x: auto;
+	height: 205px;
+	overflow: auto;
 
 	.fa-circle {
 		padding: 0 10px;
