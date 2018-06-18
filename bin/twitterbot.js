@@ -1,11 +1,12 @@
 require('dotenv')
 	.config();
 
+const fs = require('fs');
+const path = require('path');
 const _ = require('underscore');
 const twit = require('twit');
-const flickr = require('../flickr');
+
 const db = require('../db');
-const fmt = require('../helpers/formatter');
 
 const Twitter = new twit({
 	consumer_key: process.env.TWITTER_KEY,
@@ -14,47 +15,78 @@ const Twitter = new twit({
 	access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
 
-const flickrUrlRegex =
-	/https:\/\/farm(\d)\.staticflickr\.com\/(\d+)\/(\d+)_(\w+)_\w\.(\w+)/g;
+const statusFile = path.join(__dirname, 'status.json');
 
-db.open()
-	.then(() => {
-		return db.Record.findOne()
-			.sort({ timestamp: -1 })
-			.exec()
-	})
-	.then(record => {
-		let match = flickrUrlRegex.exec(record.view);
-		return Promise.all([
-			record,
-			db.City.findOne({ geonameid: record.geonameid }),
-			flickr.photos.getInfo({
-				photo_id: match[3],
-				secret: match[4]
-			})
-		]);
-	})
-	.then(results => {
-		let record = results[0];
-		let city = results[1];
-		let res = results[2];
-		let all_urls = res.body.photo.urls.url;
-		let candidate_urls = _.filter(all_urls, entry => {
-			return entry.type === 'photopage';
-		});
-		if (candidate_urls.length) {
-			let url = candidate_urls[0]._content;
-			let status = `${fmt.temp(record.temp)} in #${fmt.names(city.name, city.localname)} (${city.countrycode}) now! ${url}`;
-			console.log(status);
-			return Twitter.post('statuses/update', { status: status });
+function taggify(tags) {
+	return _.map(tags, tag => {
+			return `#${tag.replace(/(\s|\')/g, '')}`;
+		})
+		.join(' ');
+}
+
+function tweetify(status) {
+	let temp = `${Math.round(status.temp)} °C`;
+	let name = status.name;
+	let code = status.countrycode;
+	let tags = taggify(
+		_.filter([
+			status.name,
+			status.localname,
+			status.country
+		], entry => {
+			return entry;
+		})
+	);
+	let view = status.view;
+	return `${temp} in ${name} (${code}) now! ${tags} ${view}`;
+}
+
+function updateNeeded(newStatus) {
+	if (fs.existsSync(statusFile)) {
+		let oldStatus = JSON.parse(fs.readFileSync(statusFile));
+		if (newStatus.name !== oldStatus.name) {
+			return true;
 		} else {
-			return null;
+			return false;
 		}
-	})
-	.then(() => {
-		db.close();
-	})
-	.catch(error => {
+	} else {
+		return true;
+	}
+}
+
+async function tweet() {
+	await db.open();
+	try {
+		let record = await db.Record.findOne()
+			.sort({ timestamp: -1 })
+			.exec();
+		let city = await db.City.findOne({
+				geonameid: record.geonameid
+			})
+			.exec();
+		let views = await db.View.find({
+				geonameid: record.geonameid
+			})
+			.exec();
+		let view = views[0];
+		let newStatus = {
+			name: city.name,
+			localname: city.localname,
+			country: city.country,
+			countrycode: city.countrycode,
+			temp: record.temp,
+			view: view.photopage
+		}
+		if (updateNeeded(newStatus)) {
+			console.log(tweetify(newStatus));
+			await Twitter.post('statuses/update', { status: tweetify(newStatus) });
+			fs.writeFileSync(statusFile, JSON.stringify(newStatus));
+		}
+	} catch (error) {
 		console.log(error);
-		db.close();
-	})
+	} finally {
+		await db.close();
+	}
+}
+
+tweet();
