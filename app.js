@@ -17,7 +17,11 @@ app.use(logger('dev'));
 
 app.use('/api', require('./routes/api'));
 app.use('/external-api', require('./routes/external-api'));
+
 app.use(express.static(path.join(__dirname, 'client', 'build')));
+app.get('/', (req, res) => {
+	res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+});
 
 
 module.exports = app;
