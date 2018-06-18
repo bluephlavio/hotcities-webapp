@@ -22,10 +22,10 @@ router.get('/cities', (req, res) => {
 		});
 });
 
-router.get('/cities/:id', (req, res) => {
+router.get('/cities/:geonameid', (req, res) => {
 	db.City.aggregate()
 		.match({
-			geonameid: Number(req.params.id)
+			geonameid: Number(req.params.geonameid)
 		})
 		.project({
 			_id: 0,
@@ -39,28 +39,9 @@ router.get('/cities/:id', (req, res) => {
 
 router.get('/records', (req, res) => {
 	db.Record.aggregate()
-		.lookup({
-			from: 'cities',
-			localField: 'geonameid',
-			foreignField: 'geonameid',
-			as: 'city'
-		})
-		.unwind('$city')
-		.addFields({
-			name: '$city.name',
-			localname: '$city.localname',
-			country: '$city.country',
-			countrycode: '$city.countrycode',
-			timezone: '$city.timezone',
-			lang: '$city.lang',
-			population: '$city.population',
-			lng: '$city.lng',
-			lat: '$city.lat'
-		})
 		.project({
 			_id: 0,
-			__v: 0,
-			city: 0
+			__v: 0
 		})
 		.exec()
 		.then(data => {
@@ -72,28 +53,9 @@ router.get('/records/current', (req, res) => {
 	db.Record.aggregate()
 		.sort('-timestamp')
 		.limit(1)
-		.lookup({
-			from: 'cities',
-			localField: 'geonameid',
-			foreignField: 'geonameid',
-			as: 'city'
-		})
-		.unwind('$city')
-		.addFields({
-			name: '$city.name',
-			localname: '$city.localname',
-			country: '$city.country',
-			countrycode: '$city.countrycode',
-			timezone: '$city.timezone',
-			lang: '$city.lang',
-			population: '$city.population',
-			lng: '$city.lng',
-			lat: '$city.lat'
-		})
 		.project({
 			_id: 0,
 			__v: 0,
-			city: 0
 		})
 		.exec()
 		.then(data => {
@@ -101,7 +63,48 @@ router.get('/records/current', (req, res) => {
 		});
 });
 
-router.get('/records/cities', (req, res) => {
+router.get('/records/:geonameid', (req, res) => {
+	db.Record.aggregate()
+		.match({
+			geonameid: Number(req.params.geonameid)
+		})
+		.project({
+			_id: 0,
+			__v: 0
+		})
+		.exec()
+		.then(data => {
+			res.json(data);
+		});
+});
+router.get('/views', (req, res) => {
+	db.View.aggregate()
+		.project({
+			_id: 0,
+			__v: 0
+		})
+		.exec()
+		.then(data => {
+			res.json(data);
+		});
+});
+
+router.get('/views/:geonameid', (req, res) => {
+	db.View.aggregate()
+		.match({
+			geonameid: Number(req.params.geonameid)
+		})
+		.project({
+			_id: 0,
+			__v: 0
+		})
+		.exec()
+		.then(data => {
+			res.json(data);
+		});
+});
+
+router.get('/stats/cities', (req, res) => {
 	db.Record.count()
 		.then(count => {
 			return db.Record.aggregate()
@@ -132,7 +135,7 @@ router.get('/records/cities', (req, res) => {
 		});
 });
 
-router.get('/records/countries', (req, res) => {
+router.get('/stats/countries', (req, res) => {
 	db.Record.count()
 		.then(count => {
 			return db.Record.aggregate()
@@ -164,6 +167,5 @@ router.get('/records/countries', (req, res) => {
 			res.json(data);
 		});
 });
-
 
 module.exports = router;
