@@ -8,7 +8,7 @@
     flex: 0;
     white-space: nowrap;
     padding: 0 10px;
-    font-size: 14pt;
+    font-size: 12pt;
     text-align: right; }
   .live-item .live-item-icon {
     width: 30px;
@@ -24,7 +24,8 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  filter: sepia(1) grayscale(1); }
+  background-attachment: fixed;
+  filter: grayscale(1); }
 
 .live {
   display: flex;

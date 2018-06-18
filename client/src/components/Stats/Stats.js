@@ -23,7 +23,7 @@ class Ranking extends Component {
 		super(props);
 		this.state = {
 			rankFn: this.rankByRecordFrac,
-			expanded: false
+			expanded: true
 		};
 	}
 
@@ -110,7 +110,7 @@ class Stats extends Component {
 	componentDidMount() {
 		Promise.all([
 				fetch('/api/cities'),
-				fetch('/api/records/cities')
+				fetch('/api/stats/cities')
 			])
 			.then(results => {
 				return Promise.all(results.map(item => item.json()));

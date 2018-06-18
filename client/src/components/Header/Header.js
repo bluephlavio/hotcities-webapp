@@ -6,16 +6,16 @@ const Menu = (props) => {
 	return (
 		<div className="header-menu">
 			<ul className="navbar-nav">
-				<li className="nav-item">
+				<li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
 					<Link className="nav-link" to="/">Live</Link>
 				</li>
-				<li className="nav-item">
+				<li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
 					<Link className="nav-link" to="/stats">Stats</Link>
 				</li>
-				<li className="nav-item">
+				<li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
 					<Link className="nav-link" to="/apidocs">API</Link>
 				</li>
-				<li className="nav-item">
+				<li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
 					<Link className="nav-link" to="/about">About</Link>
 				</li>
 			</ul>
@@ -33,7 +33,7 @@ class Header extends Component {
 							<h1 className="title">
 								HOT CITIES
 							</h1>
-							<h2 className="motto">world.hottest.city.now</h2>
+							<h2 className="motto">world's hottest city, now</h2>
 						</a>
 					</div>
 					<button className="navbar-toggler"

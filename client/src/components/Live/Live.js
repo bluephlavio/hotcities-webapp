@@ -30,15 +30,38 @@ class Live extends Component {
 	}
 
 	componentDidMount() {
-		fetch("/api/records/current")
+		fetch('/api/records/current')
 			.then(res => {
 				return res.json();
 			})
-			.then(data => {
-				this.setState(prevState => ({
-					data,
+			.then(record => {
+				console.log(record);
+				return Promise.all([
+					record,
+					fetch('/api/cities/' + record.geonameid)
+					.then(res => res.json()),
+					fetch('/api/views/' + record.geonameid)
+					.then(res => res.json())
+				]);
+			})
+			.then(results => {
+				let record = results[0];
+				let city = results[1];
+				let views = results[2];
+				console.log(record, city, views);
+				this.setState({
+					data: {
+						name: city.name,
+						localname: city.localname,
+						country: city.country,
+						countrycode: city.countrycode,
+						lat: city.lat,
+						lng: city.lng,
+						temp: record.temp,
+						view: views[0].source
+					},
 					isLoading: false
-				}));
+				});
 			});
 	}
 

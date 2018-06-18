@@ -47,14 +47,21 @@ const Api = (props) => {
 						<td nowrap="nowrap"><a href="/api/cities" target="_blank">Try it</a></td>
 					</tr>
 					<tr>
-						<td nowrap="nowrap">/records/cities</td>
+						<td nowrap="nowrap">/records/:id</td>
+						<td nowrap="nowrap">GET</td>
+						<td nowrap="nowrap">:id</td>
+						<td nowrap="nowrap">records for the city with :id as geonameid</td>
+						<td nowrap="nowrap"><a href="/api/cities" target="_blank">Try it</a></td>
+					</tr>
+					<tr>
+						<td nowrap="nowrap">/stats/cities</td>
 						<td nowrap="nowrap">GET</td>
 						<td nowrap="nowrap"></td>
 						<td nowrap="nowrap">all record cities with statistics</td>
 						<td nowrap="nowrap"><a href="/api/cities" target="_blank">Try it</a></td>
 					</tr>
 					<tr>
-						<td nowrap="nowrap">/records/countries</td>
+						<td nowrap="nowrap">/stats/countries</td>
 						<td nowrap="nowrap">GET</td>
 						<td nowrap="nowrap"></td>
 						<td nowrap="nowrap">all record countries with statistics</td>

@@ -12,10 +12,17 @@ class Map extends Component {
 		super(props);
 		mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
 		this.recordCities = _.map(props.data.recordCities, entry => {
-			entry.circleRadius = Math.sqrt(entry.recordFrac);
-			entry.circleColor = entry.recordTemp;
-			return entry;
-		})
+			let data = entry;
+			data.circleRadius = Math.sqrt(entry.recordFrac);
+			data.circleColor = entry.recordTemp;
+			return data;
+		});
+		this.recordTemps = _.map(props.data.recordCities, entry => {
+			return entry.recordTemp;
+		});
+		this.recordFracs = _.map(props.data.recordCities, entry => {
+			return entry.recordFrac;
+		});
 	}
 
 	componentDidMount() {
@@ -23,7 +30,6 @@ class Map extends Component {
 		const map = new mapboxgl.Map({
 			container: this.mapContainer,
 			style: 'mapbox://styles/mapbox/streets-v9',
-			minZoom: 1,
 			zoom: 1,
 			center: [0, 0]
 		});
@@ -40,16 +46,16 @@ class Map extends Component {
 					'circle-color': {
 						'property': 'circleColor',
 						'stops': [
-							[30, 'rgba(244, 147, 29, 0)'],
-							[50, 'rgba(244, 147, 29, 1)']
+							[Math.min(...this.recordTemps), 'rgba(244, 147, 29, 0)'],
+							[Math.max(...this.recordTemps), 'rgba(244, 147, 29, 1)']
 						]
 					},
-					'circle-blur': 0.5,
+					'circle-blur': 0.3,
 					'circle-radius': {
 						'property': 'circleRadius',
 						'stops': [
-							[0, 0],
-							[1, 20]
+							[Math.min(...this.recordFracs), 0],
+							[Math.max(...this.recordFracs), 10]
 						]
 					}
 				}

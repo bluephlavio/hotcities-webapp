@@ -11,11 +11,11 @@
     .header nav .navbar-header a {
       color: #f4931d; }
     .header nav .navbar-header .title {
-      font-size: 32pt; }
+      font-size: 24pt; }
     .header nav .navbar-header .motto {
-      font-size: 14pt;
-      letter-spacing: 5px;
+      font-size: 12pt;
+      letter-spacing: 0;
       color: #2c3d5e; }
 
 .header-menu {
-  font-size: 14pt; }
+  font-size: 12pt; }

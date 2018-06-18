@@ -31,7 +31,8 @@
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
-	filter: sepia(1) grayscale(1);
+	background-attachment: fixed;
+	filter: grayscale(1);
 }
 
 .live {
