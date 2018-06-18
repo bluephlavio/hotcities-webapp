@@ -11,9 +11,6 @@ const RecordSchema = new mongoose.Schema({
 	},
 	temp: {
 		type: Number
-	},
-	view: {
-		type: String
 	}
 });
 
