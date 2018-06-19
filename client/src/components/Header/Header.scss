@@ -1,8 +1,8 @@
 @import '../../_variables.scss';
+@import '../../_mixins.scss';
 
 .header {
-	background-color: $primary-color;
-	color: $accent-color;
+	@extend %primary;
 	flex: 0;
 
 	nav {
@@ -11,20 +11,13 @@
 		align-items: baseline;
 		padding: $padding;
 
-		.navbar-header {
-			a {
-				color: $accent-color;
-			}
+		.title {
+			color: $accent-color;
+		}
 
-			.title {
-				font-size: $big;
-			}
-
-			.motto {
-				font-size: $small;
-				letter-spacing: 0;
-				color: $link-color;
-			}
+		.motto {
+			@include muted($link-color);
+			letter-spacing: 0;
 		}
 	}
 }

@@ -1,29 +1,31 @@
 @import '../../_variables.scss';
+@import '../../_mixins.scss';
 
 .live-item {
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-end;
 	align-items: center;
-
-	.live-item-value {
-		flex: 0;
-		white-space: nowrap;
-		padding: 0 10px;
-		font-size: $small;
-		text-align: right;
-	}
-
-	.live-item-icon {
-		width: 30px;
-		text-align: center;
-		border-left: 1px dashed $accent-color;
-	}
 }
 
 .live-details {
-	margin: 0;
 	padding: $padding;
+	transform: translate(-1px);
+}
+
+.live-item-value {
+	flex: 0;
+	white-space: nowrap;
+	padding: 0 10px;
+}
+
+.live-item-icon {
+	text-align: center;
+
+	.fa {
+		width: 40px;
+		border-left: 1px dashed $accent-color;
+	}
 }
 
 .live-view {

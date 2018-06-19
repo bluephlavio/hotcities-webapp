@@ -1,0 +1,24 @@
+@import './_variables.scss';
+@mixin sep($color) {
+	height: 1px;
+	background: linear-gradient(to left, rgba($color, 0), rgba($color, 1), rgba($color, 0));
+}
+@mixin muted($color) {
+	color: rgba($color, 0.5);
+}
+
+%no-space {
+	margin: 0;
+	border: 0;
+	padding: 0;
+}
+
+%primary {
+	background-color: $primary-color;
+	color: $accent-color;
+}
+
+%secondary {
+	background-color: $secondary-color;
+	color: $accent-color;
+}

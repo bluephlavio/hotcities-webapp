@@ -134,7 +134,7 @@ class Stats extends Component {
 		if (this.state.isLoading) {
 			return 'Loading...';
 		} else {
-			return 'Rankings';
+			return 'Stats';
 		}
 	}
 
@@ -163,7 +163,9 @@ class Stats extends Component {
 				<div className="view">
 					{!this.state.isLoading && <Map data={this.state.data} />}
 				</div>
-				<InfoPanel title={this.caption()} icon={this.icon()}>
+				<InfoPanel
+					title={this.caption()}
+					isLoading={this.state.isLoading}>
 					{!this.state.isLoading &&
 						<Ranking data={this.state.data.recordCities} />
 					}

@@ -1,23 +1,25 @@
 @import url("https://fonts.googleapis.com/css?family=Quicksand:300");
+@import url("https://fonts.googleapis.com/css?family=Quicksand:300");
 .live-item {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center; }
-  .live-item .live-item-value {
-    flex: 0;
-    white-space: nowrap;
-    padding: 0 10px;
-    font-size: 12pt;
-    text-align: right; }
-  .live-item .live-item-icon {
-    width: 30px;
-    text-align: center;
-    border-left: 1px dashed #f4931d; }
 
 .live-details {
-  margin: 0;
-  padding: 10px 20px; }
+  padding: 10px 20px;
+  transform: translate(-1px); }
+
+.live-item-value {
+  flex: 0;
+  white-space: nowrap;
+  padding: 0 10px; }
+
+.live-item-icon {
+  text-align: center; }
+  .live-item-icon .fa {
+    width: 40px;
+    border-left: 1px dashed #f4931d; }
 
 .live-view {
   flex: 1;

@@ -1,12 +1,10 @@
 @import '../../_variables.scss';
+@import '../../_mixins.scss';
 
 .info-panel {
+	@extend %secondary;
 	display: flex;
 	flex-direction: column;
-	background-color: $secondary-color;
-	color: $accent-color;
-	padding: 0;
-	margin: 0;
 }
 
 .info-panel-title {
@@ -14,16 +12,8 @@
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	align-items: baseline;
+	align-items: center;
 	padding: $padding;
-
-	h1 {
-		margin: 0;
-		font-size: $big;
-	}
 }
 
-.info-panel-details {
-	margin: 0;
-	padding: 0;
-}
+.info-panel-details {}

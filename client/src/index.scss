@@ -1,4 +1,5 @@
 @import './_variables.scss';
+@import './_mixins.scss';
 
 html {
 	height: 100%;
@@ -7,35 +8,48 @@ html {
 body {
 	height: 100%;
 	font-family: $font;
-	color: $accent-color;
-}
-
-h1 {
-	margin: 0;
+	font-size: $small;
 }
 
 a {
 	color: $link-color;
 	text-decoration: none;
+}
 
-	&:hover {
-		color: $accent-color;
-		text-decoration: none;
-	}
+a:hover {
+	color: $accent-color;
+	text-decoration: none;
 }
 
 button {
+	@extend %no-space;
+	width: $btn-width;
+	color: $accent-color;
 	background: none;
-	color: inherit;
-	border: 0;
+}
 
-	&:hover {
-		color: $link-color;
-	}
+button:hover {
+	color: $link-color;
+	outline: none;
+}
 
-	&:focus {
-		outline: none;
-	}
+button:focus {
+	color: $accent-color;
+	outline: none;
+}
+
+button:focus:hover {
+	color: $link-color;
+}
+
+h1 {
+	@extend %no-space;
+	font-size: $big;
+}
+
+h2 {
+	@extend %no-space;
+	font-size: $medium;
 }
 
 p {
@@ -47,11 +61,14 @@ ul {
 }
 
 hr {
-	border: 0;
-	height: 1px;
-	background: linear-gradient(to left, rgba($accent-color, 0), rgba($accent-color, 1), rgba($accent-color, 0));
-	margin: 0;
-	padding: 0;
+	@extend %no-space;
+	@include sep($accent-color);
+}
+
+div,
+span {
+	@extend %no-space;
+	border-radius: 0;
 }
 
 #root {

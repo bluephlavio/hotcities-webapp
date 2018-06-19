@@ -1,9 +1,9 @@
 @import '../../_variables.scss';
+@import '../../_mixins.scss';
 
 .footer {
+	@extend %primary;
 	flex: 0;
-	background-color: $primary-color;
-	color: $accent-color;
 }
 
 .footer-social {

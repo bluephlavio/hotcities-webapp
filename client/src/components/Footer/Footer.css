@@ -1,8 +1,11 @@
 @import url("https://fonts.googleapis.com/css?family=Quicksand:300");
+@import url("https://fonts.googleapis.com/css?family=Quicksand:300");
 .footer {
-  flex: 0;
   background-color: #fff;
   color: #f4931d; }
+
+.footer {
+  flex: 0; }
 
 .footer-social {
   padding: 10px 20px;

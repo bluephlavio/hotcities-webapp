@@ -36,12 +36,21 @@ class Header extends Component {
 							<h2 className="motto">world's hottest city, now</h2>
 						</a>
 					</div>
-					<button className="navbar-toggler"
-						type="button" data-toggle="collapse" data-target="#navId"
-					aria-controls="#navId" aria-expanded="false" aria-label="Toggle navigation">
+					<button
+						className="navbar-toggler"
+						type="button"
+						data-toggle="collapse"
+						data-target="#nav-id"
+						aria-controls="#navId"
+						aria-expanded="false"
+						aria-label="Toggle navigation"
+					>
 						<span className="fa fa-bars"></span>
 					</button>
-					<div className="collapse navbar-collapse justify-content-end" id="navId">
+					<div
+						className="collapse navbar-collapse justify-content-end"
+						id="nav-id"
+					>
 						<Menu />
 					</div>
 				</nav>

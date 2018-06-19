@@ -1,23 +1,17 @@
 @import url("https://fonts.googleapis.com/css?family=Quicksand:300");
+@import url("https://fonts.googleapis.com/css?family=Quicksand:300");
+.info-panel {
+  background-color: #fff;
+  color: #f4931d; }
+
 .info-panel {
   display: flex;
-  flex-direction: column;
-  background-color: #fff;
-  color: #f4931d;
-  padding: 0;
-  margin: 0; }
+  flex-direction: column; }
 
 .info-panel-title {
   flex: 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   padding: 10px 20px; }
-  .info-panel-title h1 {
-    margin: 0;
-    font-size: 24pt; }
-
-.info-panel-details {
-  margin: 0;
-  padding: 0; }

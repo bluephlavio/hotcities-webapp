@@ -7,13 +7,17 @@ const Item = props => {
 	return (
 		<li className="live-item">
 			<span className="live-item-value">{props.value}</span>
-			<span className={"live-item-icon " + props.icon} />
+			<span className="live-item-icon"><span className={props.icon} /></span>
 		</li>
 	);
 };
 
 const Details = props => {
-	return <ul className="live-details">{props.children}</ul>;
+	return (
+		<div className="live-details">
+			<ul>{props.children}</ul>
+		</div>
+	);
 };
 
 const View = props => {
@@ -26,7 +30,9 @@ class Live extends Component {
 
 	constructor() {
 		super();
-		this.state = { isLoading: true };
+		this.state = {
+			isLoading: true
+		};
 	}
 
 	componentDidMount() {
@@ -79,19 +85,11 @@ class Live extends Component {
 		}
 	}
 
-	icon() {
-		if (this.state.isLoading) {
-			return 'fa fa-spinner fa-spin';
-		} else {
-			return 'fa fa-ellipsis-h';
-		}
-	}
-
 	render() {
 		return (
 			<div className="live">
 				<View view={this.view()} />
-				<InfoPanel title={this.caption()} icon={this.icon()}>
+				<InfoPanel title={this.caption()} isLoading={this.state.isLoading} >
 					{!this.state.isLoading &&
 						<Details>
 							<Item value={fmt.temp(this.state.data.temp)}

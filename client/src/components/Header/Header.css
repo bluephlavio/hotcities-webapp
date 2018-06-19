@@ -1,21 +1,21 @@
 @import url("https://fonts.googleapis.com/css?family=Quicksand:300");
+@import url("https://fonts.googleapis.com/css?family=Quicksand:300");
 .header {
   background-color: #fff;
-  color: #f4931d;
+  color: #f4931d; }
+
+.header {
   flex: 0; }
   .header nav {
     display: flex;
     flex-direction: row;
     align-items: baseline;
     padding: 10px 20px; }
-    .header nav .navbar-header a {
+    .header nav .title {
       color: #f4931d; }
-    .header nav .navbar-header .title {
-      font-size: 24pt; }
-    .header nav .navbar-header .motto {
-      font-size: 12pt;
-      letter-spacing: 0;
-      color: #2c3d5e; }
+    .header nav .motto {
+      color: rgba(44, 61, 94, 0.5);
+      letter-spacing: 0; }
 
 .header-menu {
   font-size: 12pt; }
