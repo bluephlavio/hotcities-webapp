@@ -29,7 +29,7 @@ class Map extends Component {
 
 		const map = new mapboxgl.Map({
 			container: this.mapContainer,
-			style: 'mapbox://styles/mapbox/streets-v9',
+			style: 'mapbox://styles/mapbox/dark-v9',
 			zoom: 1,
 			center: [0, 0]
 		});
