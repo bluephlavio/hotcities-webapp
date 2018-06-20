@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import _ from 'underscore';
 import fmt from '../../helpers/formatter';
 import InfoPanel from "../InfoPanel/InfoPanel";
 import "./Live.css";
@@ -20,10 +21,57 @@ const Details = props => {
 	);
 };
 
-const View = props => {
-	return (
-		<div className="live-view" style={{backgroundImage: "url(" + props.view + ")"}} />
-	);
+class View extends Component {
+
+	views() {
+		return (
+			<div className="carousel-inner">
+				{_.map(this.props.views, (view, index) => {
+					return (
+						<div
+							key={index}
+							className={"carousel-item" + (index === 0 ? " active" : "")}
+							style={{backgroundImage: "url(" + view.source + ")"}} />
+					);
+				})}
+			</div>
+		);
+	}
+
+	indicators() {
+		return (
+			<ol className="carousel-indicators">
+				{_.map(this.props.views, (view, index) => {
+					return (
+						<li
+							key={index}
+							data-target="#carousel-id"
+							data-slide-to={String(index)}
+							className={index === 0 ? 'active' : ''} />
+					);
+				})}
+			</ol>
+		);
+	}
+
+	render() {
+		return (
+			<div className="view">
+				<div id="carousel-id" className="carousel slide" data-ride="carousel">
+					{this.indicators()}
+					{this.views()}
+					<a className="carousel-control-prev" href="#carousel-id" role="button" data-slide="prev">
+						<span className="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span className="sr-only">Previous</span>
+					</a>
+					<a className="carousel-control-next" href="#carousel-id" role="button" data-slide="next">
+						<span className="carousel-control-next-icon" aria-hidden="true"></span>
+						<span className="sr-only">Next</span>
+					</a>
+				</div>
+			</div>
+		);
+	}
 }
 
 class Live extends Component {
@@ -62,19 +110,11 @@ class Live extends Component {
 						lat: city.lat,
 						lng: city.lng,
 						temp: record.temp,
-						view: views[0].source
+						views: _.first(views, 3)
 					},
 					isLoading: false
 				});
 			});
-	}
-
-	view() {
-		if (this.state.isLoading) {
-			return null;
-		} else {
-			return this.state.data.view;
-		}
 	}
 
 	caption() {
@@ -88,7 +128,7 @@ class Live extends Component {
 	render() {
 		return (
 			<div className="live">
-				<View view={this.view()} />
+				<View views={!this.state.isLoading ? this.state.data.views : []} />
 				<InfoPanel title={this.caption()} isLoading={this.state.isLoading} >
 					{!this.state.isLoading &&
 						<Details>

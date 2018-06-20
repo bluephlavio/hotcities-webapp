@@ -1,8 +1,8 @@
 @import '../../_variables.scss';
+@import '../../_mixins.scss';
 
 .about {
-	background-color: $secondary-color;
-	color: $accent-color;
-	font-size: $small;
+	@extend %secondary;
 	padding: $padding;
+	overflow: auto;
 }

@@ -1,11 +1,26 @@
 @import '../../_variables.scss';
+@import '../../_mixins.scss';
 
 .api {
+	@extend %secondary;
 	flex: 1;
-	height: 100%;
-	background-color: $secondary-color;
-	color: $accent-color;
-	font-size: $small;
 	padding: $padding;
-	overflow-x: auto;
+	overflow: auto;
+
+	p {
+		text-align: left;
+	}
+
+	.form-control {
+		width: auto;
+	}
+
+	.form-control:focus {
+		border-color: rgba($accent-color, 0.5);
+		box-shadow: inset 0 1px 1px rgba($accent-color, 0.075), 0 0 8px rgba($accent-color, 0.6);
+	}
+
+	label {
+		padding: 0 10px;
+	}
 }

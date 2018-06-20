@@ -28,8 +28,25 @@
 	}
 }
 
-.live-view {
+.view {
 	flex: 1;
+	display: flex;
+	flex-direction: column;
+	background-color: $link-color;
+	animation: fadein 2s;
+}
+
+.carousel {
+	flex: 1;
+}
+
+.carousel,
+.carousel-inner,
+.carousel-item {
+	height: 100%;
+}
+
+.carousel-item {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;

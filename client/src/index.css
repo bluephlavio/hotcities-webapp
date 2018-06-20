@@ -1,10 +1,24 @@
 @import url("https://fonts.googleapis.com/css?family=Quicksand:300");
 @import url("https://fonts.googleapis.com/css?family=Quicksand:300");
+@import url("https://fonts.googleapis.com/css?family=Quicksand:300");
+@import url("https://fonts.googleapis.com/css?family=Quicksand:300");
 button, h1, h2, hr, div,
 span {
   margin: 0;
   border: 0;
   padding: 0; }
+
+button, h1, h2, hr, div,
+span {
+  margin: 0;
+  border: 0;
+  padding: 0; }
+
+@keyframes fadein {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
 
 html {
   height: 100%; }
@@ -15,7 +29,7 @@ body {
   font-size: 12pt; }
 
 a {
-  color: #2c3d5e;
+  color: #191a1a;
   text-decoration: none; }
 
 a:hover {
@@ -28,7 +42,7 @@ button {
   background: none; }
 
 button:hover {
-  color: #2c3d5e;
+  color: #191a1a;
   outline: none;
   cursor: pointer; }
 
@@ -37,7 +51,7 @@ button:focus {
   outline: none; }
 
 button:focus:hover {
-  color: #2c3d5e; }
+  color: #191a1a; }
 
 h1 {
   font-size: 24pt; }
@@ -53,7 +67,8 @@ ul {
 
 hr {
   height: 1px;
-  background: linear-gradient(to left, rgba(252, 144, 12, 0), #fc900c, rgba(252, 144, 12, 0)); }
+  background: linear-gradient(to left, rgba(25, 26, 26, 0), #191a1a, rgba(25, 26, 26, 0));
+  animation: fadein 3s; }
 
 div,
 span {

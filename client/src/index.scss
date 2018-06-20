@@ -1,5 +1,6 @@
 @import './_variables.scss';
 @import './_mixins.scss';
+@import './_animations.scss';
 
 html {
 	height: 100%;
@@ -63,7 +64,8 @@ ul {
 
 hr {
 	@extend %no-space;
-	@include sep($accent-color);
+	@include sep($link-color);
+	animation: fadein 3s;
 }
 
 div,

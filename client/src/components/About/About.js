@@ -32,7 +32,7 @@ const About = (props) => {
 			</p>
 			<p>
 				<b>Contact. </b>
-				email: contact@hotcities.world.
+				contact@hotcities.world.
 			</p>
 		</div>
 	);
