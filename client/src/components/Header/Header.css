@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css?family=Quicksand:300");
 .header {
   background-color: #fff;
-  color: #f4931d; }
+  color: #fc900c; }
 
 .header {
   flex: 0; }
@@ -12,7 +12,7 @@
     align-items: baseline;
     padding: 10px 20px; }
     .header nav .title {
-      color: #f4931d; }
+      color: #fc900c; }
     .header nav .motto {
       color: rgba(44, 61, 94, 0.5);
       letter-spacing: 0; }

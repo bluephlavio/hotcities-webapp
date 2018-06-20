@@ -19,20 +19,21 @@ a {
   text-decoration: none; }
 
 a:hover {
-  color: #f4931d;
+  color: #fc900c;
   text-decoration: none; }
 
 button {
   width: 40px;
-  color: #f4931d;
+  color: #fc900c;
   background: none; }
 
 button:hover {
   color: #2c3d5e;
-  outline: none; }
+  outline: none;
+  cursor: pointer; }
 
 button:focus {
-  color: #f4931d;
+  color: #fc900c;
   outline: none; }
 
 button:focus:hover {
@@ -52,7 +53,7 @@ ul {
 
 hr {
   height: 1px;
-  background: linear-gradient(to left, rgba(244, 147, 29, 0), #f4931d, rgba(244, 147, 29, 0)); }
+  background: linear-gradient(to left, rgba(252, 144, 12, 0), #fc900c, rgba(252, 144, 12, 0)); }
 
 div,
 span {
