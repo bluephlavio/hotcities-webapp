@@ -7,20 +7,19 @@ const openweathermap = require('../openweathermap');
 const flickr = require('../flickr');
 
 router.get('/openweathermap', (req, res) => {
-  openweathermap.query()
-    .then(data => {
-      res.json(data);
-    })
+	openweathermap.query()
+		.then(data => {
+			res.json(data);
+		})
 		.catch(error => {
 			console.log(error);
 		});
 });
 
 router.get('/flickr', (req, res) => {
-  flickr.photos.search(req.query)
-		.ok(res => res.status < 500)
+	flickr.photos.search(req.query)
 		.then(response => {
-    	res.json(response.body);
+			res.json(response.body);
 		})
 		.catch(error => {
 			console.log(error);

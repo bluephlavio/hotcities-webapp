@@ -27,8 +27,7 @@ const ViewSchema = new mongoose.Schema({
 		type: Number
 	},
 	taken: {
-		type: Date,
-		default: Date.now
+		type: Date
 	},
 	url: {
 		type: String

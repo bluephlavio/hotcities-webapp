@@ -98,6 +98,9 @@ router.get('/views/:geonameid', (req, res) => {
 			_id: 0,
 			__v: 0
 		})
+		.sort({
+			taken: -1
+		})
 		.exec()
 		.then(data => {
 			res.json(data);

@@ -31,10 +31,9 @@ async function findRecord() {
 
 async function fetchViews(city, limit = 10) {
 	let res = await flickr.photos.search({
-		text: city.name,
+		text: `${city.name} city ${city.country}`,
 		sort: 'relevance',
-		format: 'json',
-		nojsoncallback: 1
+		format: 'json'
 	});
 	let photos = res.body.photos.photo;
 	let candidates = photos.slice(0, limit);
