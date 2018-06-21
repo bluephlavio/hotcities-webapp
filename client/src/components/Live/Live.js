@@ -31,7 +31,8 @@ class View extends Component {
 						<div
 							key={index}
 							className={"carousel-item" + (index === 0 ? " active" : "")}
-							style={{backgroundImage: "url(" + view.source + ")"}} />
+							style={{backgroundImage: "url(" + view.source + ")"}}>
+						</div>
 					);
 				})}
 			</div>
