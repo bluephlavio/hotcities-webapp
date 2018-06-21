@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const City = require('./models/city');
 const Record = require('./models/record');
 const View = require('./models/view');
+const Tweet = require('./models/tweet');
 
 mongoose.Promise = global.Promise;
 
@@ -23,3 +24,4 @@ module.exports.close = () => {
 module.exports.City = City;
 module.exports.Record = Record;
 module.exports.View = View;
+module.exports.Tweet = Tweet;
