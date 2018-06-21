@@ -35,7 +35,7 @@ const RouteTracker = () => (<Route component={GoogleAnalytics} />);
 
 const init = () => {
 	ReactGA.initialize(process.env.REACT_APP_GA_ID, {
-		debug: true
+		debug: false
 	});
 	return true;
 }
