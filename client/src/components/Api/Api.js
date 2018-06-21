@@ -6,9 +6,9 @@ class Api extends Component {
 	constructor() {
 		super();
 		this.params = {
-			citiesGeonameid: 292672,
-			recordsGeonameid: 292672,
-			viewsGeonameid: 292672
+			citiesGeonameid: 109223, // Medina
+			recordsGeonameid: 109223, // Medina
+			viewsGeonameid: 109223 // Medina
 		}
 	}
 
@@ -48,7 +48,7 @@ class Api extends Component {
 									id="citiesGeonameid"
 									value={this.params.citiesGeonameid}
 									placeholder={this.params.citiesGeonameid}
-									onChange={value => { this.citiesGeonameid = value; }} />
+									onChange={value => { this.params.citiesGeonameid = value; }} />
 							</td>
 							<td nowrap="nowrap">info about the city with :id as geonameid</td>
 							<td nowrap="nowrap">
@@ -83,7 +83,7 @@ class Api extends Component {
 									id="recordsGeonameid"
 									value={this.params.recordsGeonameid}
 									placeholder={this.params.recordsGeonameid}
-									onChange={value => { this.recordsGeonameid = value; }} />
+									onChange={value => { this.params.recordsGeonameid = value; }} />
 							</td>
 							<td nowrap="nowrap">records for the city with :id as geonameid</td>
 							<td nowrap="nowrap">
@@ -111,7 +111,7 @@ class Api extends Component {
 									id="viewsGeonameid"
 									value={this.params.viewsGeonameid}
 									placeholder={this.params.viewsGeonameid}
-									onChange={value => { this.viewsGeonameid = value; }} />
+									onChange={value => { this.params.viewsGeonameid = value; }} />
 							</td>
 							<td nowrap="nowrap">views for the city with :id as geonameid</td>
 							<td nowrap="nowrap">
