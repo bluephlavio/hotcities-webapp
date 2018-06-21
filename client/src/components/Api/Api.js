@@ -5,7 +5,7 @@ class Api extends Component {
 
 	constructor() {
 		super();
-		this.params = {
+		this.state = {
 			citiesGeonameid: 109223, // Medina
 			recordsGeonameid: 109223, // Medina
 			viewsGeonameid: 109223 // Medina
@@ -46,13 +46,12 @@ class Api extends Component {
 									size="8"
 									type="text"
 									id="citiesGeonameid"
-									value={this.params.citiesGeonameid}
-									placeholder={this.params.citiesGeonameid}
-									onChange={value => { this.params.citiesGeonameid = value; }} />
+									placeholder={this.state.citiesGeonameid}
+									onChange={e => { this.setState({ citiesGeonameid: e.target.value }); }} />
 							</td>
 							<td nowrap="nowrap">info about the city with :id as geonameid</td>
 							<td nowrap="nowrap">
-								<a href={"/api/cities/" + this.params.citiesGeonameid} target="_blank">
+								<a href={"/api/cities/" + this.state.citiesGeonameid} target="_blank">
 									Try it
 								</a>
 							</td>
@@ -81,13 +80,12 @@ class Api extends Component {
 									size="8"
 									type="text"
 									id="recordsGeonameid"
-									value={this.params.recordsGeonameid}
-									placeholder={this.params.recordsGeonameid}
-									onChange={value => { this.params.recordsGeonameid = value; }} />
+									placeholder={this.state.recordsGeonameid}
+									onChange={e => { this.setState({ recordsGeonameid: e.target.value }); }} />
 							</td>
 							<td nowrap="nowrap">records for the city with :id as geonameid</td>
 							<td nowrap="nowrap">
-								<a href={"/api/records/" + this.params.recordsGeonameid} target="_blank">
+								<a href={"/api/records/" + this.state.recordsGeonameid} target="_blank">
 									Try it
 								</a>
 							</td>
@@ -109,17 +107,16 @@ class Api extends Component {
 									size="8"
 									type="text"
 									id="viewsGeonameid"
-									value={this.params.viewsGeonameid}
-									placeholder={this.params.viewsGeonameid}
-									onChange={value => { this.params.viewsGeonameid = value; }} />
+									placeholder={this.state.viewsGeonameid}
+									onChange={e => { this.setState({ viewsGeonameid: e.target.value }); }} />
 							</td>
 							<td nowrap="nowrap">views for the city with :id as geonameid</td>
 							<td nowrap="nowrap">
-								<a href={"/api/views/" + this.params.viewsGeonameid} target="_blank">
+								<a href={"/api/views/" + this.state.viewsGeonameid} target="_blank">
 									Try it
 								</a>
 							</td>
-					</tr>
+						</tr>
 					<tr>
 						<td nowrap="nowrap">/stats/cities</td>
 						<td nowrap="nowrap">GET</td>
