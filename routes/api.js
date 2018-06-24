@@ -78,11 +78,12 @@ router.get('/records/:geonameid', (req, res) => {
 		});
 });
 router.get('/views', (req, res) => {
-	db.View.aggregate()
-		.project({
-			_id: 0,
-			__v: 0
+	db.View.find()
+		.populate({
+			path: 'license',
+			select: '-_id'
 		})
+		.select('-_id -__v')
 		.exec()
 		.then(data => {
 			res.json(data);
@@ -90,17 +91,12 @@ router.get('/views', (req, res) => {
 });
 
 router.get('/views/:geonameid', (req, res) => {
-	db.View.aggregate()
-		.match({
-			geonameid: Number(req.params.geonameid)
+	db.View.find({ geonameid: req.params.geonameid })
+		.populate({
+			path: 'license',
+			select: '-_id'
 		})
-		.project({
-			_id: 0,
-			__v: 0
-		})
-		.sort({
-			taken: -1
-		})
+		.select('-_id -__v')
 		.exec()
 		.then(data => {
 			res.json(data);
