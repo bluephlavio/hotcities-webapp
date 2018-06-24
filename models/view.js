@@ -1,11 +1,29 @@
 const mongoose = require('mongoose');
 
+const OwnerSchema = new mongoose.Schema({
+	id: {
+		type: String
+	},
+	username: {
+		type: String
+	},
+	realname: {
+		type: String
+	}
+}, {
+	_id: false,
+	toJSON: { virtuals: true }
+});
+
+OwnerSchema.virtual('page')
+	.get(function() {
+		return `https://flickr.com/${this.id}`;
+	});
+
 const ViewSchema = new mongoose.Schema({
 	id: {
-		type: Number
-	},
-	owner: {
-		type: String
+		type: Number,
+		index: true
 	},
 	secret: {
 		type: String
@@ -29,15 +47,25 @@ const ViewSchema = new mongoose.Schema({
 	taken: {
 		type: Date
 	},
-	url: {
-		type: String
-	},
 	source: {
 		type: String
 	},
-	photopage: {
-		type: String
+	owner: OwnerSchema,
+	licenseid: {
+		type: Number
 	}
+}, { toJSON: { virtuals: true } });
+
+ViewSchema.virtual('license', {
+	ref: 'License',
+	localField: 'licenseid',
+	foreignField: 'id',
+	justOne: true
 });
+
+ViewSchema.virtual('page')
+	.get(function() {
+		return `https://flickr.com/${this.owner.id}/${this.id}`;
+	});
 
 module.exports = mongoose.model('View', ViewSchema);
