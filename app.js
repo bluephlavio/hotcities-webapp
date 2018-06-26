@@ -12,11 +12,11 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use(favicon(path.join(__dirname, 'client', 'build', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'client', 'build', 'favicon.svg')));
 app.use(logger('dev'));
 
 app.use('/api', require('./routes/api'));
-app.use('/flickr-test', require('./routes/flickr-test'));
+// app.use('/flickr-test', require('./routes/test-flickr'));
 
 app.use(express.static(path.join(__dirname, 'client', 'build')));
 app.get('/*', (req, res) => {
