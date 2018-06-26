@@ -8,11 +8,10 @@ const favicon = require('serve-favicon');
 
 const app = express();
 
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use(favicon(path.join(__dirname, 'client', 'build', 'favicon.svg')), { maxAge: 1 });
+app.use(favicon(path.join(__dirname, 'client', 'build', 'favicon.svg'), { maxAge: 0 }));
 app.use(logger('dev'));
 
 app.use('/api', require('./routes/api'));
