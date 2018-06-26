@@ -1,18 +1,15 @@
 @import '../../_variables.scss';
+@import '../../_mixins.scss';
 
 .stats {
-	display: flex;
-	flex-direction: column;
-	height: 100%;
+	@extend %main;
+}
 
-	.view {
-		flex: 1;
-		display: flex;
-	}
+.stats-view {
+	@extend %view;
 }
 
 .ranking {
-	margin: 0;
 	padding: $padding;
 	height: 205px;
 	overflow: auto;

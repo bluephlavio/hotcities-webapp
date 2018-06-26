@@ -9,7 +9,7 @@ import './Stats.css';
 
 const Item = (props) => {
 	return (
-		<tr>
+		<tr className="stats-item">
 			<th nowrap="nowrap" scope="row">{props.index}</th>
 			<td nowrap="nowrap">{fmt.names(props.item.name, props.item.localname)}</td>
 			<td nowrap="nowrap">{fmt.fracToPerc(props.item.recordFrac)}</td>
@@ -139,25 +139,6 @@ class Stats extends Component {
 		}
 	}
 
-	icon() {
-		if (this.state.isLoading) {
-			return 'fa fa-spinner fa-spin';
-		} else {
-			return 'fa fa-ellipsis-h';
-		}
-	}
-
-	data() {
-		if (this.state.isLoading) {
-			return {
-				cities: [],
-				recordCities: []
-			}
-		} else {
-			return this.state.data;
-		}
-	}
-
 	loadMapData(map) {
 		let recordCities = _.map(this.state.data.recordCities, entry => {
 			let data = entry;
@@ -203,7 +184,7 @@ class Stats extends Component {
 	render() {
 		return (
 			<div className='stats'>
-				<div className="view">
+				<div className="stats-view">
 					{!this.state.isLoading &&
 						<Map
 							mapstyle='mapbox://styles/mapbox/dark-v9'

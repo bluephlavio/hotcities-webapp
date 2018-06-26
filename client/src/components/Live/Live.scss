@@ -2,6 +2,10 @@
 @import '../../_mixins.scss';
 @import '../../_animations.scss';
 
+.live {
+	@extend %main;
+}
+
 .live-item {
 	display: flex;
 	flex-direction: row;
@@ -24,50 +28,16 @@
 	text-align: center;
 
 	.fa {
-		width: 40px;
+		width: $btn-width;
 		border-left: 1px dashed $accent-color;
 	}
 }
 
-.view {
-	flex: 1;
-	display: flex;
-	flex-direction: column;
-	background-color: $link-color;
-	animation: fadein 2s;
-	padding: 0;
-}
-// .carousel {
-// 	flex: 1;
-// 	overflow: visible;
-// }
-//
-
-.carousel,
-.carousel-inner,
-.carousel-item {
-	height: 100%;
+.live-view {
+	@extend %view;
 }
 
-.carousel-view {
-	height: 100%;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-attachment: fixed;
-	min-height: 200px;
-	filter: grayscale(1);
-}
-
-.carousel-indicators {
-	li {
-		width: 10px !important;
-		height: 10px !important;
-		border-radius: 100% !important;
-	}
-}
-
-.attribution {
+.live-attribution {
 	display: inline;
 	width: 100%;
 	padding: 0 $h-padding;
@@ -84,8 +54,25 @@
 	}
 }
 
-.live {
-	display: flex;
-	flex-direction: column;
+.carousel,
+.carousel-inner,
+.carousel-item,
+.carousel-view {
 	height: 100%;
+}
+
+.carousel-view {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	filter: grayscale(1);
+}
+
+.carousel-indicators {
+	li {
+		width: 10px !important;
+		height: 10px !important;
+		border-radius: 100% !important;
+	}
 }

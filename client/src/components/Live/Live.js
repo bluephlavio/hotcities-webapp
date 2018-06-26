@@ -27,39 +27,18 @@ const Details = props => {
 	);
 };
 
-class Attribution extends Component {
-
-	constructor(props) {
-		super(props);
-		this.state = {
-			expanded: false
-		};
-		this.handleClick = this.handleClick.bind(this);
-	}
-
-	handleClick() {
-		this.setState(prevState => {
-			return {
-				expanded: !this.state.expanded
-			};
-		})
-	}
-
-	render() {
-		const view = this.props.view;
-		return (
-			<div
-			className="attribution">
-				<a href={view.page} target="_blank">
-					{view.title}
-				</a> by <a href={view.owner.page} target="_blank">
-					{view.owner.realname}
-				</a>, <a href={view.license.link} target="_blank">
-					{view.license.abbr}
-				</a>
-			</div>
-		);
-	}
+const Attribution = (props) => {
+	return (
+		<div className="live-attribution">
+			<a href={props.view.page} target="_blank">
+				{props.view.title}
+			</a> by <a href={props.view.owner.page} target="_blank">
+				{props.view.owner.realname}
+			</a>, <a href={props.view.license.link} target="_blank">
+				{props.view.license.abbr}
+			</a>
+		</div>
+	);
 }
 
 class View extends Component {
@@ -118,7 +97,7 @@ class View extends Component {
 		const views = this.props.views;
 		const view = views[activeIndex];
 		return (
-			<div className="view">
+			<div className="live-view">
 				<Carousel
 					activeIndex={this.state.activeIndex}
 					next={this.next}
