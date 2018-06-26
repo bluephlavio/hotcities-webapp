@@ -66,8 +66,8 @@ ul {
   list-style-type: none; }
 
 hr {
-  height: 1px;
   background: linear-gradient(to left, rgba(25, 26, 26, 0), #191a1a, rgba(25, 26, 26, 0));
+  height: 1px;
   animation: fadein 3s; }
 
 div,

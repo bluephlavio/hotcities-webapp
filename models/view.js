@@ -25,15 +25,6 @@ const ViewSchema = new mongoose.Schema({
 		type: Number,
 		index: true
 	},
-	secret: {
-		type: String
-	},
-	server: {
-		type: String
-	},
-	farm: {
-		type: String
-	},
 	geonameid: {
 		type: Number,
 		ref: 'City'
@@ -41,13 +32,16 @@ const ViewSchema = new mongoose.Schema({
 	title: {
 		type: String
 	},
+	tags: {
+		type: [String]
+	},
 	views: {
 		type: Number
 	},
 	taken: {
 		type: Date
 	},
-	source: {
+	src: {
 		type: String
 	},
 	owner: OwnerSchema,

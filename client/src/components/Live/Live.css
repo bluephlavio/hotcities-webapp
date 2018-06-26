@@ -1,5 +1,13 @@
 @import url("https://fonts.googleapis.com/css?family=Quicksand:300");
 @import url("https://fonts.googleapis.com/css?family=Quicksand:300");
+@import url("https://fonts.googleapis.com/css?family=Quicksand:300");
+@import url("https://fonts.googleapis.com/css?family=Quicksand:300");
+@keyframes fadein {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
 .live-item {
   display: flex;
   flex-direction: row;
@@ -26,22 +34,39 @@
   display: flex;
   flex-direction: column;
   background-color: #191a1a;
-  animation: fadein 2s; }
-
-.carousel {
-  flex: 1; }
+  animation: fadein 2s;
+  padding: 0; }
 
 .carousel,
 .carousel-inner,
 .carousel-item {
   height: 100%; }
 
-.carousel-item {
+.carousel-view {
+  height: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  min-height: 200px;
   filter: grayscale(1); }
+
+.carousel-indicators li {
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 100% !important; }
+
+.attribution {
+  display: inline;
+  width: 100%;
+  padding: 0 20px;
+  font-size: 8pt;
+  background: #191a1a;
+  color: #fff; }
+  .attribution a:hover {
+    color: #fc900c; }
+  .attribution a {
+    color: rgba(255, 255, 255, 0.5); }
 
 .live {
   display: flex;

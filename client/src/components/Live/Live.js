@@ -1,5 +1,11 @@
 import React, { Component } from "react";
 import _ from 'underscore';
+import {
+	Carousel,
+	CarouselItem,
+	CarouselControl,
+	CarouselIndicators
+} from 'reactstrap';
 import fmt from '../../helpers/formatter';
 import InfoPanel from "../InfoPanel/InfoPanel";
 import "./Live.css";
@@ -21,58 +27,121 @@ const Details = props => {
 	);
 };
 
-class View extends Component {
+class Attribution extends Component {
 
-	views() {
-		return (
-			<div className="carousel-inner">
-				{_.map(this.props.views, (view, index) => {
-					return (
-						<div
-							key={index}
-							className={"carousel-item" + (index === 0 ? " active" : "")}
-							style={{backgroundImage: "url(" + view.source + ")"}}>
-						</div>
-					);
-				})}
-			</div>
-		);
+	constructor(props) {
+		super(props);
+		this.state = {
+			expanded: false
+		};
+		this.handleClick = this.handleClick.bind(this);
 	}
 
-	indicators() {
-		return (
-			<ol className="carousel-indicators">
-				{_.map(this.props.views, (view, index) => {
-					return (
-						<li
-							key={index}
-							data-target="#carousel-id"
-							data-slide-to={String(index)}
-							className={index === 0 ? 'active' : ''} />
-					);
-				})}
-			</ol>
-		);
+	handleClick() {
+		this.setState(prevState => {
+			return {
+				expanded: !this.state.expanded
+			};
+		})
 	}
 
 	render() {
+		const view = this.props.view;
 		return (
-			<div className="view">
-				<div id="carousel-id" className="carousel slide" data-ride="carousel">
-					{this.indicators()}
-					{this.views()}
-					<a className="carousel-control-prev" href="#carousel-id" role="button" data-slide="prev">
-						<span className="carousel-control-prev-icon" aria-hidden="true"></span>
-						<span className="sr-only">Previous</span>
-					</a>
-					<a className="carousel-control-next" href="#carousel-id" role="button" data-slide="next">
-						<span className="carousel-control-next-icon" aria-hidden="true"></span>
-						<span className="sr-only">Next</span>
-					</a>
-				</div>
+			<div
+			className="attribution">
+				<a href={view.page} target="_blank">
+					{view.title}
+				</a> by <a href={view.owner.page} target="_blank">
+					{view.owner.realname}
+				</a>, <a href={view.license.link} target="_blank">
+					{view.license.abbr}
+				</a>
 			</div>
 		);
 	}
+}
+
+class View extends Component {
+
+	constructor(props) {
+		super(props);
+		this.state = { activeIndex: 0 };
+		this.next = this.next.bind(this);
+		this.previous = this.previous.bind(this);
+		this.goToIndex = this.goToIndex.bind(this);
+		this.onExiting = this.onExiting.bind(this);
+		this.onExited = this.onExited.bind(this);
+	}
+
+	onExiting() {
+		this.animating = true;
+	}
+
+	onExited() {
+		this.animating = false;
+	}
+
+	next() {
+		if (this.animating) return;
+		const nextIndex = this.state.activeIndex === this.props.views.length - 1 ? 0 : this.state.activeIndex + 1;
+		this.setState({ activeIndex: nextIndex });
+	}
+
+	previous() {
+		if (this.animating) return;
+		const nextIndex = this.state.activeIndex === 0 ? this.props.views.length - 1 : this.state.activeIndex - 1;
+		this.setState({ activeIndex: nextIndex });
+	}
+
+	goToIndex(newIndex) {
+		if (this.animating) return;
+		this.setState({ activeIndex: newIndex });
+	}
+
+	views() {
+		return _.map(this.props.views, (view, index) => {
+			return (
+				<CarouselItem
+					onExiting={this.onExiting}
+					onExited={this.onExited}
+					key={index} >
+					<div className="carousel-view"
+						style={{backgroundImage: "url(" + view.src + ")"}} />
+				</CarouselItem>
+			);
+		});
+	}
+
+	render() {
+		const { activeIndex } = this.state;
+		const views = this.props.views;
+		const view = views[activeIndex];
+		return (
+			<div className="view">
+				<Carousel
+					activeIndex={this.state.activeIndex}
+					next={this.next}
+					previous={this.previous} >
+					<CarouselIndicators
+						items={views}
+						activeIndex={activeIndex}
+						onClickHandler={this.goToIndex} />
+					{this.views()}
+					<CarouselControl
+						direction="prev"
+						directionText="Previous"
+						onClickHandler={this.previous} />
+					<CarouselControl
+						direction="next"
+						directionText="Next"
+						onClickHandler={this.next} />
+				</Carousel>
+				{view && <Attribution view={view} />}
+			</div>
+		);
+	}
+
 }
 
 class Live extends Component {
@@ -111,7 +180,7 @@ class Live extends Component {
 						lat: city.lat,
 						lng: city.lng,
 						temp: record.temp,
-						views: _.first(views, 3)
+						views: views
 					},
 					isLoading: false
 				});
@@ -129,7 +198,8 @@ class Live extends Component {
 	render() {
 		return (
 			<div className="live">
-				<View views={!this.state.isLoading ? this.state.data.views : []} />
+				<View
+					views={this.state.data ? _.first(this.state.data.views, 3) : []} />
 				<InfoPanel title={this.caption()} isLoading={this.state.isLoading} >
 					{!this.state.isLoading &&
 						<Details>

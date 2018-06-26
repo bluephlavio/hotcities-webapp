@@ -16,7 +16,7 @@ app.use(favicon(path.join(__dirname, 'client', 'build', 'favicon.ico')));
 app.use(logger('dev'));
 
 app.use('/api', require('./routes/api'));
-app.use('/external-api', require('./routes/external-api'));
+app.use('/flickr-test', require('./routes/flickr-test'));
 
 app.use(express.static(path.join(__dirname, 'client', 'build')));
 app.get('/*', (req, res) => {

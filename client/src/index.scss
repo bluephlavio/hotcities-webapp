@@ -64,7 +64,8 @@ ul {
 
 hr {
 	@extend %no-space;
-	@include sep($link-color);
+	@include shade($link-color);
+	height: 1px;
 	animation: fadein 3s;
 }
 

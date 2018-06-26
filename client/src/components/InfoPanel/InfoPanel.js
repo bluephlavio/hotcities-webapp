@@ -69,7 +69,6 @@ class InfoPanel extends Component {
 	render() {
 		return (
 			<div className="info-panel">
-				<hr />
 				<Title icon={this.icon()}
 					title={this.props.title}
 					toggle={this.toggle}

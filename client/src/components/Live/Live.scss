@@ -1,5 +1,6 @@
 @import '../../_variables.scss';
 @import '../../_mixins.scss';
+@import '../../_animations.scss';
 
 .live-item {
 	display: flex;
@@ -34,11 +35,13 @@
 	flex-direction: column;
 	background-color: $link-color;
 	animation: fadein 2s;
+	padding: 0;
 }
-
-.carousel {
-	flex: 1;
-}
+// .carousel {
+// 	flex: 1;
+// 	overflow: visible;
+// }
+//
 
 .carousel,
 .carousel-inner,
@@ -46,12 +49,39 @@
 	height: 100%;
 }
 
-.carousel-item {
+.carousel-view {
+	height: 100%;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
+	min-height: 200px;
 	filter: grayscale(1);
+}
+
+.carousel-indicators {
+	li {
+		width: 10px !important;
+		height: 10px !important;
+		border-radius: 100% !important;
+	}
+}
+
+.attribution {
+	display: inline;
+	width: 100%;
+	padding: 0 $h-padding;
+	font-size: $micro;
+	background: $link-color;
+	color: $secondary-color;
+
+	a:hover {
+		color: $accent-color;
+	}
+
+	a {
+		@include muted($secondary-color);
+	}
 }
 
 .live {

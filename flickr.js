@@ -35,7 +35,7 @@ function getSearchParams(city) {
 
 async function fetchViews(city, limit = 10) {
 	let res;
-	res = flickr.photos.search(getSearchParams(city));
+	res = await flickr.photos.search(getSearchParams(city));
 	let candidates = res.body.photos.photo.slice(0, limit);
 	let views = [];
 	for (photo of candidates) {
@@ -52,6 +52,7 @@ async function fetchViews(city, limit = 10) {
 			});
 			let info = res.body;
 			let view = mergeViewData(photo, size, info);
+			view.geonameid = city.geonameid;
 			views.push(view);
 		}
 	}

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import geojson from 'geojson';
 import _ from 'underscore';
 import fmt from '../../helpers/formatter';
 import Map from '../Map/Map';
@@ -157,11 +158,59 @@ class Stats extends Component {
 		}
 	}
 
+	loadMapData(map) {
+		let recordCities = _.map(this.state.data.recordCities, entry => {
+			let data = entry;
+			data.circleRadius = Math.sqrt(entry.recordFrac);
+			data.circleColor = entry.recordTemp;
+			return data;
+		});
+		let recordTemps = _.map(this.state.data.recordCities, entry => {
+			return entry.recordTemp;
+		});
+		let recordFracs = _.map(this.state.data.recordCities, entry => {
+			return entry.recordFrac;
+		});
+		return () => {
+			map.addLayer({
+				id: 'records',
+				type: 'circle',
+				source: {
+					type: 'geojson',
+					data: geojson.parse(recordCities, { Point: ['lat', 'lng'] })
+				},
+				paint: {
+					'circle-color': {
+						'property': 'circleColor',
+						'stops': [
+							[Math.min(...recordTemps), 'rgba(244, 147, 29, 0)'],
+							[Math.max(...recordTemps), 'rgba(244, 147, 29, 1)']
+						]
+					},
+					'circle-blur': 0.3,
+					'circle-radius': {
+						'property': 'circleRadius',
+						'stops': [
+							[Math.min(...recordFracs), 0],
+							[Math.max(...recordFracs), 10]
+						]
+					}
+				}
+			});
+		};
+	}
+
 	render() {
 		return (
 			<div className='stats'>
 				<div className="view">
-					{!this.state.isLoading && <Map data={this.state.data} />}
+					{!this.state.isLoading &&
+						<Map
+							mapstyle='mapbox://styles/mapbox/dark-v9'
+							zoom={1}
+							center={[0, 0]}
+							load={this.loadMapData.bind(this)} />
+					}
 				</div>
 				<InfoPanel
 					title={this.caption()}
