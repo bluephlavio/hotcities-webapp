@@ -26,9 +26,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="5.3333333"
-     inkscape:cx="4.7708354"
-     inkscape:cy="9"
+     inkscape:zoom="15.084945"
+     inkscape:cx="22.989794"
+     inkscape:cy="24.59704"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -48,7 +48,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -61,18 +61,21 @@
        cx="24"
        cy="24"
        style="opacity:0.98999999;fill:#fc900c;fill-opacity:1;stroke:#191a1a;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       r="23.999998" />
+       r="23.999998"
+       inkscape:export-xdpi="1024"
+       inkscape:export-ydpi="1024" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33333349px;line-height:1.25;font-family:Quicksand;-inkscape-font-specification:Quicksand;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
        x="50%"
        y="50%"
-       id="text10"><tspan
+       id="text10"
+       dy="2.5"><tspan
          sodipodi:role="line"
-         id="tspan8"
          x="24"
-         y="20.4375"
-         style="font-size:6.66666667px">HOT CITIES</tspan></text>
+         y="24"
+         style="font-size:6.66666651px;fill:#ffffff"
+         id="tspan20">HOT CITIES</tspan></text>
     <flowRoot
        xml:space="preserve"
        id="flowRoot20"
@@ -83,16 +86,11 @@
            height="6.1875"
            x="9.375"
            y="20.8125" /></flowRegion><flowPara
-         id="flowPara26"></flowPara></flowRoot>    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33333349px;line-height:1.25;font-family:Quicksand;-inkscape-font-specification:Quicksand;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
-       x="50%"
-       y="27.375"
-       id="text3700"><tspan
-         sodipodi:role="line"
-         id="tspan3698"
-         x="0.37499976"
-         y="27.375"
-         style="font-size:3.33333325px">world's hottest city, now.</tspan></text>
+         id="flowPara26" /></flowRoot>    <circle
+       style="opacity:0.98999999;fill:#ffffff;fill-opacity:1;stroke:#191a1a;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path18"
+       cx="12.1875"
+       cy="24.09375"
+       r="2.5" />
   </g>
 </svg>
