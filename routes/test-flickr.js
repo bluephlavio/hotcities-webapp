@@ -22,8 +22,7 @@ function views2Html(views) {
 
 router.get('/:name', async (req, res) => {
 	let city = await db.City.findOne({ name: req.params.name });
-	let params = _.defaults(req.query, flickr.getSearchParams(city));
-	let views = await flickr.fetchViews(city);
+	let views = await flickr.fetchViews(city, req.query);
 	return res.send(views2Html(views));
 });
 

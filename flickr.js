@@ -26,17 +26,19 @@ function getSearchParams(city) {
 		lat: city.lat,
 		lon: city.lng,
 		radius: 30,
+		tags: `${city.name.toLowerCase().replace(/\s/g, '')},${city.country.toLowerCase().replace(/\s/g, '')},panorama,skyline,architecture,building,skyscraper,art,mosque,masjid,church,temple,street,park,bridge,metro,station,square,-meetings,-conferences`,
 		license: '1,2,4,5,7,9,10',
 		sort: 'relevance',
-		per_page: 100,
+		per_page: 10,
 		format: 'json'
 	};
 }
 
-async function fetchViews(city, limit = 10) {
+async function fetchViews(city, params, limit = 10) {
 	let res;
-	res = await flickr.photos.search(getSearchParams(city));
-	let candidates = res.body.photos.photo.slice(0, limit);
+	res = await flickr.photos.search(_.defaults(params, getSearchParams(city)));
+	let photos = res.body.photos.photo;
+	let candidates = photos.slice(0, limit);
 	let views = [];
 	for (photo of candidates) {
 		res = await flickr.photos.getSizes({
