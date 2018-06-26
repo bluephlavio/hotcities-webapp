@@ -45,7 +45,7 @@ async function tweet() {
 			country: city.country,
 			countrycode: city.countrycode,
 			temp: record.temp,
-			view: views[0].photopage
+			view: views[0].page
 		});
 		let updateNeeded = await checkIfUpdateNeeded(newTweet);
 		if (updateNeeded) {
