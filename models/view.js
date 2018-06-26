@@ -47,6 +47,10 @@ const ViewSchema = new mongoose.Schema({
 	owner: OwnerSchema,
 	licenseid: {
 		type: Number
+	},
+	relevance: {
+		type: Number,
+		default: Date.now
 	}
 }, { toJSON: { virtuals: true } });
 

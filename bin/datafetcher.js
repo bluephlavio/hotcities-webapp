@@ -20,9 +20,11 @@ async function fetchData() {
 		let params = flickr.getSearchParams(city);
 		let views = await flickr.fetchViews(city, params);
 		console.log(views);
-		for (view of views) {
+		let now = Date.now();
+		for (const [i, view] of views.entries()) {
 			await db.View.findOneAndUpdate({
-				id: view.id
+				id: view.id,
+				relevance: now - i
 			}, view, {
 				upsert: true,
 				new: true,
