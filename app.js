@@ -11,13 +11,13 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use(favicon(path.join(__dirname, 'client', 'build', 'favicon.svg'), { maxAge: 0 }));
+app.use(favicon(path.join(__dirname, 'client', 'build', 'favicon.png'), { maxAge: 0 }));
 app.use(logger('dev'));
 
 app.use('/api', require('./routes/api'));
 app.use('/test-flickr', require('./routes/test-flickr'));
 
-app.use(express.static(path.join(__dirname, 'client', 'build')));
+app.use(express.static(path.join(__dirname, 'client', 'build'), { maxAge: 0 }));
 app.get('/*', (req, res) => {
 	res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
 });
