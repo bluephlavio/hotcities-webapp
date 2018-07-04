@@ -1,15 +1,15 @@
 {
-	"short_name": "hotcities",
-	"name": "hotcities",
-	"icons": [
-		{
-			"src": "favicon.svg",
-			"sizes": "64x64 32x32 24x24 16x16",
-			"type": "image/x-icon"
-		}
-	],
-	"start_url": "/",
-	"display": "standalone",
-	"theme_color": "#fc900c",
-	"background_color": "#ffffff"
+    "short_name": "Hot Cities",
+    "name": "Hot Cities",
+    "icons": [
+        {
+            "src": "favicon.svg",
+            "sizes": "64x64 32x32 24x24 16x16",
+            "type": "image/x-icon"
+        }
+    ],
+    "start_url": "/",
+    "display": "standalone",
+    "theme_color": "#fc900c",
+    "background_color": "#ffffff"
 }
