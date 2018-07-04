@@ -7,7 +7,7 @@ const About = (props) => {
 
             <p>
                 <b>What is it. </b>
-                Hot Cities monitors world cities temperatures in real time to determine the hottest one.
+                It monitors world cities temperatures in real time from global weather services to determine the hottest one, right now.
             </p>
             <p>
                 <b>What is a city. </b>
