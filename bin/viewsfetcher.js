@@ -5,7 +5,7 @@ const flickr = require('../flickr');
 
 const db = require('../db');
 
-async function fetchViews(geonameid = undefined) {
+async function fetchViews(geonameid = undefined, limit = 10) {
 	await db.open();
 	try {
 		let city;
@@ -18,7 +18,7 @@ async function fetchViews(geonameid = undefined) {
 		}
 		console.log(city);
 		let params = flickr.getSearchParams(city);
-		let views = await flickr.fetchViews(city, params);
+		let views = await flickr.fetchViews(city, params, limit = limit);
 		console.log(views);
 		let now = Date.now();
 		for (const [i, view] of views.entries()) {
@@ -38,7 +38,9 @@ async function fetchViews(geonameid = undefined) {
 }
 
 if (require.main === module) {
-	fetchViews(Number(process.argv[2]));
+	let geonameid = process.argv[2] ? Number(process.argv[2]) : undefined
+	let limit = process.argv[3] ? Number(process.argv[3]) : 10
+	fetchViews(geonameid, limit);
 }
 
 module.exports = fetchViews;
