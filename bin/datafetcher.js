@@ -22,12 +22,11 @@ async function fetchData() {
 		console.log(views);
 		let now = Date.now();
 		for (const [i, view] of views.entries()) {
+			view.relevance = now - i
 			await db.View.findOneAndUpdate({
-				id: view.id,
-				relevance: now - i
+				id: view.id
 			}, view, {
 				upsert: true,
-				new: true,
 				setDefaultsOnInsert: true
 			});
 		}
