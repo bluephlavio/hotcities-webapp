@@ -86,11 +86,6 @@ router.get('/views', (req, res) => {
 		.select('-_id -__v')
 		.exec()
 		.then(data => {
-			return _.sortBy(data, entry => {
-				return -entry.relevance;
-			});
-		})
-		.then(data => {
 			res.json(data);
 		});
 });
