@@ -17,7 +17,7 @@
     "mongoose": "^5.1.1",
     "morgan": "~1.9.0",
     "random-item": "^1.0.0",
-    "request": "^2.86.0",
+    "request": "^2.87.0",
     "serve-favicon": "^2.5.0",
     "twit": "^2.2.10",
     "underscore": "^1.9.0"

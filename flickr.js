@@ -1,7 +1,12 @@
 const Flickr = require('flickr-sdk');
 const _ = require('underscore');
 
-const flickr = new Flickr(process.env.FLICKR_KEY);
+const flickr = new Flickr(Flickr.OAuth.createPlugin(
+	process.env.FLICKR_CONSUMER_KEY,
+	process.env.FLICKR_CONSUMER_SECRET,
+	process.env.FLICKR_OAUTH_TOKEN,
+	process.env.FLICKR_OAUTH_TOKEN_SECRET
+));
 
 function mergeViewData(photo, size, info) {
 	return {
@@ -12,6 +17,7 @@ function mergeViewData(photo, size, info) {
 		views: Number(info.photo.views),
 		tags: _.map(info.photo.tags.tag, tag => { return tag._content; }),
 		licenseid: Number(info.photo.license),
+		isfavorite: Number(info.photo.isfavorite),
 		owner: {
 			id: info.photo.owner.nsid,
 			username: info.photo.owner.username,

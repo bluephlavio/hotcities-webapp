@@ -22,7 +22,7 @@ async function fetchData() {
 		console.log(views);
 		let now = Date.now();
 		for (const [i, view] of views.entries()) {
-			view.relevance = now - i
+			view.relevance = now - i + 1000 * view.isfavorite;
 			await db.View.findOneAndUpdate({
 				id: view.id
 			}, view, {

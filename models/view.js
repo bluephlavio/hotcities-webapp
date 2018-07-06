@@ -51,6 +51,10 @@ const ViewSchema = new mongoose.Schema({
 	relevance: {
 		type: Number,
 		default: Date.now
+	},
+	isfavorite: {
+		type: Number,
+		default: 0
 	}
 }, { toJSON: { virtuals: true } });
 
