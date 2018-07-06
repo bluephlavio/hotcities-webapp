@@ -35,7 +35,7 @@ function getSearchParams(city) {
 		tags: `${city.name.toLowerCase().replace(/\s/g, '')},${city.country.toLowerCase().replace(/\s/g, '')},panorama,skyline,architecture,building,skyscraper,art,mosque,masjid,church,temple,street,park,bridge,metro,station,square,-meetings,-conferences`,
 		license: '1,2,4,5,7,9,10',
 		sort: 'relevance',
-		per_page: 10,
+		per_page: 100,
 		format: 'json'
 	};
 }
