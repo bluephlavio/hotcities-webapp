@@ -55,6 +55,10 @@ const ViewSchema = new mongoose.Schema({
 	isfavorite: {
 		type: Number,
 		default: 0
+	},
+	bonus: {
+		type: Number,
+		default: 0
 	}
 }, { toJSON: { virtuals: true } });
 

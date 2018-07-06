@@ -19,10 +19,10 @@ async function fetchViews(geonameid = undefined, limit = 10) {
 		console.log(city);
 		let params = flickr.getSearchParams(city);
 		let views = await flickr.fetchViews(city, params, limit = limit);
-		console.log(views);
+		console.log(views.length + ' views found.');
 		let now = Date.now();
 		for (const [i, view] of views.entries()) {
-			view.relevance = now - i + 1000 * view.isfavorite;
+			view.relevance = now - i + bonus + 1000 * view.isfavorite;
 			await db.View.findOneAndUpdate({
 				id: view.id
 			}, view, {
