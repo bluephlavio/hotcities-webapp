@@ -22,12 +22,13 @@ async function fetchViews(geonameid = undefined, limit = 10) {
 		console.log(views.length + ' views found.');
 		let now = Date.now();
 		for (const [i, view] of views.entries()) {
-			view.relevance = now - i + 1000 * view.isfavorite;
+			view.timestamp = now;
+			view.rank = i;
 			await db.View.findOneAndUpdate({
 				id: view.id
 			}, view, {
 				upsert: true,
-				setDefaultsOnInsert: true
+				setDefaultsOnInsert: true,
 			});
 		}
 	} catch (error) {

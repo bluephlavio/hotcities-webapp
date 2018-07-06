@@ -48,9 +48,12 @@ const ViewSchema = new mongoose.Schema({
 	licenseid: {
 		type: Number
 	},
-	relevance: {
+	timestamp: {
 		type: Number,
 		default: Date.now
+	},
+	rank: {
+		type: Number,
 	},
 	isfavorite: {
 		type: Number,
@@ -72,6 +75,11 @@ ViewSchema.virtual('license', {
 ViewSchema.virtual('page')
 	.get(function() {
 		return `https://flickr.com/${this.owner.id}/${this.id}`;
+	});
+
+ViewSchema.virtual('relevance')
+	.get(function() {
+		return this.timestamp - this.rank + this.bonus + 1000 * this.isfavorite;
 	});
 
 module.exports = mongoose.model('View', ViewSchema);
