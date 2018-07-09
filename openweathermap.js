@@ -43,6 +43,22 @@ async function findRecord() {
 	return randomItem(candidates);
 }
 
+async function findRecordAndSave() {
+	let record;
+	try {
+		openweathermapRecord = await findRecord();
+		record = await db.Record.create({
+			geonameid: openweathermapRecord.id,
+			temp: openweathermapRecord.main.temp
+		});
+	} catch (error) {
+		console.log(error);
+	} finally {
+		return record;
+	}
+}
+
 module.exports = {
-	findRecord
+	findRecord,
+	findRecordAndSave
 }

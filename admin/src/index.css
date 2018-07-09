@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css?family=Quicksand:300");
+@import url("https://fonts.googleapis.com/css?family=Quicksand:300");
+@import url("https://fonts.googleapis.com/css?family=Quicksand:300");
+@import url("https://fonts.googleapis.com/css?family=Quicksand:300");
+button, h1, h2, hr, div,
+span {
+  margin: 0;
+  border: 0;
+  padding: 0; }
+
+button, h1, h2, hr, div,
+span {
+  margin: 0;
+  border: 0;
+  padding: 0; }
+
+@keyframes fadein {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+body {
+  font-family: "Quicksand", sans-serif;
+  font-size: 12pt; }
+
+a {
+  color: #191a1a;
+  text-decoration: none; }
+
+a:hover {
+  color: #fc900c;
+  text-decoration: none; }
+
+button {
+  color: #fc900c;
+  background: none; }
+
+button:hover {
+  color: #191a1a;
+  outline: none;
+  cursor: pointer; }
+
+button:focus {
+  color: #fc900c;
+  outline: none; }
+
+button:focus:hover {
+  color: #191a1a; }
+
+h1 {
+  font-size: 24pt; }
+
+h2 {
+  font-size: 14pt; }
+
+p {
+  text-align: justify; }
+
+ul {
+  list-style-type: none; }
+
+hr {
+  background: linear-gradient(to left, rgba(25, 26, 26, 0), #191a1a, rgba(25, 26, 26, 0));
+  height: 1px;
+  animation: fadein 3s; }
+
+div,
+span {
+  border-radius: 0; }
+
+#root {
+  height: 100%; }

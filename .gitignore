@@ -4,8 +4,8 @@ data/dump/
 
 node_modules
 client/node_modules
-
-bower_components
+admin/node_modules
 
 .env
 client/.env
+admin/.env
