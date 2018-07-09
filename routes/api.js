@@ -172,4 +172,16 @@ router.get('/stats/countries', (req, res) => {
 		});
 });
 
+router.put('/views/:id', async (req, res) => {
+	if (true) {
+		let view = await db.View.findOneAndUpdate({
+			id: req.params.id
+		}, req.body);
+		res.json(view);
+	} else {
+		res.redirect('/admin/login');
+	}
+});
+
+
 module.exports = router;
