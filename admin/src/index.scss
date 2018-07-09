@@ -19,7 +19,6 @@ a:hover {
 
 button {
     @extend %no-space;
-    width: $btn-width;
     color: $accent-color;
     background: none;
 }

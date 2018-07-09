@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css?family=Quicksand:300");
+.views {
+  padding: 10px 20px; }
+  .views form {
+    display: flex; }
+    .views form .form-group {
+      flex: 1;
+      padding-right: 10px; }
+      .views form .form-group input {
+        width: 100%; }
+    .views form button {
+      flex: 0; }
+  .views .view-list {
+    margin-top: 10px; }
+    .views .view-list .card {
+      width: 80%;
+      margin-top: 10px; }
+      .views .view-list .card .btn-group {
+        width: 100%; }
