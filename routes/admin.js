@@ -40,8 +40,8 @@ router.get('/views/fetch', async (req, res) => {
 });
 
 router.use(express.static(path.join(__dirname, '..', 'admin', 'build')));
-// router.get('/*', (req, res) => {
-// 	res.sendFile(path.join(__dirname, '..', 'admin', 'build', 'index.html'));
-// });
+router.get('/*', (req, res) => {
+	res.sendFile(path.join(__dirname, '..', 'admin', 'build', 'index.html'));
+});
 
 module.exports = router;
