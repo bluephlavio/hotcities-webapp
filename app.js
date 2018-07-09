@@ -15,7 +15,6 @@ app.use(favicon(path.join(__dirname, 'client', 'build', 'favicon.png'), { maxAge
 app.use(logger('dev'));
 
 app.use('/api', require('./routes/api'));
-app.use('/test-flickr', require('./routes/test-flickr'));
 
 app.use(express.static(path.join(__dirname, 'client', 'build'), { maxAge: 0 }));
 app.get('/*', (req, res) => {
