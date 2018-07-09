@@ -1,6 +1,8 @@
 const Flickr = require('flickr-sdk');
 const _ = require('underscore');
 
+const db = require('./db');
+
 const flickr = new Flickr(Flickr.OAuth.createPlugin(
 	process.env.FLICKR_CONSUMER_KEY,
 	process.env.FLICKR_CONSUMER_SECRET,
@@ -67,8 +69,33 @@ async function fetchViews(city, params, limit = 10) {
 	return views;
 }
 
+async function fetchViewsAndSave(city, params, limit = 10) {
+	let views;
+	try {
+		let flickrViews = await fetchViews(city, params, limit = limit);
+		views = [];
+		let now = Date.now();
+		for (const [i, flickrView] of flickrViews.entries()) {
+			flickrView.timestamp = now;
+			flickrView.rank = i;
+			let view = await db.View.findOneAndUpdate({
+				id: flickrView.id
+			}, flickrView, {
+				upsert: true,
+				setDefaultsOnInsert: true,
+			});
+			views.push(view);
+		}
+	} catch (error) {
+		console.log(error);
+	} finally {
+		return views;
+	}
+}
+
 module.exports = {
 	mergeViewData,
 	getSearchParams,
-	fetchViews
+	fetchViews,
+	fetchViewsAndSave
 }
