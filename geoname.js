@@ -11,6 +11,18 @@ async function findCityByGeoNameId(geonameid) {
 	}
 }
 
+async function findCityByName(name) {
+	let city;
+	try {
+		city = await db.City.findOne({ name: name });
+	} catch (error) {
+		console.log(error);
+	} finally {
+		return city;
+	}
+}
+
 module.exports = {
-	findCityByGeoNameId
+	findCityByGeoNameId,
+	findCityByName
 }
