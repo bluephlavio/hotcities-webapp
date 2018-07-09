@@ -27,6 +27,6 @@ router.use((req, res, next) => {
 	}
 });
 
-router.use(express.static(path.join(__dirname, '..', 'client', 'build')));
+router.use(express.static(path.join(__dirname, '..', 'admin', 'public')));
 
 module.exports = router;
