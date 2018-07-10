@@ -9,9 +9,9 @@ const Main = (props) => {
 	return (
 		<div className="main">
             <Switch>
-                <Route exact path="/cities" component={Cities} />
-                <Route exact path="/records" component={Records} />
-                <Route exact path="/Views" component={Views} />
+                <Route exact path="/admin/cities" component={Cities} />
+                <Route exact path="/admin/records" component={Records} />
+                <Route exact path="/admin/views" component={Views} />
             </Switch>
         </div>
 	);
