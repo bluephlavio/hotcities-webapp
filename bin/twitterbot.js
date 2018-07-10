@@ -38,6 +38,9 @@ async function tweet() {
 				geonameid: record.geonameid
 			})
 			.exec();
+		views = _.sortBy(views, view => {
+			return -view.relevance;
+		});
 		let newTweet = db.Tweet({
 			geonameid: city.geonameid,
 			name: city.name,
