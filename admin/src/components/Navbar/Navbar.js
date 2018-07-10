@@ -23,13 +23,13 @@ const Navbar = (props) => {
             >
                 <ul className="nav navbar-nav mr-auto">
                     <li className="nav-item">
-                        <Link className="nav-link" to="/cities">Cities</Link>
+                        <Link className="nav-link" to="admin/cities">Cities</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/records">Records</Link>
+                        <Link className="nav-link" to="/admin/records">Records</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/views">Views</Link>
+                        <Link className="nav-link" to="/admin/views">Views</Link>
                     </li>
                 </ul>
             </nav>

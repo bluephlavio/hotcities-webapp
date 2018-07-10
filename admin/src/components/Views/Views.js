@@ -6,7 +6,6 @@ import './Views.css';
 class View extends Component {
 
 	setBonus(event) {
-		console.log(event);
 		let bonus = this.bonusBox.value;
 		let id = this.props.view.id;
 		axios.put('/api/views/' + id, { bonus });
@@ -83,18 +82,17 @@ class Views extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			search: '',
+			search: decodeURI(props.location.search.substr(1)),
 			views: [],
-			cities: []
+			cities: [],
+			isLoading: true
 		}
 	}
 
 	componentDidMount() {
-		Promise.all([fetch('/api/views'), fetch('/api/cities')])
-			.then(results => {
-				return Promise.all(_.map(results, result => {
-					return result.json();
-				}));
+		return Promise.all([fetch('/api/views'), fetch('/api/cities')])
+			.then(responses => {
+				return Promise.all([responses[0].json(), responses[1].json()]);
 			})
 			.then(results => {
 				let views = results[0];
@@ -107,9 +105,10 @@ class Views extends Component {
 				views = _.sortBy(views, view => {
 					return -view.relevance;
 				});
-				this.setState({
+				return this.setState({
 					views,
-					cities
+					cities,
+					isLoading: false
 				});
 			});
 	}
@@ -145,7 +144,7 @@ class Views extends Component {
                         className="btn btn-primary"
                     >Fetch Views</button>
                 </form>
-                <ViewList views={_.first(filteredViews, 10)} />
+                {!this.state.isLoading && <ViewList views={_.first(filteredViews, 100)} />}
             </div>
 		);
 	}
