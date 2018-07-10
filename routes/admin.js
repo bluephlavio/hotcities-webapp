@@ -35,13 +35,22 @@ router.use('/', (req, res, next) => {
 router.get('/views/fetch', async (req, res) => {
 	let city = await geoname.findCityByName(req.query.city);
 	console.log(city);
-	let views = await flickr.fetchViewsAndSave(city, {});
-	res.redirect('/admin/views');
+	let limit = req.query.limit ? Number(req.query.limit) : 25;
+	let views = await flickr.fetchViewsAndSave(city, {}, limit = limit);
+	console.log(`${views.length} views found.`);
+	res.redirect(`/admin/views?${city.name}`);
 });
 
-router.use(express.static(path.join(__dirname, '..', 'admin', 'build')));
-router.get('/*', (req, res) => {
-	res.sendFile(path.join(__dirname, '..', 'admin', 'build', 'index.html'));
-});
+if (process.env.NODE_ENV == 'development') {
+	router.use(express.static(path.join(__dirname, '..', 'admin', 'public')));
+	router.get('/*', (req, res) => {
+		res.sendFile(path.join(__dirname, '..', 'admin', 'public', 'index.html'));
+	});
+} else {
+	router.use(express.static(path.join(__dirname, '..', 'admin', 'build')));
+	router.get('/*', (req, res) => {
+		res.sendFile(path.join(__dirname, '..', 'admin', 'build', 'index.html'));
+	});
+}
 
 module.exports = router;
