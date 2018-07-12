@@ -10,11 +10,11 @@ import './Stats.css';
 const Item = (props) => {
 	return (
 		<tr className="stats-item">
-			<th nowrap="nowrap" scope="row">{props.index}</th>
-			<td nowrap="nowrap">{fmt.names(props.item.name, props.item.localname)}</td>
-			<td nowrap="nowrap">{fmt.fracToPerc(props.item.recordFrac)}</td>
-			<td nowrap="nowrap">{fmt.temp(props.item.recordTemp)}</td>
-		</tr>
+            <th nowrap="nowrap" scope="row">{props.index}</th>
+            <td nowrap="nowrap">{fmt.names(props.item.name, props.item.localname)}</td>
+            <td nowrap="nowrap">{fmt.fracToPerc(props.item.recordFrac)}</td>
+            <td nowrap="nowrap">{fmt.temp(props.item.recordTemp)}</td>
+        </tr>
 	);
 }
 
@@ -68,32 +68,32 @@ class Ranking extends Component {
 	render() {
 		return (
 			<div className="ranking">
-				<table className="table-hover table-sm table-responsive d-table">
-					<thead>
-						<tr>
-							<th nowrap="nowrap" scope="col">#</th>
-							<th nowrap="nowrap" scope="col">city</th>
-							<th nowrap="nowrap" scope="col" onClick={this.changeRankFn(this.rankByRecordFrac)} >
-								record fraction
-								{this.state.rankFn === this.rankByRecordFrac ?
-									<span className="fas fa-circle"></span> :
-									<span className="far fa-circle"></span>
-								}
-							</th>
-							<th nowrap="nowrap" scope="col" onClick={this.changeRankFn(this.rankByRecordTemp)} >
-								record temperature
-								{this.state.rankFn === this.rankByRecordTemp ?
-									<span className="fas fa-circle"></span> :
-									<span className="far fa-circle"></span>
-								}
-							</th>
-						</tr>
-					</thead>
-					<tbody>
-						{this.rows()}
-					</tbody>
-					</table>
-			</div>
+                <table className="table-hover table-sm table-responsive d-table">
+                    <thead>
+                        <tr>
+                            <th nowrap="nowrap" scope="col">#</th>
+                            <th nowrap="nowrap" scope="col">city</th>
+                            <th nowrap="nowrap" scope="col" onClick={this.changeRankFn(this.rankByRecordFrac)} >
+                                record fraction
+                                {this.state.rankFn === this.rankByRecordFrac ?
+                                    <span className="fas fa-circle"></span> :
+                                    <span className="far fa-circle"></span>
+                                }
+                            </th>
+                            <th nowrap="nowrap" scope="col" onClick={this.changeRankFn(this.rankByRecordTemp)} >
+                                record temperature
+                                {this.state.rankFn === this.rankByRecordTemp ?
+                                    <span className="fas fa-circle"></span> :
+                                    <span className="far fa-circle"></span>
+                                }
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.rows()}
+                    </tbody>
+                    </table>
+            </div>
 		);
 	}
 
@@ -184,23 +184,23 @@ class Stats extends Component {
 	render() {
 		return (
 			<div className='stats'>
-				<div className="stats-view">
-					{!this.state.isLoading &&
-						<Map
-							mapstyle='mapbox://styles/mapbox/dark-v9'
-							zoom={1}
-							center={[0, 0]}
-							load={this.loadMapData.bind(this)} />
-					}
-				</div>
-				<InfoPanel
-					title={this.caption()}
-					isLoading={this.state.isLoading}>
-					{!this.state.isLoading &&
-						<Ranking data={this.state.data.recordCities} />
-					}
-				</InfoPanel>
-			</div>
+                <div className="stats-view">
+                    {!this.state.isLoading &&
+                        <Map
+                            mapstyle='mapbox://styles/bluephlavio/cjin553wo0vr92rrynvsksfuv'
+                            zoom={1}
+                            center={[0, 0]}
+                            load={this.loadMapData.bind(this)} />
+                    }
+                </div>
+                <InfoPanel
+                    title={this.caption()}
+                    isLoading={this.state.isLoading}>
+                    {!this.state.isLoading &&
+                        <Ranking data={this.state.data.recordCities} />
+                    }
+                </InfoPanel>
+            </div>
 		);
 	}
 
