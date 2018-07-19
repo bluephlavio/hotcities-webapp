@@ -22,7 +22,7 @@ app.use(logger('dev'));
 app.use(session({ secret: 'ahvaz', resave: false, saveUninitialized: false }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(favicon(path.join(__dirname, 'client', 'build', 'favicon.png'), { maxAge: 0 }));
+// app.use(favicon(path.join(__dirname, 'client', 'build', 'favicon.png'), { maxAge: 0 }));
 app.use('/auth', require('./routes/auth'));
 app.use('/api', require('./routes/api'));
 app.use('/admin', require('./routes/admin'));
