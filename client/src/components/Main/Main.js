@@ -11,14 +11,14 @@ class Main extends Component {
 	render() {
 		return (
 			<div className="main">
-				{ GA.init() && <GA.RouteTracker /> }
-				<Switch>
-					<Route exact path="/" component={Live} />
-					<Route exact path="/stats" component={Stats} />
-					<Route exact path="/apidocs" component={Api} />
-					<Route exact path="/about" component={About} />
-				</Switch>
-			</div>
+                { GA.init() && <GA.RouteTracker /> }
+                <Switch>
+                    <Route exact path="/" component={Live} />
+                    <Route exact path="/stats" component={Stats} />
+                    <Route exact path="/apidocs" component={Api} />
+                    <Route exact path="/about" component={About} />
+                </Switch>
+            </div>
 		);
 	}
 }
