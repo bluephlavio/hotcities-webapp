@@ -14,15 +14,19 @@ class View extends Component {
 	render() {
 		const view = this.props.view;
 		return (
-			<div className="view">
-                <div className="card">
-                    <img className="card-img-top img-fluid" src={view.src} alt={view.title} />
-                    <div className="card-body">
-                        <h5 className="card-title">{view.city.name} | {view.title}</h5>
+			<div className="view row">
+                <div className="col-md-4">
+                    <img className="w-100" src={view.src} alt={view.title} />
+                </div>
+                <div className="info col-md-8">
+                    <div>
+                        <h4>{view.city.name} | {view.title}</h4>
+                    </div>
+                    <div>
                         <div>
-                            <strong>timestamp</strong> {view.timestamp}  |  <strong>rank</strong> {view.rank}  |  <strong>isfavorite</strong> {view.isfavorite}  |  <strong>views</strong> {view.views}
+                            <strong>timestamp</strong> {view.timestamp}  |  <strong>rank</strong> {view.rank}  |  <strong>isfavorite</strong> {view.isfavorite}  |  <strong>views</strong> {view.views} | <strong>relevance</strong> {view.relevance}
                         </div>
-                        <div className="input-group mb-3">
+                        <div className="input-group input-group-sm pt-2">
                             <div className="input-group-prepend">
                                 <span className="input-group-text">bonus</span>
                             </div>
@@ -35,19 +39,21 @@ class View extends Component {
                             <div className="input-group-append">
                                 <button
                                     type="button"
-                                    className="btn btn-secondary"
+                                    className="btn border"
                                     onClick={this.setBonus.bind(this)}
                                 >
-                                    Set bonus
+                                    <a>
+                                        Set
+                                    </a>
                                 </button>
                             </div>
                         </div>
-                        <div className="btn-group">
-                            <button className="btn btn-secondary">
-                                <a href={view.page} target="_blank">flickr photo page</a>
+                        <div className="btn-group btn-group-sm pt-2">
+                            <button className="btn border">
+                                <a href={view.page} target="_blank"><i className="fas fa-camera"></i> photo page</a>
                             </button>
-                            <button className="btn btn-secondary">
-                                <a href={view.owner.page} target="_blank">flickr owner page</a>
+                            <button className="btn border">
+                                <a href={view.owner.page} target="_blank"><i className="fas fa-user"></i> owner page</a>
                             </button>
                         </div>
                     </div>
@@ -61,19 +67,45 @@ class ViewList extends Component {
 	render() {
 		return (
 			<div className="view-list">
-                <div className="container-fluid">
-                    {_.map(this.props.views, view => {
-                        return (
-                            <div className="row" key={view.id}>
-                                <View view={view} />
-                            </div>
-                        );
-                    })
-                    }
-                </div>
+                {_.map(this.props.views, view => {
+                    return (<View view={view} key={view.id} />);
+                })
+                }
             </div>
 		);
 	}
+}
+
+const SearchBar = (props) => {
+	return (
+		<div className="search-bar">
+            <div className="row">
+                <div className="col-12">
+                    <div className="input-group">
+                        <input
+                            type="text"
+                            className="form-control"
+                            name="city"
+                            id="search"
+                            value={props.search}
+                            onChange={props.onChange}
+                            placeholder="Search..."
+                        />
+                        <div className="input-group-append">
+                            <button
+                                type="button"
+                                className="btn border"
+                            >
+                                <a href="/admin/views/fetch">
+                                    Fetch Views
+                                </a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	);
 }
 
 
@@ -126,25 +158,11 @@ class Views extends Component {
 		});
 		return (
 			<div className="views">
-                <form className="form-inline" method="get" action="/admin/views/fetch">
-                    <div className="form-group">
-                        <label htmlFor="search" className="sr-only">Search</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            name="city"
-                            id="search"
-                            value={this.state.search}
-                            onChange={this.updateSearch.bind(this)}
-                            placeholder="Search..."
-                        />
-                    </div>
-                    <button
-                        type="submit"
-                        className="btn btn-primary"
-                    >Fetch Views</button>
-                </form>
-                {!this.state.isLoading && <ViewList views={_.first(filteredViews, 100)} />}
+                <div className="container-fluid">
+                    <h2>Views</h2>
+                    <SearchBar search={this.state.search} onChange={this.updateSearch.bind(this)} />
+                    {!this.state.isLoading && <ViewList views={_.first(filteredViews, 100)} />}
+                </div>
             </div>
 		);
 	}

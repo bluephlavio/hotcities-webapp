@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css?family=Quicksand:300");
+.cities {
+  padding: 10px 20px; }
+  .cities .search-bar {
+    padding: 10px 0; }
+
+.city {
+  padding-bottom: 5px; }
+  .city .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; }
+  .city ul {
+    padding: 0;
+    margin: 0; }
+  .city i {
+    text-align: center;
+    width: 50px;
+    color: #fc900c; }

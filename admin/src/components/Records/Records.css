@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css?family=Quicksand:300");
+.records {
+  padding: 10px 20px; }
+  .records .search-bar {
+    padding: 10px 0; }
+
+.record {
+  padding-bottom: 5px; }
+  .record .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; }
+  .record ul {
+    padding: 0;
+    margin: 0; }
+  .record i {
+    text-align: center;
+    width: 50px;
+    color: #fc900c; }

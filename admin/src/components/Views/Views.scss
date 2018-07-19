@@ -1,35 +1,31 @@
 @import '../../_variables.scss';
 
+.view-list {
+    padding-top: 10px;
+}
+
+.view {
+    padding-bottom: 5px;
+
+    .info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+}
+
 .views {
     padding: $padding;
 
-    form {
-        display: flex;
-
-        .form-group {
-            flex: 1;
-            padding-right: 10px;
-
-            input {
-                width: 100%;
-            }
-        }
-
-        button {
-            flex: 0;
-        }
+    .search-bar {
+        padding: 10px 0;
     }
+}
 
-    .view-list {
-        margin-top: 10px;
+.btn-group {
+    width: 100%!important;
 
-        .card {
-            width: 80%;
-            margin-top: 10px;
-
-            .btn-group {
-                width: 100%;
-            }
-        }
+    button {
+        width: 50%!important;
     }
 }

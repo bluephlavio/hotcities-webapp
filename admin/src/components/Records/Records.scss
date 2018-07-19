@@ -1,0 +1,30 @@
+@import '../../_variables.scss';
+
+.records {
+    padding: $padding;
+
+    .search-bar {
+        padding: 10px 0;
+    }
+}
+
+.record {
+    padding-bottom: 5px;
+
+    .info {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    ul {
+        padding: 0;
+        margin: 0;
+    }
+
+    i {
+        text-align: center;
+        width: 50px;
+        color: $accent-color;
+    }
+}
