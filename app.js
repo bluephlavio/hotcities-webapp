@@ -8,44 +8,7 @@ const favicon = require('serve-favicon');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 const passport = require('passport');
-const LocalStrategy = require('passport-local')
-	.Strategy;
-const db = require('./db');
-
-passport.use(new LocalStrategy(
-	(username, password, done) => {
-		console.log('local strategy');
-		db.User.findOne({ username: username })
-			.then(user => {
-				if (user) {
-					if (user.password == password) {
-						console.log('passwords match');
-						return done(null, user);
-					} else {
-						console.log('password does not match');
-						return done(null, false);
-					}
-				} else {
-					console.log('user not found');
-					return done(null, false);
-				}
-			})
-			.catch(error => {
-				console.log('error');
-				return done(error);
-			});
-	}
-));
-
-passport.serializeUser(function(user, done) {
-	done(null, user.id);
-});
-
-passport.deserializeUser(function(id, done) {
-	db.User.findById(id, function(err, user) {
-		done(err, user);
-	});
-});
+const passportConfig = require('./passport-config');
 
 const app = express();
 
