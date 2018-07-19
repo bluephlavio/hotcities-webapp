@@ -5,6 +5,7 @@ const Record = require('./models/record');
 const View = require('./models/view');
 const License = require('./models/license');
 const Tweet = require('./models/tweet');
+const User = require('./models/User');
 
 mongoose.Promise = global.Promise;
 
@@ -27,3 +28,4 @@ module.exports.Record = Record;
 module.exports.View = View;
 module.exports.License = License;
 module.exports.Tweet = Tweet;
+module.exports.User = User;
