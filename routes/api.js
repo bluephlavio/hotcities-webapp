@@ -173,7 +173,7 @@ router.get('/stats/countries', (req, res) => {
 });
 
 router.put('/views/:id', async (req, res) => {
-	if (req.session.admin) {
+	if (req.isAuthenticated()) {
 		let view = await db.View.findOneAndUpdate({
 			id: req.params.id
 		}, req.body);

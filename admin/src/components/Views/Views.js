@@ -96,7 +96,7 @@ const SearchBar = (props) => {
                                 type="button"
                                 className="btn border"
                             >
-                                <a href="/admin/views/fetch">
+                                <a href={"/admin/views/fetch?city=" + props.search}>
                                     Fetch Views
                                 </a>
                             </button>

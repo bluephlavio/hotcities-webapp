@@ -19,6 +19,8 @@
     "geojson": "^0.5.0",
     "mongoose": "^5.1.1",
     "morgan": "~1.9.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "random-item": "^1.0.0",
     "request": "^2.87.0",
     "serve-favicon": "^2.5.0",
@@ -27,5 +29,5 @@
   },
   "devDependencies": {
     "bower": "^1.8.4"
-}
+  }
 }
