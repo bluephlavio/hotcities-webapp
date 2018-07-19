@@ -5,7 +5,7 @@ const Record = require('./models/record');
 const View = require('./models/view');
 const License = require('./models/license');
 const Tweet = require('./models/tweet');
-const User = require('./models/User');
+const User = require('./models/user');
 
 mongoose.Promise = global.Promise;
 
