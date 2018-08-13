@@ -9,6 +9,9 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const passport = require('passport');
 const passportConfig = require('./passport-config');
+const db = require('./db');
+
+db.open();
 
 const app = express();
 

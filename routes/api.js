@@ -7,8 +7,6 @@ const router = express.Router();
 const _ = require('underscore');
 
 const db = require('../db');
-db.open();
-
 
 router.get('/cities', (req, res) => {
 	db.City.aggregate()
