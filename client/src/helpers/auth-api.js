@@ -23,3 +23,8 @@ const logout = () => {
 		})
 		.catch(err => console.log(err));
 }
+
+export default {
+	login,
+	logout,
+}
