@@ -41,7 +41,7 @@ UserSchema.path('hashed_password')
 	});
 
 UserSchema.methods = {
-	authenticate: (password) => {
+	validatePassword: (password) => {
 		return bcrypt.compareSync(password, this.password);
 	},
 	encryptPassword: (password) => {

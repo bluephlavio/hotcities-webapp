@@ -17,7 +17,7 @@ router.post('/login', (req, res) => {
 					error: 'User not found'
 				});
 		}
-		if (!user.authenticate(password)) {
+		if (!user.validatePassword(password)) {
 			return res.status(401)
 				.json({
 					error: 'Username and password don\'t match'
