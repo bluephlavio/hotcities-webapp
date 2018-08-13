@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
-import GA from '../../helpers/GoogleAnalytics';
+import GA from '../../GoogleAnalytics/GoogleAnalytics';
 import Live from "../Live/Live";
 import Stats from "../Stats/Stats";
 import Api from '../Api/Api';
