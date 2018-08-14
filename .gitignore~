@@ -9,5 +9,3 @@ admin/node_modules
 .env
 client/.env
 admin/.env
-
-dist/
