@@ -1,0 +1,25 @@
+const mongoose = require('mongoose');
+
+const City = require('./models/city');
+const Record = require('./models/record');
+const View = require('./models/view');
+const License = require('./models/license');
+const Tweet = require('./models/tweet');
+const User = require('./models/user');
+
+mongoose.Promise = global.Promise;
+
+module.exports.connection = mongoose.connection;
+
+module.exports.open = () => mongoose.connect(process.env.MONGODB_URI)
+  .then(() => console.log('Connected to the database.'));
+
+module.exports.close = () => mongoose.connection.close()
+  .then(() => console.log('Disconnected from the database.'));
+
+module.exports.City = City;
+module.exports.Record = Record;
+module.exports.View = View;
+module.exports.License = License;
+module.exports.Tweet = Tweet;
+module.exports.User = User;
