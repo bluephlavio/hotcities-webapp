@@ -1,5 +1,5 @@
 require('dotenv')
-	.config();
+  .config();
 
 const express = require('express');
 const path = require('path');
@@ -19,6 +19,7 @@ app.use(session({ secret: 'ahvaz', resave: false, saveUninitialized: false }));
 app.use(favicon(path.join(__dirname, 'client', 'build', 'favicon.ico'), { maxAge: 0 }));
 app.use('/auth', require('./routes/auth'));
 app.use('/api', require('./routes/api'));
+
 app.use(express.static(path.join(__dirname, 'client', 'build')));
 app.get('/*', (req, res) => res.sendFile(path.join(__dirname, 'client', 'build', 'index.html')));
 
