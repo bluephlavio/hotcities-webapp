@@ -1,10 +1,10 @@
 import formatcoords from 'formatcoords';
 
-function temp(temp) {
+function formatTemp(temp) {
   return `${Math.round(temp)} °C`;
 }
 
-function coords(lat, lng) {
+function formatCoords(lat, lng) {
   return formatcoords(lat, lng)
     .format('DD MM X', {
       latLonSeparator: ' ',
@@ -12,11 +12,11 @@ function coords(lat, lng) {
     });
 }
 
-function country(country, code) {
+function formatCountry(country, code) {
   return `${country} (${code})`;
 }
 
-function names(name, localname) {
+function formatNames(name, localname) {
   if (localname && localname !== name) {
     return `${name} | ${localname}`;
   }
@@ -28,9 +28,9 @@ function fracToPerc(frac) {
 }
 
 export default {
-  temp,
-  coords,
-  country,
-  names,
+  formatTemp,
+  formatCoords,
+  formatCountry,
+  formatNames,
   fracToPerc,
 };

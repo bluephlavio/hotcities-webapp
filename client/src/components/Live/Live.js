@@ -6,39 +6,55 @@ import {
   CarouselControl,
   CarouselIndicators,
 } from 'reactstrap';
-import fmt from '../../helpers/formatter';
+import formatter from '../../helpers/formatter';
 import InfoPanel from '../InfoPanel/InfoPanel';
 import './Live.scss';
 
-const Item = props => (
-  <li className="live-item">
-    <span className="live-item-value">{props.value}</span>
-    <span className="live-item-icon"><span className={props.icon} /></span>
-  </li>
-);
+const Item = (props) => {
+  const { value, icon } = props;
+  return (
+    <li className="live-item">
+      <span className="live-item-value">{value}</span>
+      <span className="live-item-icon"><span className={icon} /></span>
+    </li>
+  );
+};
 
-const Details = props => (
-  <div className="live-details">
-    <ul>{props.children}</ul>
-  </div>
-);
+const Details = (props) => {
+  const { children } = props;
+  return (
+    <div className="live-details">
+      <ul>{children}</ul>
+    </div>
+  );
+};
 
-const Attribution = props => (
-  <div className="live-attribution">
-    <a href={props.view.page} target="_blank">
-      {props.view.title}
-    </a>
-    {' '}
-by
-    <a href={props.view.owner.page} target="_blank">
-      {props.view.owner.realname}
-    </a>
-,
-    <a href={props.view.license.link} target="_blank">
-      {props.view.license.abbr}
-    </a>
-  </div>
-);
+const Attribution = (props) => {
+  const {
+    view: {
+      page,
+      title,
+      owner,
+      license,
+    },
+  } = props;
+  return (
+    <div className="live-attribution">
+      <a href={page} rel="noopener noreferrer" target="_blank">
+        {title}
+      </a>
+      {' '}
+      by
+      <a href={owner.page} rel="noopener noreferrer" target="_blank">
+        {owner.realname}
+      </a>
+      ,
+      <a href={license.link} rel="noopener noreferrer" target="_blank">
+        {license.abbr}
+      </a>
+    </div>
+  );
+};
 
 class View extends Component {
   constructor(props) {
@@ -61,13 +77,17 @@ class View extends Component {
 
   next() {
     if (this.animating) return;
-    const nextIndex = this.state.activeIndex === this.props.views.length - 1 ? 0 : this.state.activeIndex + 1;
+    const { activeIndex } = this.state;
+    const { views } = this.props;
+    const nextIndex = activeIndex === views.length - 1 ? 0 : activeIndex + 1;
     this.setState({ activeIndex: nextIndex });
   }
 
   previous() {
     if (this.animating) return;
-    const nextIndex = this.state.activeIndex === 0 ? this.props.views.length - 1 : this.state.activeIndex - 1;
+    const { activeIndex } = this.state;
+    const { views } = this.props;
+    const nextIndex = activeIndex === 0 ? views.length - 1 : activeIndex - 1;
     this.setState({ activeIndex: nextIndex });
   }
 
@@ -77,7 +97,8 @@ class View extends Component {
   }
 
   views() {
-    return _.map(this.props.views, (view, index) => (
+    const { views } = this.props;
+    return _.map(views, (view, index) => (
       <CarouselItem
         onExiting={this.onExiting}
         onExited={this.onExited}
@@ -93,12 +114,12 @@ class View extends Component {
 
   render() {
     const { activeIndex } = this.state;
-    const views = this.props.views;
+    const { views } = this.props;
     const view = views[activeIndex];
     return (
       <div className="live-view">
         <Carousel
-          activeIndex={this.state.activeIndex}
+          activeIndex={activeIndex}
           next={this.next}
           previous={this.previous}
         >
@@ -134,7 +155,13 @@ class Live extends Component {
   }
 
   componentDidMount() {
-    fetch('/api/records/current')
+    fetch('/api/records/current', {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    })
       .then(res => res.json())
       .then(record => Promise.all([
         record,
@@ -164,37 +191,40 @@ class Live extends Component {
   }
 
   caption() {
-    if (this.state.isLoading) {
+    const { isLoading, data } = this.state;
+    const { formatNames } = formatter;
+    if (isLoading) {
       return 'Loading...';
     }
-    return fmt.names(this.state.data.name, this.state.data.localname);
+    return formatNames(data.name, data.localname);
   }
 
   render() {
+    const { isLoading, data } = this.state;
+    const { formatTemp, formatCoords, formatCountry } = formatter;
     return (
       <div className="live">
         <View
-          views={this.state.data ? _.first(this.state.data.views, 3) : []}
+          views={data ? _.first(data.views, 3) : []}
         />
-        <InfoPanel title={this.caption()} isLoading={this.state.isLoading}>
-          {!this.state.isLoading
-						&& (
-<Details>
-  <Item
-    value={fmt.temp(this.state.data.temp)}
-    icon="fa fa-thermometer-full"
-  />
-  <Item
-    value={fmt.country(this.state.data.country, this.state.data.countrycode)}
-    icon="fa fa-globe"
-  />
-  <Item
-    value={fmt.coords(this.state.data.lat, this.state.data.lng)}
-    icon="fa fa-map-marker"
-  />
-</Details>
-						)
-					}
+        <InfoPanel title={this.caption()} isLoading={isLoading}>
+          {!isLoading && (
+            <Details>
+              <Item
+                value={formatTemp(data.temp)}
+                icon="fa fa-thermometer-full"
+              />
+              <Item
+                value={formatCountry(data.country, data.countrycode)}
+                icon="fa fa-globe"
+              />
+              <Item
+                value={formatCoords(data.lat, data.lng)}
+                icon="fa fa-map-marker"
+              />
+            </Details>
+          )
+        }
         </InfoPanel>
       </div>
     );

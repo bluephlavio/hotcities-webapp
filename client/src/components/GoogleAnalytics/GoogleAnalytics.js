@@ -32,7 +32,7 @@ class GoogleAnalytics extends Component {
 const RouteTracker = () => (<Route component={GoogleAnalytics} />);
 
 const init = () => {
-  ReactGA.initialize(process.env.REACT_APP_GA_ID, {
+  ReactGA.initialize('UA-55404180-2', {
     debug: false,
   });
   return true;

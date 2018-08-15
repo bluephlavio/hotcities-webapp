@@ -23,6 +23,8 @@
     "linebreak-style": "off",
     "no-underscore-dangle": "off",
     "no-console": "off",
+    "react/prop-types": "off",
+    "react/no-multi-comp": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
   }
 }

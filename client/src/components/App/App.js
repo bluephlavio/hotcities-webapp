@@ -1,10 +1,11 @@
 import React from 'react';
+import { hot } from 'react-hot-loader';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
 import './App.scss';
 
-const App = props => (
+const App = () => (
   <div className="app">
     <Header />
     <Main />
@@ -12,4 +13,4 @@ const App = props => (
   </div>
 );
 
-export default App;
+export default hot(module)(App);

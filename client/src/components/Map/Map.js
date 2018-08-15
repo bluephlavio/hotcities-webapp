@@ -7,7 +7,7 @@ import './Map.scss';
 class Map extends Component {
   constructor(props) {
     super(props);
-    mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYmx1ZXBobGF2aW8iLCJhIjoiY2ppMGFlNGhnMDAzcTNwcGpxbXA1dHAxdiJ9.wxN7uepuQStutK1vvxFzBg';
   }
 
   componentDidMount() {

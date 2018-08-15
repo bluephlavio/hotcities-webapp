@@ -10,4 +10,6 @@ admin/node_modules
 client/.env
 admin/.env
 
-dist/
+dist
+client/dist
+server/dist
