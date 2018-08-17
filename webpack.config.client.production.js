@@ -5,6 +5,7 @@ const CWD = process.cwd();
 
 module.exports = {
   name: 'client',
+  target: 'web',
   mode: 'production',
   entry: [
     'babel-polyfill',
@@ -12,7 +13,7 @@ module.exports = {
   ],
   output: {
     filename: 'client.bundle.js',
-    path: path.join(CWD, 'client', 'dist'),
+    path: path.join(CWD, 'dist', 'client'),
   },
   module: {
     rules: [

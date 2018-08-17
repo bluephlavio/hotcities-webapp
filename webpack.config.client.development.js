@@ -6,6 +6,10 @@ const CWD = process.cwd();
 
 module.exports = {
   name: 'client',
+  target: 'web',
+  node: {
+    fs: 'empty',
+  },
   mode: 'development',
   devtool: 'eval-source-map',
   entry: [
@@ -16,7 +20,7 @@ module.exports = {
   ],
   output: {
     filename: 'client.bundle.js',
-    path: path.join(CWD, 'client', 'dist'),
+    path: path.join(CWD, 'dist', 'client'),
     publicPath: '/',
   },
   module: {

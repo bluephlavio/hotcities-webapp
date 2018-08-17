@@ -2,5 +2,5 @@
   "watch": [
     "./server"
   ],
-  "exec": "node server/index.js"
+  "exec": "webpack --config webpack.config.server.js --mode development && node dist/server/server.bundle.js"
 }
