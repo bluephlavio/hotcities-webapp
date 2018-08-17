@@ -4,11 +4,9 @@ import { hot } from 'react-hot-loader';
 import Main from './components/Main/Main';
 
 const App = () => (
-  <div className="app">
-    <BrowserRouter>
-      <Main />
-    </BrowserRouter>
-  </div>
+  <BrowserRouter>
+    <Main />
+  </BrowserRouter>
 );
 
 export default hot(module)(App);
