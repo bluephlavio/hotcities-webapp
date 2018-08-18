@@ -3,10 +3,14 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node dist/server/server.bundle.js",
+    "start:mongod": "mongod",
+    "start:server": "node dist/server/server.bundle.js",
+    "start": "run-p start:mongod start:server",
     "build:server": "webpack --config webpack.config.server.js --mode production",
     "build:client": "webpack --config webpack.config.client.production.js",
-    "dev": "nodemon"
+    "build": "run-s build:server build:client",
+    "dev:server": "nodemon",
+    "dev": "run-p start:mongod dev:server"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
