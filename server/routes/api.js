@@ -1,179 +1,95 @@
-require('dotenv')
-  .config();
-
-const express = require('express');
+import express from 'express';
+import apiCtrl from '../controllers/api';
+import City from '../models/city';
+import Record from '../models/record';
+import View from '../models/view';
 
 const router = express.Router();
 
-const _ = require('underscore');
+router.get(
+  '/cities',
+  apiCtrl.buildCursorMiddleware(City),
+  apiCtrl.filterMiddleware(
+    'geonameid',
+    'name',
+    'population',
+    'countrycode',
+    'timezone',
+    'lng',
+    'lat',
+  ),
+  apiCtrl.sortMiddleware(),
+  apiCtrl.paginationMiddleware(),
+  apiCtrl.get(),
+);
 
-const db = require('../db');
+router.get(
+  '/cities/:id',
+  apiCtrl.buildCursorMiddleware(City),
+  apiCtrl.matchMiddleware(),
+  apiCtrl.get(),
+);
 
-router.get('/cities', (req, res) => {
-  db.City.aggregate()
-    .project({
-      _id: 0,
-      __v: 0,
-    })
-    .exec()
-    .then((data) => {
-      res.json(data);
-    });
-});
+router.get(
+  '/records',
+  apiCtrl.buildCursorMiddleware(Record),
+  apiCtrl.filterMiddleware(
+    'geonameid',
+    'temp',
+    'timestamp',
+  ),
+  apiCtrl.sortMiddleware(),
+  apiCtrl.paginationMiddleware(),
+  apiCtrl.get(),
+);
 
-router.get('/cities/:geonameid', (req, res) => {
-  db.City.aggregate()
-    .match({
-      geonameid: Number(req.params.geonameid),
-    })
-    .project({
-      _id: 0,
-      __v: 0,
-    })
-    .exec()
-    .then((data) => {
-      res.json(data[0]);
-    });
-});
+router.get(
+  '/records/current',
+  apiCtrl.buildCursorMiddleware(Record),
+  apiCtrl.sortMiddleware('-timestamp'),
+  apiCtrl.paginationMiddleware(0, 1),
+  apiCtrl.get(),
+);
 
-router.get('/records', (req, res) => {
-  db.Record.aggregate()
-    .project({
-      _id: 0,
-      __v: 0,
-    })
-    .exec()
-    .then((data) => {
-      res.json(data);
-    });
-});
+router.get(
+  '/records/:id',
+  apiCtrl.buildCursorMiddleware(Record),
+  apiCtrl.matchMiddleware(),
+  apiCtrl.get(),
+);
 
-router.get('/records/current', (req, res) => {
-  db.Record.aggregate()
-    .sort('-timestamp')
-    .limit(1)
-    .project({
-      _id: 0,
-      __v: 0,
-    })
-    .exec()
-    .then((data) => {
-      res.json(data[0]);
-    });
-});
+router.get(
+  '/views',
+  apiCtrl.buildCursorMiddleware(View),
+  apiCtrl.filterMiddleware(
+    'geonameid',
+  ),
+  apiCtrl.sortMiddleware(),
+  apiCtrl.paginationMiddleware(),
+  apiCtrl.get(),
+);
 
-router.get('/records/:geonameid', (req, res) => {
-  db.Record.aggregate()
-    .match({
-      geonameid: Number(req.params.geonameid),
-    })
-    .project({
-      _id: 0,
-      __v: 0,
-    })
-    .exec()
-    .then((data) => {
-      res.json(data);
-    });
-});
-router.get('/views', (req, res) => {
-  db.View.find()
-    .populate({
-      path: 'license',
-      select: '-_id',
-    })
-    .select('-_id -__v')
-    .exec()
-    .then((data) => {
-      res.json(data);
-    });
-});
+router.get(
+  '/views/:id',
+  apiCtrl.buildCursorMiddleware(View),
+  apiCtrl.matchMiddleware(),
+  apiCtrl.get(),
+);
 
-router.get('/views/:geonameid', (req, res) => {
-  db.View.find({ geonameid: req.params.geonameid })
-    .populate({
-      path: 'license',
-      select: '-_id',
-    })
-    .select('-_id -__v')
-    .exec()
-    .then(data => _.sortBy(data, entry => -entry.relevance))
-    .then((data) => {
-      res.json(data);
-    });
-});
+router.put(
+  '/views/:id',
+  apiCtrl.authenticationMiddleware(),
+  apiCtrl.update(),
+);
 
-router.get('/stats/cities', (req, res) => {
-  db.Record.count()
-    .then(count => db.Record.aggregate()
-      .group({
-        _id: '$geonameid',
-        recordFrac: { $sum: 1 / count },
-        recordTemp: { $max: '$temp' },
-      })
-      .lookup({
-        from: 'cities',
-        localField: '_id',
-        foreignField: 'geonameid',
-        as: 'city',
-      })
-      .unwind('$city')
-      .addFields({
-        'city.recordFrac': '$recordFrac',
-        'city.recordTemp': '$recordTemp',
-      })
-      .replaceRoot('$city')
-      .project({
-        _id: 0,
-      })
-      .exec())
-    .then((data) => {
-      res.json(data);
-    });
-});
+router.get(
+  '/stats/cities',
+  apiCtrl.readCitiesStats,
+);
 
-router.get('/stats/countries', (req, res) => {
-  db.Record.count()
-    .then(count => db.Record.aggregate()
-      .lookup({
-        from: 'cities',
-        localField: 'geonameid',
-        foreignField: 'geonameid',
-        as: 'city',
-      })
-      .unwind('$city')
-      .group({
-        _id: '$city.country',
-        recordFrac: { $sum: 1 / count },
-        recordTemp: { $max: '$temp' },
-        recordCities: {
-          $addToSet: '$city.geonameid',
-        },
-      })
-      .addFields({
-        country: '$_id',
-        countrycode: '$city.countrycode',
-      })
-      .project({
-        _id: 0,
-      })
-      .exec())
-    .then((data) => {
-      res.json(data);
-    });
-});
+router.get(
+  '/stats/countries',
+  apiCtrl.readCountriesStats,
+);
 
-router.put('/views/:id', async (req, res) => {
-  if (req.isAuthenticated()) {
-    const view = await db.View.findOneAndUpdate({
-      id: req.params.id,
-    }, req.body);
-    console.log(view);
-    res.json(view);
-  } else {
-    res.redirect('/admin/login');
-  }
-});
-
-
-module.exports = router;
+export default router;

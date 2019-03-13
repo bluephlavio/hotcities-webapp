@@ -1,0 +1,36 @@
+@import '../../style/_variables.scss';
+@import '../../style/_mixins.scss';
+
+.api {
+	@extend %secondary;
+	color: $accent-color;
+	padding: $padding;
+	overflow-x: auto;
+	flex: 1;
+	flex-basis: auto;
+
+	p {
+		text-align: left;
+	}
+
+	label {
+		padding: 0 10px;
+	}
+
+	table {
+		color: $accent-color;
+	}
+
+	:global(.form-control) {
+		width: auto;
+	}
+
+	:global(.form-control:focus) {
+		border-color: rgba($accent-color, 0.5);
+		box-shadow: inset 0 1px 1px rgba($accent-color, 0.075), 0 0 8px rgba($accent-color, 0.6);
+	}
+
+	.params {
+		padding: 5px 0px;
+	}
+}

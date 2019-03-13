@@ -1,5 +1,4 @@
-const mongoose = require('mongoose');
-const randomItem = require('random-item');
+import mongoose from 'mongoose';
 
 const CitySchema = new mongoose.Schema({
   geonameid: {
@@ -34,4 +33,4 @@ const CitySchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('City', CitySchema);
+export default mongoose.model('City', CitySchema);

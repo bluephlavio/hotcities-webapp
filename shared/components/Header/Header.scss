@@ -1,0 +1,26 @@
+@import '../../style/_variables.scss';
+@import '../../style/_mixins.scss';
+
+.header {
+	@extend %primary;
+
+	nav {
+		display: flex;
+		flex-direction: row;
+		align-items: baseline;
+		padding: $padding;
+	}
+}
+
+.title {
+	color: $accent-color;
+}
+
+.motto {
+	@include muted($link-color);
+	letter-spacing: 0;
+}
+
+.menu {
+	font-size: $small;
+}

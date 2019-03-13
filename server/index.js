@@ -1,9 +1,26 @@
-const config = require('./config');
-const db = require('./db');
-const app = require('./app');
+import http from 'http';
+import mongoose from 'mongoose';
+import config, { env } from '../config/config';
 
-const { port } = config;
+let app = require('./server').default;
 
-db.open()
-  .then(() => app.listen(port, () => console.log(`Server listening on port ${port}.`)))
-  .catch(err => console.log(`Something went wrong: ${err}`));
+const server = http.createServer(app);
+
+mongoose.connect(config.db.uri)
+  .then(() => console.log(`Connected to the database on port ${config.db.port}...`))
+  .then(() => server.listen(config.server.port))
+  .then(() => console.log(`Server is listening on port ${config.server.port}...`))
+  .then(() => require('./models/all'))
+  .catch(err => console.error(err));
+
+if (env === 'development' && module.hot) {
+  module.hot.accept('./server', () => {
+    try {
+      server.removeListener('request', app);
+      app = require('./server').default;
+      server.on('request', app);
+    } catch (err) {
+      console.error(err);
+    }
+  });
+}

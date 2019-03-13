@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const _ = require('underscore');
+import mongoose from 'mongoose';
+import _ from 'underscore';
 
 const TweetSchema = new mongoose.Schema({
   geonameid: {
@@ -61,4 +61,4 @@ TweetSchema.virtual('status')
     },
   );
 
-module.exports = mongoose.model('Tweet', TweetSchema);
+export default mongoose.model('Tweet', TweetSchema);

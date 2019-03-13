@@ -1,28 +1,16 @@
-const db = require('./db');
+import City from './models/city';
 
 async function findCityByGeoNameId(geonameid) {
-  let city;
-  try {
-    city = await db.City.findOne({ geonameid });
-  } catch (error) {
-    console.log(error);
-  } finally {
-    return city;
-  }
+  const city = await City.findOne({ geonameid });
+  return city;
 }
 
 async function findCityByName(name) {
-  let city;
-  try {
-    city = await db.City.findOne({ name });
-  } catch (error) {
-    console.log(error);
-  } finally {
-    return city;
-  }
+  const city = await City.findOne({ name });
+  return city;
 }
 
-module.exports = {
+export default {
   findCityByGeoNameId,
   findCityByName,
 };

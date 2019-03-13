@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const OwnerSchema = new mongoose.Schema({
   id: {
@@ -16,7 +16,7 @@ const OwnerSchema = new mongoose.Schema({
 });
 
 OwnerSchema.virtual('page')
-  .get(function () {
+  .get(function () { // eslint-disable-line
     return `https://flickr.com/${this.id}`;
   });
 
@@ -73,13 +73,13 @@ ViewSchema.virtual('license', {
 });
 
 ViewSchema.virtual('page')
-  .get(function () {
+  .get(function () { // eslint-disable-line
     return `https://flickr.com/${this.owner.id}/${this.id}`;
   });
 
 ViewSchema.virtual('relevance')
-  .get(function () {
+  .get(function () { // eslint-disable-line
     return this.timestamp - this.rank + this.bonus + 1000 * this.isfavorite;
   });
 
-module.exports = mongoose.model('View', ViewSchema);
+export default mongoose.model('View', ViewSchema);

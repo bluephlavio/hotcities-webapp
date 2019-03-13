@@ -1,0 +1,71 @@
+@import './_variables.scss';
+@import './_mixins.scss';
+@import './_animations.scss';
+
+body {
+	font-family: $font;
+	font-size: $small;
+}
+
+a {
+	color: $link-color;
+	text-decoration: none;
+}
+
+a:hover {
+	color: $accent-color;
+	text-decoration: none;
+}
+
+button {
+	@extend %no-space;
+	width: $btn-width;
+	color: $accent-color;
+	background: none;
+}
+
+button:hover {
+	color: $link-color;
+	outline: none;
+	cursor: pointer;
+}
+
+button:focus {
+	color: $accent-color;
+	outline: none;
+}
+
+button:focus:hover {
+	color: $link-color;
+}
+
+h1 {
+	@extend %no-space;
+	font-size: $big;
+}
+
+h2 {
+	@extend %no-space;
+	font-size: $medium;
+}
+
+p {
+	text-align: justify;
+}
+
+ul {
+	list-style-type: none;
+}
+
+hr {
+	@extend %no-space;
+	@include shade($link-color);
+	height: 1px;
+	animation: fadein 3s;
+}
+
+div,
+span {
+	@extend %no-space;
+	border-radius: 0;
+}

@@ -1,13 +1,13 @@
-const Flickr = require('flickr-sdk');
-const _ = require('underscore');
-
-const db = require('./db');
+import Flickr from 'flickr-sdk';
+import _ from 'underscore';
+import View from './models/view';
+import config from '../config/config';
 
 const flickr = new Flickr(Flickr.OAuth.createPlugin(
-  process.env.FLICKR_CONSUMER_KEY,
-  process.env.FLICKR_CONSUMER_SECRET,
-  process.env.FLICKR_OAUTH_TOKEN,
-  process.env.FLICKR_OAUTH_TOKEN_SECRET,
+  config.flickr.consumer_key,
+  config.flickr.consumer_secret,
+  config.flickr.access_token,
+  config.flickr.access_token_secret,
 ));
 
 function mergeViewData(photo, size, info) {
@@ -48,7 +48,7 @@ async function fetchViews(city, params, limit = 10) {
   const photos = res.body.photos.photo;
   const candidates = photos.slice(0, limit);
   const views = [];
-  for (photo of candidates) {
+  for (const photo of candidates) {
     res = await flickr.photos.getSizes({
       photo_id: photo.id,
     });
@@ -76,7 +76,7 @@ async function fetchViewsAndSave(city, params, limit = 10) {
     for (const [i, flickrView] of flickrViews.entries()) {
       flickrView.timestamp = now;
       flickrView.rank = i;
-      const view = await db.View.findOneAndUpdate({
+      const view = await View.findOneAndUpdate({
         id: flickrView.id,
       }, flickrView, {
         upsert: true,
@@ -91,7 +91,7 @@ async function fetchViewsAndSave(city, params, limit = 10) {
   }
 }
 
-module.exports = {
+export default {
   mergeViewData,
   getSearchParams,
   fetchViews,

@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const LicenseSchema = new mongoose.Schema({
   id: {
@@ -9,4 +9,4 @@ const LicenseSchema = new mongoose.Schema({
   link: String,
 });
 
-module.exports = mongoose.model('License', LicenseSchema);
+export default mongoose.model('License', LicenseSchema);

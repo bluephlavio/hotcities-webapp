@@ -1,0 +1,10 @@
+@import '../../style/_variables.scss';
+@import '../../style/_mixins.scss';
+
+.about {
+	@extend %secondary;
+	padding: $padding;
+	overflow-x: auto;
+	flex: 1;
+	flex-basis: auto;
+}

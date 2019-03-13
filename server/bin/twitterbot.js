@@ -1,20 +1,24 @@
+import _ from 'underscore';
+import mongoose from 'mongoose';
+import Twit from 'twit';
+import Record from '../models/record';
+import City from '../models/city';
+import View from '../models/view';
+import Tweet from '../models/tweet';
+import config from '../../config/config';
+
 require('dotenv')
   .config();
 
-const _ = require('underscore');
-const twit = require('twit');
-
-const db = require('../db');
-
-const Twitter = new twit({
-  consumer_key: process.env.TWITTER_CONSUMER_KEY,
-  consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
-  access_token: process.env.TWITTER_ACCESS_TOKEN,
-  access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
+const Twitter = new Twit({
+  consumer_key: config.twitter.consumer_key,
+  consumer_secret: config.twitter.consumer_secret,
+  access_token: config.twitter.access_token,
+  access_token_secret: config.twitter.access_token_secret,
 });
 
 async function checkIfUpdateNeeded(newTweet) {
-  const oldTweet = await db.Tweet.findOne()
+  const oldTweet = await Tweet.findOne()
     .sort({ timestamp: -1 })
     .exec();
   if (oldTweet) {
@@ -24,21 +28,21 @@ async function checkIfUpdateNeeded(newTweet) {
 }
 
 async function tweet() {
-  await db.open();
+  await mongoose.connect(config.db.uri);
   try {
-    const record = await db.Record.findOne()
+    const record = await Record.findOne()
       .sort({ timestamp: -1 })
       .exec();
-    const city = await db.City.findOne({
+    const city = await City.findOne({
       geonameid: record.geonameid,
     })
       .exec();
-    let views = await db.View.find({
+    let views = await View.find({
       geonameid: record.geonameid,
     })
       .exec();
     views = _.sortBy(views, view => -view.relevance);
-    const newTweet = db.Tweet({
+    const newTweet = Tweet({
       geonameid: city.geonameid,
       name: city.name,
       localname: city.localname,
@@ -56,7 +60,7 @@ async function tweet() {
   } catch (error) {
     console.log(error);
   } finally {
-    await db.close();
+    await mongoose.connection.close();
   }
 }
 

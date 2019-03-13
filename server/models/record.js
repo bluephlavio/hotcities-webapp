@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const RecordSchema = new mongoose.Schema({
   timestamp: {
@@ -14,4 +14,4 @@ const RecordSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('Record', RecordSchema);
+export default mongoose.model('Record', RecordSchema);

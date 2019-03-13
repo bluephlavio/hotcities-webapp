@@ -1,48 +1,12 @@
-const express = require('express');
-const jwt = require('jsonwebtoken');
-const config = require('../config');
+import express from 'express';
+import { signup, signin, signout } from '../controllers/auth';
 
 const router = express.Router();
 
-const db = require('../db');
+router.post('/signup', signup);
 
-router.post('/login', (req, res) => {
-  const { username, password } = req.body;
-  db.User.findOne({ username }, (err, user) => {
-    if (err || !user) {
-      return res.status(401)
-        .json({
-          error: 'User not found',
-        });
-    }
-    if (!user.validatePassword(password)) {
-      return res.status(401)
-        .json({
-          error: 'Username and password don\'t match',
-        });
-    }
-    const token = jwt.sign({
-      _id: user._id,
-    }, config.jwtSecret);
-    res.cookie('t', token, {
-      expire: new Date() + 9999,
-    });
-    return res.json({
-      token,
-      user: {
-        _id: user._id,
-        username: user.username,
-      },
-    });
-  });
-});
+router.post('/signin', signin);
 
-router.get('/logout', (req, res) => {
-  res.clearCookie('t');
-  res.status(200)
-    .json({
-      message: 'logged out succesfully',
-    });
-});
+router.get('/signout', signout);
 
-module.exports = router;
+export default router;
