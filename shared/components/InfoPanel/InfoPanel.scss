@@ -1,0 +1,19 @@
+@import '../../style/_variables.scss';
+@import '../../style/_mixins.scss';
+
+.infoPanel {
+	@extend %secondary;
+}
+
+.title {
+	display: flex;
+	flex-shrink: 0;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: $padding;
+}
+
+.details {
+	padding: $padding;
+}

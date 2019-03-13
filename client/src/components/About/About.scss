@@ -1,8 +1,0 @@
-@import '../../_variables.scss';
-@import '../../_mixins.scss';
-
-.about {
-	@extend %secondary;
-	padding: $padding;
-	overflow: auto;
-}

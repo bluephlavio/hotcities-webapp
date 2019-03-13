@@ -1,0 +1,16 @@
+{
+  "extends": "airbnb",
+  "env": {
+    "node": true,
+    "browser": true
+  },
+  "rules": {
+    "linebreak-style": "off",
+    "global-require": "off",
+    "import/no-extraneous-dependencies": "off",
+    "no-console": "off",
+    "no-underscore-dangle": "off",
+    "react/jsx-filename-extension": "off",
+    "react/forbid-prop-types": "off"
+  }
+}

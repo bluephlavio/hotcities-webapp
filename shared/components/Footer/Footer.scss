@@ -1,0 +1,11 @@
+@import '../../style/_variables.scss';
+@import '../../style/_mixins.scss';
+
+.footer {
+	@extend %primary;
+}
+
+.social {
+	padding: $padding;
+	text-align: center;
+}

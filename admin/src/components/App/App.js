@@ -4,14 +4,14 @@ import Main from '../Main/Main';
 import './App.css';
 
 class App extends Component {
-	render() {
-		return (
-			<div className="App">
-                <Header />
-                <Main />
-            </div>
-		);
-	}
+  render() {
+    return (
+      <div className="App">
+        <Header />
+        <Main />
+      </div>
+    );
+  }
 }
 
 export default App;

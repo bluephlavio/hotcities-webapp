@@ -1,0 +1,24 @@
+@import '../../style/_variables.scss';
+@import '../../style/_mixins.scss';
+
+.ranking {
+	@extend %secondary;
+	height: 160px;
+	color: $accent-color;
+	overflow: auto;
+
+	table {
+		th, td {
+			color: $accent-color;
+		}
+	}
+}
+
+.item {
+}
+
+:global {
+  .fa-circle {
+    padding: 0 10px;
+  }
+}
