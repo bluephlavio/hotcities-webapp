@@ -1,8 +1,15 @@
 const functions = require('firebase-functions');
+const next = require('next');
 
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });
+const dev = process.env.NODE_ENV !== 'production';
+const app = next({
+  dev,
+  conf: {
+    distDir: '../dist',
+  },
+});
+const handle = app.getRequestHandler();
+
+exports.app = functions.https.onRequest((req, res) => {
+  app.prepare().then(() => handle(req, res));
+});
