@@ -1,5 +1,5 @@
 {
-  "name": "create-next-example-app",
+  "name": "hotcities",
   "scripts": {
     "dev": "next",
     "build": "next build",
@@ -9,5 +9,7 @@
     "next": "^8.0.3",
     "react": "^16.8.4",
     "react-dom": "^16.8.4"
-  }
+  },
+  "license": "MIT",
+  "private": true
 }
