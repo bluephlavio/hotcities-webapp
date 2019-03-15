@@ -1,6 +1,6 @@
 {
   "name": "hotcities-functions",
-  "description": "Cloud Functions for Firebase",
+  "description": "Firebase Cloud Functions for hotcities",
   "scripts": {
     "serve": "firebase serve --only functions",
     "shell": "firebase functions:shell",
@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "firebase-admin": "~6.0.0",
-    "firebase-functions": "^2.1.0"
+    "firebase-functions": "^2.1.0",
+    "next": "^8.0.3"
   },
   "private": true
 }

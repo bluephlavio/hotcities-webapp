@@ -11,5 +11,5 @@ const app = next({
 const handle = app.getRequestHandler();
 
 exports.app = functions.https.onRequest((req, res) => {
-  app.prepare().then(() => handle(req, res));
+  return app.prepare().then(() => handle(req, res));
 });
