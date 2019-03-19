@@ -1,11 +1,11 @@
 module.exports = {
-  // webpack: config => {
-  //   // Fixes npm packages that depend on `fs` module
-  //   config.node = {
-  //     fs: 'empty'
-  //   }
+  distDir: '../functions/next',
+  webpack: config => {
+    // Fixes npm packages that depend on `fs` module
+    config.node = {
+      fs: 'empty'
+    }
 
-  //   return config
-  // },
-  distDir: 'functions/lib/lib/next'
+    return config
+  },
 }
