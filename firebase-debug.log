@@ -1,0 +1,19 @@
+[debug] [2019-03-18T18:59:42.206Z] ----------------------------------------------------------------------
+[debug] [2019-03-18T18:59:42.212Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\flavi\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only functions
+[debug] [2019-03-18T18:59:42.214Z] CLI Version:   6.3.0
+[debug] [2019-03-18T18:59:42.214Z] Platform:      win32
+[debug] [2019-03-18T18:59:42.214Z] Node Version:  v8.11.1
+[debug] [2019-03-18T18:59:42.216Z] Time:          Mon Mar 18 2019 19:59:42 GMT+0100 (ora solare Europa occidentale)
+[debug] [2019-03-18T18:59:42.216Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-03-18T18:59:42.254Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-03-18T18:59:42.259Z] > authorizing via signed-in user
+[debug] [2019-03-18T18:59:42.260Z] [iam] checking project hotcities-cb3cf for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2019-03-18T18:59:42.266Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/hotcities-cb3cf:testIamPermissions  
+
+[debug] [2019-03-18T18:59:43.294Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'hotcities-cb3cf'...
+[info] 
+[info] i  deploying functions
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint
