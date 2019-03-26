@@ -1,1 +1,0 @@
-# Hot Cities | world's hottest city, now.
