@@ -1,9 +1,12 @@
-import Header from '../components/Header';
+import React, { Component } from 'react';
+import '../style/global.scss';
 
-const Index = () => {
-  return (
-    <Header />
-  );
+class Index extends Component {
+  render() {
+    return (
+      <h1>Home</h1>
+    );
+  }
 }
 
 export default Index;
