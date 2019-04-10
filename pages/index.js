@@ -1,7 +1,10 @@
-const Index = () => (
-  <div>
-    <h1>Hot Cities</h1>
-  </div>
-);
+import Nav from '../components/Nav';
+
+const Index = props => {
+  const { classes } = props; 
+  return (
+    <Nav />
+  );
+}
 
 export default Index;

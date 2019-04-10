@@ -1,10 +1,5 @@
-const path = require('path');
+const withSass = require('@zeit/next-sass');
 
-module.exports = {
-  exportPathMap: function() {
-    return {
-      '/': { page: '/' },
-      '/about': { page: '/about' },
-    }
-  },
-}
+module.exports = withSass({
+  cssModules: true,
+});
