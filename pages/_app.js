@@ -1,5 +1,6 @@
 import App, { Container } from 'next/app';
 import Layout from '../components/Layout';
+import '../style/global.scss';
 
 class HotCitiesApp extends App {
   render() {
