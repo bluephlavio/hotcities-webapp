@@ -1,9 +1,8 @@
-import Nav from '../components/Nav';
+import Header from '../components/Header';
 
-const Index = props => {
-  const { classes } = props; 
+const Index = () => {
   return (
-    <Nav />
+    <Header />
   );
 }
 

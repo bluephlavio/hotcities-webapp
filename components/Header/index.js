@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import style from './style.scss';
 
-class Nav extends Component {
+class Header extends Component {
   render() {
     return (
-      <nav>
+      <div className={style.header}>
         <h1 className={style.title}>Hello World</h1>
-      </nav>
+      </div>
     );
   }
 }
 
-export default Nav;
+export default Header;
