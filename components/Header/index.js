@@ -1,13 +1,56 @@
 import React, { Component } from 'react';
-import Nav from '../Nav'
+import Link from 'next/link';
+import {
+  Navbar,
+  NavbarBrand,
+  NavbarToggler,
+  Collapse,
+  Nav,
+  NavItem,
+  NavLink,
+} from 'reactstrap';
 import style from './style.scss';
 
 class Header extends Component {
+  constructor(props) {
+    super(props);
+
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      isOpen: false
+    };
+  }
+
+  toggle() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
+
   render() {
     return (
       <div className={style.header}>
-        <h1 className={style.title}>Hello World</h1>
-        <Nav />
+        <Navbar light expand="md">
+          <NavbarBrand href="/">
+            <h1>Hot Cities</h1>
+            <p>world's hottest city, now</p>
+          </NavbarBrand>
+          <NavbarToggler onClick={this.toggle} />
+          <Collapse isOpen={this.state.isOpen} navbar>
+            <Nav className="ml-auto" navbar>
+              <NavItem>
+                <NavLink tag={ props => <Link href="/">{ props.children }</Link> }>
+                  <a>Home</a>
+                </NavLink >
+              </NavItem>
+              <NavItem>
+                <NavLink tag={ props => <Link href="/about">{ props.children }</Link> }>
+                  <a>About</a>
+                </NavLink>
+              </NavItem>
+            </Nav>
+          </Collapse>
+        </Navbar>
       </div>
     );
   }
