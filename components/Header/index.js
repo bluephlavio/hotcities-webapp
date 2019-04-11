@@ -32,8 +32,8 @@ class Header extends Component {
       <div className={style.header}>
         <Navbar light expand="md">
           <NavbarBrand href="/">
-            <h1>Hot Cities</h1>
-            <p>world's hottest city, now</p>
+            <h1 className={style.title}>Hot Cities</h1>
+            <p className={style.motto}>world's hottest city, now</p>
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
