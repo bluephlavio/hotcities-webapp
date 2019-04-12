@@ -15,7 +15,7 @@ import style from './style.scss';
 const Toggler = (props) => (
   <FontAwesomeIcon 
     icon="bars"
-    className="d-inline d-md-none"
+    className={`d-inline d-md-none ${style.toggler}`}
     {...props}
   />
 );
@@ -40,15 +40,15 @@ class Header extends Component {
     const { isOpen } = this.state;
     return (
       <div className={style.header}>
-        <Navbar light expand="md">
-          <NavbarBrand href="/">
+        <Navbar light expand="md" className={style.navbar}>
+          <NavbarBrand href="/" className={style.brand}>
             <h1 className={style.title}>Hot Cities</h1>
-            <p className={style.motto}>world's hottest city, now</p>
+            <p className={`text-muted ${style.motto}`}>world's hottest city, now</p>
           </NavbarBrand>
           <NavbarToggler tag={() => <Toggler onClick={this.toggle} />} />
           <Collapse isOpen={isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              <NavItem>
+            <Nav className={`ml-auto ${style.nav}`} navbar>
+              <NavItem className={style.navItem}>
                 <NavLink tag={ props => <Link href="/">{ props.children }</Link> }>
                   <a>Home</a>
                 </NavLink >

@@ -2,12 +2,37 @@
 
 .header {
   background: $primary-color;
-}
-
-.title {
-  color: $accent-color;
-}
-
-.motto {
-  color: $secondary-color;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  .navbar {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    .brand {
+      margin: 0;
+      padding: 0;
+      .title {
+        color: $accent-color;
+      }
+      .motto {
+        margin: 0;
+        padding: 0;
+        color: $secondary-color;
+        font-size: 1em;
+      }
+    }
+    .toggler {
+      font-size: 1.5em;
+      transform: translateY(-3px);
+    }
+    .nav {
+      .navItem {
+        a {
+          font-size: 1em;
+          margin: 0;
+          padding: 0;
+        }
+      }
+    }
+  }
 }
