@@ -42,8 +42,8 @@ class Header extends Component {
       <div className={style.header}>
         <Navbar light expand="md" className={style.navbar}>
           <NavbarBrand href="/" className={style.brand}>
-            <h1 className={style.title}>Hot Cities</h1>
-            <p className={`text-muted ${style.motto}`}>world's hottest city, now</p>
+            <h1 className={style.title}>HOT CITIES</h1>
+            <p className={style.motto}>world's hottest city, now</p>
           </NavbarBrand>
           <NavbarToggler tag={() => <Toggler onClick={this.toggle} />} />
           <Collapse isOpen={isOpen} navbar>
@@ -53,7 +53,7 @@ class Header extends Component {
                   <a>Home</a>
                 </NavLink >
               </NavItem>
-              <NavItem>
+              <NavItem className={style.navItem}>
                 <NavLink tag={ props => <Link href="/about">{ props.children }</Link> }>
                   <a>About</a>
                 </NavLink>
@@ -61,6 +61,7 @@ class Header extends Component {
             </Nav>
           </Collapse>
         </Navbar>
+        <hr />
       </div>
     );
   }

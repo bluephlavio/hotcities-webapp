@@ -1,36 +1,38 @@
 @import '../../style/_vars.scss';
+@import '../../style/_mixins.scss';
 
 .header {
+  @extend %no-space;
   background: $primary-color;
-  margin-bottom: 0;
-  padding-bottom: 0;
   .navbar {
+    padding: $padding;
     display: flex;
     flex-direction: row;
     align-items: flex-end;
     .brand {
-      margin: 0;
-      padding: 0;
       .title {
+        @extend %no-space;
         color: $accent-color;
+        font-size: $font-big;
       }
       .motto {
-        margin: 0;
-        padding: 0;
-        color: $secondary-color;
-        font-size: 1em;
+        @extend %no-space;
+        @include muted($secondary-color);
+        font-size: $font-medium;
       }
     }
     .toggler {
-      font-size: 1.5em;
-      transform: translateY(-3px);
+      margin: 10px 0px;
+      font-size: $font-big;
+      color: $accent-color;
     }
     .nav {
       .navItem {
+        margin-right: 10px;
+        margin-top: 10px;
         a {
+          text-decoration: none;
           font-size: 1em;
-          margin: 0;
-          padding: 0;
         }
       }
     }
