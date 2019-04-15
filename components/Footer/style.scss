@@ -1,5 +1,10 @@
 @import '../../style/_vars.scss';
+@import '../../style/_mixins.scss';
 
 .footer {
+  @extend %primary;
   background: $primary-color;
+  .social {
+    text-align: center;
+  }
 }

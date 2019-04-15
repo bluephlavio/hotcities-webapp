@@ -5,9 +5,15 @@ import style from './style.scss';
 
 const Layout = props => (
   <div className={style.layout}>
-    <Header />
-    { props.children }
-    <Footer />
+    <div className={style.header}>
+      <Header />
+    </div>
+    <div className={style.main}>
+      { props.children }
+    </div>
+    <div className={style.footer}>
+      <Footer />
+    </div>
   </div>
 );
 
