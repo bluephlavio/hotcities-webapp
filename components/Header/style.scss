@@ -2,10 +2,9 @@
 @import '../../style/_mixins.scss';
 
 .header {
-  @extend %no-space;
-  background: $primary-color;
+  @extend %primary;
   .navbar {
-    padding: $padding;
+    @extend %space;
     display: flex;
     flex-direction: row;
     align-items: flex-end;

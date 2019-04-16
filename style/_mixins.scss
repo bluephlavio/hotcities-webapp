@@ -7,6 +7,12 @@
 	color: rgba($color, 0.5);
 }
 
+%space {
+	margin: 0;
+	border: 0;
+	padding: $padding;
+}
+
 %no-space {
 	margin: 0;
 	border: 0;

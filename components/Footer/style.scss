@@ -3,8 +3,8 @@
 
 .footer {
   @extend %primary;
-  background: $primary-color;
   .social {
+    @extend %space;
     text-align: center;
   }
 }
