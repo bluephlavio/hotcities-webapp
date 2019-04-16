@@ -26,7 +26,13 @@
 
 %secondary {
 	background-color: $secondary-color;
-	color: $accent-color;
+	color: $primary-color;
+	a {
+		@include muted($primary-color);
+		&:hover {
+			color: $accent-color;
+		}
+	}
 }
 
 %content {
