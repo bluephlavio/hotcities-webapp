@@ -16,8 +16,23 @@ a {
   }
 }
 
+button {
+  @extend %no-space;
+  color: $accent-color;
+  background: none;
+  &:hover {
+    color: $secondary-color;
+    outline: none;
+    cursor: pointer;
+  }
+  &:focus {
+    color: $accent-color;
+    outline: none;
+  }
+}
+
 hr {
-	@extend %no-space;
-	@include shade($secondary-color);
-	height: 1px;
+  @extend %no-space;
+  @include shade($secondary-color);
+  height: 1px;
 }
