@@ -1,3 +1,4 @@
+import React from 'react';
 import App, { Container } from 'next/app';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faBars } from '@fortawesome/free-solid-svg-icons';

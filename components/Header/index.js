@@ -1,23 +1,11 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
-import {
-  Navbar,
-  NavbarBrand,
-  NavbarToggler,
-  Collapse,
-  Nav,
-  NavItem,
-  NavLink,
-} from 'reactstrap';
+import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import style from './style.scss';
 
-const Toggler = (props) => (
-  <FontAwesomeIcon 
-    icon="bars"
-    className={`d-inline d-md-none ${style.toggler}`}
-    {...props}
-  />
+const Toggler = props => (
+  <FontAwesomeIcon icon="bars" className={`d-inline d-md-none ${style.toggler}`} {...props} />
 );
 
 class Header extends Component {
@@ -31,8 +19,9 @@ class Header extends Component {
   }
 
   toggle() {
+    const { isOpen } = this.state;
     this.setState({
-      isOpen: !this.state.isOpen
+      isOpen: !isOpen
     });
   }
 
@@ -43,19 +32,19 @@ class Header extends Component {
         <Navbar light expand="md" className={style.navbar}>
           <NavbarBrand href="/" className={style.brand}>
             <h1 className={style.title}>HOT CITIES</h1>
-            <p className={style.motto}>world's hottest city, now</p>
+            <p className={style.motto}>world&#39;s hottest city, now</p>
           </NavbarBrand>
           <NavbarToggler tag={() => <Toggler onClick={this.toggle} />} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className={`ml-auto ${style.nav}`} navbar>
               <NavItem className={style.navItem}>
-                <NavLink tag={ props => <Link href="/">{ props.children }</Link> }>
-                  <a>Home</a>
-                </NavLink >
+                <NavLink tag={props => <Link href="/">{props.children}</Link>}>
+                  <a href="#/">Home</a>
+                </NavLink>
               </NavItem>
               <NavItem className={style.navItem}>
-                <NavLink tag={ props => <Link href="/about">{ props.children }</Link> }>
-                  <a>About</a>
+                <NavLink tag={props => <Link href="/about">{props.children}</Link>}>
+                  <a href="#/">About</a>
                 </NavLink>
               </NavItem>
             </Nav>

@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {
-  Carousel,
-  CarouselItem,
-  CarouselControl,
-  CarouselIndicators,
-  CarouselCaption
-} from 'reactstrap';
+import { Carousel, CarouselItem, CarouselControl, CarouselIndicators } from 'reactstrap';
 import style from './style.scss';
 
 const Attribution = ({ view }) => {
@@ -92,7 +86,6 @@ class Slideshow extends Component {
       return (
         <CarouselItem onExiting={this.onExiting} onExited={this.onExited} key={view.src}>
           <div className={style.view} style={{ backgroundImage: `url(${view.src})` }} />
-          <CarouselCaption captionText={view.title} captionHeader={view.title} />
         </CarouselItem>
       );
     });
@@ -118,7 +111,7 @@ class Slideshow extends Component {
           />
           <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
         </Carousel>
-        <Attribution view={activeView} />
+        {activeView && <Attribution view={activeView} />}
       </div>
     );
   }
