@@ -3,34 +3,37 @@ import PropTypes from 'prop-types';
 import { Carousel, CarouselItem, CarouselControl, CarouselIndicators } from 'reactstrap';
 import style from './style.scss';
 
-const Attribution = ({ view }) => {
-  const { page, title, owner, license } = view;
+const Attribution = ({ photo }) => {
+  const { url, title, owner, license } = photo;
   return (
     <div className={style.attribution}>
-      <a href={page} rel="noopener noreferrer" target="_blank">
+      <a href={url} rel="noopener noreferrer" target="_blank">
         {title || 'Untitled'}
       </a>
       {' by '}
-      <a href={owner.page} rel="noopener noreferrer" target="_blank">
-        {owner.realname}
+      <a href={owner.url} rel="noopener noreferrer" target="_blank">
+        {owner.name || 'unnamed'}
       </a>
       {', '}
-      <a href={license.link} rel="noopener noreferrer" target="_blank">
-        {license.abbr}
+      <a href={license.url} rel="noopener noreferrer" target="_blank">
+        {license.name}
       </a>
     </div>
   );
 };
 
 Attribution.propTypes = {
-  view: PropTypes.shape({
-    page: PropTypes.string.isRequired,
+  photo: PropTypes.shape({
+    src: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     owner: PropTypes.shape({
-      realname: PropTypes.string.isRequired
+      name: PropTypes.string.isRequired,
+      url: PropTypes.string.isRequired
     }).isRequired,
     license: PropTypes.shape({
-      abbr: PropTypes.string.isRequired
+      name: PropTypes.string.isRequired,
+      url: PropTypes.string.isRequired
     }).isRequired
   }).isRequired
 };
@@ -56,19 +59,19 @@ class Slideshow extends Component {
 
   next() {
     const { activeIndex } = this.state;
-    const { views } = this.props;
+    const { photos } = this.props;
 
     if (this.animating) return;
-    const nextIndex = activeIndex === views.length - 1 ? 0 : activeIndex + 1;
+    const nextIndex = activeIndex === photos.length - 1 ? 0 : activeIndex + 1;
     this.setState({ activeIndex: nextIndex });
   }
 
   previous() {
     const { activeIndex } = this.state;
-    const { views } = this.props;
+    const { photos } = this.props;
 
     if (this.animating) return;
-    const nextIndex = activeIndex === 0 ? views.length - 1 : activeIndex - 1;
+    const nextIndex = activeIndex === 0 ? photos.length - 1 : activeIndex - 1;
     this.setState({ activeIndex: nextIndex });
   }
 
@@ -79,13 +82,14 @@ class Slideshow extends Component {
 
   render() {
     const { activeIndex } = this.state;
-    const { views } = this.props;
-    const activeView = views[activeIndex];
+    const { photos } = this.props;
+    const activePhoto = photos[activeIndex];
 
-    const slides = views.map(view => {
+    const slides = photos.map(photo => {
+      const { src } = photo;
       return (
-        <CarouselItem onExiting={this.onExiting} onExited={this.onExited} key={view.src}>
-          <div className={style.view} style={{ backgroundImage: `url(${view.src})` }} />
+        <CarouselItem onExiting={this.onExiting} onExited={this.onExited} key={src}>
+          <div className={style.photo} style={{ backgroundImage: `url(${src})` }} />
         </CarouselItem>
       );
     });
@@ -99,7 +103,7 @@ class Slideshow extends Component {
           previous={this.previous}
         >
           <CarouselIndicators
-            items={views}
+            items={photos}
             activeIndex={activeIndex}
             onClickHandler={this.goToIndex}
           />
@@ -111,14 +115,14 @@ class Slideshow extends Component {
           />
           <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
         </Carousel>
-        {activeView && <Attribution view={activeView} />}
+        {activePhoto && <Attribution photo={activePhoto} />}
       </div>
     );
   }
 }
 
 Slideshow.propTypes = {
-  views: PropTypes.arrayOf(
+  photos: PropTypes.arrayOf(
     PropTypes.shape({
       src: PropTypes.string.isRequired
     })

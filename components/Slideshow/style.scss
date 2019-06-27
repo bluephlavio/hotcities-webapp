@@ -2,16 +2,11 @@
 @import '../../style/_mixins.scss';
 
 .slideshow {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+  @extend %content;
   .carousel {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    .view {
-      flex: 1;
-      width: 100%;
+    @extend %view;
+    .photo {
+      height: 100%;
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
@@ -30,11 +25,8 @@
 :global {
   .carousel,
   .carousel-inner,
-  .carousel-item.active {
-    flex: 1;
-    align-items: stretch;
-    display: flex;
-    flex-direction: row;
+  .carousel-item {
+    height: 100%;
   }
   .carousel-indicators {
     li {

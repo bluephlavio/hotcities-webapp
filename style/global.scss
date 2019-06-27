@@ -1,5 +1,6 @@
 @import './_vars.scss';
 @import './_mixins.scss';
+@import './_anim.scss';
 
 body {
   @extend %no-space;
@@ -35,4 +36,5 @@ hr {
   @extend %no-space;
   @include shade($secondary-color);
   height: 1px;
+  animation: fadein 3s;
 }

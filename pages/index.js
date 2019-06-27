@@ -3,26 +3,27 @@ import PropTypes from 'prop-types';
 import fetch from 'isomorphic-unfetch';
 import Slideshow from '../components/Slideshow';
 import Panel from '../components/Panel';
+import config from '../config';
 
 class Index extends Component {
   static async getInitialProps({ pageProps }) {
-    const currentRecordResponse = await fetch('http://hotcities.world/api/records/current');
-    const currentRecord = await currentRecordResponse.json();
-    const { geonameid } = currentRecord;
-    const cityResponse = await fetch(`http://hotcities.world/api/cities/${geonameid}`);
-    const city = await cityResponse.json();
-    const viewsResponse = await fetch(`http://hotcities.world/api/views/${geonameid}`);
-    const views = await viewsResponse.json();
-    return { ...pageProps, city, views };
+    const { api } = config;
+    const { data: record } = await fetch(`${api}/records/current`).then(res => res.json());
+    const { geonameid } = record;
+    const { data: city } = await fetch(`${api}/cities/${geonameid}`).then(res => res.json());
+    const { data: photos } = await fetch(`${api}/photos?geonameid=${geonameid}&limit=3`).then(res =>
+      res.json()
+    );
+    return { ...pageProps, record, city, photos };
   }
 
   render() {
-    const { city, views } = this.props;
+    const { record, city, photos } = this.props;
     return (
       <React.Fragment>
-        <Slideshow views={views} />
+        <Slideshow photos={photos.concat(photos).concat(photos)} />
         <Panel title={city.name}>
-          <div>Bla</div>
+          <div>{record.temp}</div>
         </Panel>
       </React.Fragment>
     );
@@ -30,10 +31,14 @@ class Index extends Component {
 }
 
 Index.propTypes = {
+  record: PropTypes.shape({
+    geonameid: PropTypes.number.isRequired,
+    temp: PropTypes.number.isRequired
+  }).isRequired,
   city: PropTypes.shape({
     name: PropTypes.string.isRequired
   }).isRequired,
-  views: PropTypes.arrayOf(PropTypes.object).isRequired
+  photos: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default Index;
