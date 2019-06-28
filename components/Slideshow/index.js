@@ -96,12 +96,7 @@ class Slideshow extends Component {
 
     return (
       <div className={style.slideshow}>
-        <Carousel
-          className={style.carousel}
-          activeIndex={activeIndex}
-          next={this.next}
-          previous={this.previous}
-        >
+        <Carousel activeIndex={activeIndex} next={this.next} previous={this.previous}>
           <CarouselIndicators
             items={photos}
             activeIndex={activeIndex}

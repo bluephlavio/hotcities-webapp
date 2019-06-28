@@ -2,17 +2,14 @@
 @import '../../style/_mixins.scss';
 
 .slideshow {
-  @extend %content;
-  .carousel {
-    @extend %view;
-    .photo {
-      height: 100%;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-attachment: fixed;
-      filter: grayscale(1);
-    }
+  @extend %view;
+  .photo {
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    filter: grayscale(1);
   }
   .attribution {
     flex: 0;
