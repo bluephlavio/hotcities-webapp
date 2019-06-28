@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import fetch from 'isomorphic-unfetch';
 import Slideshow from '../components/Slideshow';
 import Panel from '../components/Panel';
+import Item from '../components/Item';
+import { formatNames, formatTemp, formatCountry, formatCoords } from '../helpers/format';
 import config from '../config';
 
 class Index extends Component {
@@ -19,11 +21,15 @@ class Index extends Component {
 
   render() {
     const { record, city, photos } = this.props;
+    const { name, localname, countryname, countrycode, lat, lng } = city;
+    const { temp } = record;
     return (
       <React.Fragment>
-        <Slideshow photos={photos.concat(photos).concat(photos)} />
-        <Panel title={city.name}>
-          <div>{record.temp}</div>
+        <Slideshow photos={photos} />
+        <Panel title={formatNames(name, localname)}>
+          <Item value={formatTemp(temp)} icon="thermometer-full" />
+          <Item value={formatCountry(countryname, countrycode)} icon="globe" />
+          <Item value={formatCoords({ lng, lat })} icon="map-marker" />
         </Panel>
       </React.Fragment>
     );
