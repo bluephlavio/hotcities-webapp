@@ -1,14 +1,24 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Collapse } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import style from './style.scss';
+
+const Toggler = ({ toggle, icon }) => (
+  <button type="button" onClick={toggle}>
+    <FontAwesomeIcon icon={icon} />
+  </button>
+);
+
+Toggler.propTypes = {
+  toggle: PropTypes.func.isRequired,
+  icon: PropTypes.string.isRequired
+};
 
 const Bar = ({ title, toggle, icon }) => (
   <div className={style.bar}>
     <h1>{title}</h1>
-    <button type="button" onClick={toggle}>
-      <FontAwesomeIcon icon={icon} />
-    </button>
+    <Toggler toggle={toggle} icon={icon} />
   </div>
 );
 
@@ -46,7 +56,9 @@ class Panel extends Component {
     return (
       <div className={style.panel}>
         <Bar title={title} toggle={this.toggle} icon={isOpen ? 'angle-down' : 'angle-up'} />
-        {isOpen && <Details>{children}</Details>}
+        <Collapse isOpen={isOpen}>
+          <Details>{children}</Details>
+        </Collapse>
       </div>
     );
   }
