@@ -1,0 +1,12 @@
+@import '../../style/vars.scss';
+@import '../../style/mixins.scss';
+
+.item {
+  .icon {
+    width: 25px;
+    border-right: 1px dashed $accent-color;
+  }
+  .value {
+    padding: 0 5px;
+  }
+}
