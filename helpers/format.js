@@ -8,3 +8,5 @@ export const formatTemp = temp => `${Math.round(temp)} °C / ${Math.round(temp *
 export const formatCountry = (name, code) => `${name} (${code})`;
 
 export const formatCoords = coords => formatcoords(coords).format({ decimalPlaces: 0 });
+
+export const formatFracAsPerc = frac => `${(frac * 100).toFixed(0)} %`;

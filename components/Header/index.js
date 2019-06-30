@@ -50,6 +50,11 @@ class Header extends Component {
                 </NavLink>
               </NavItem>
               <NavItem className={style.navItem}>
+                <NavLink tag={props => <Link href="/stats">{props.children}</Link>}>
+                  <a href="#/">Stats</a>
+                </NavLink>
+              </NavItem>
+              <NavItem className={style.navItem}>
                 <NavLink tag={props => <Link href="/about">{props.children}</Link>}>
                   <a href="#/">About</a>
                 </NavLink>

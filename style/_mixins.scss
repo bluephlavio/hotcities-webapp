@@ -25,21 +25,14 @@
 }
 
 %secondary {
-  background-color: $secondary-color;
-  color: $primary-color;
+  background-color: $primary-color;
+  color: $accent-color;
   a {
-    @include muted($primary-color);
+    @include muted($secondary-color);
     &:hover {
       color: $accent-color;
     }
   }
-}
-
-%content {
-  flex: 1;
-  flex-basis: auto;
-  display: flex;
-  flex-direction: column;
 }
 
 %view {
