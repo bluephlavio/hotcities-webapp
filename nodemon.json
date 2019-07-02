@@ -1,4 +1,0 @@
-{
-  "watch": "server/index.js",
-  "exec": "node ./dist/server/server.bundle.js"
-}
