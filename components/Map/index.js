@@ -12,10 +12,16 @@ const {
 mapboxgl.accessToken = accessToken;
 
 class Map extends Component {
+  constructor(props) {
+    super(props);
+    this.containerRef = React.createRef();
+  }
+
   componentDidMount() {
     const { data } = this.props;
+    const container = this.containerRef.current;
     const map = new mapboxgl.Map({
-      container: this.container,
+      container,
       style: mapstyle,
       zoom: 1,
       center: [0, 0]
@@ -28,7 +34,7 @@ class Map extends Component {
   }
 
   render() {
-    return <div className={style.map} ref={e => (this.container = e)} />;
+    return <div className={style.map} ref={this.containerRef} />;
   }
 }
 
