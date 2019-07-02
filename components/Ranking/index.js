@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { Table } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { formatNames, formatFracAsPerc, formatTemp } from '../../helpers/format';
 import style from './style.scss';
 
@@ -30,9 +31,16 @@ class Ranking extends Component {
             <tr>
               <th>#</th>
               <th>city</th>
-              <th onClick={() => this.sortBy('score')}>score</th>
-              <th onClick={() => this.sortBy('recordfrac')}>record fraction</th>
-              <th onClick={() => this.sortBy('recordtemp')}>record temperature</th>
+              <th onClick={() => this.sortBy('score')}>
+                score {sortBy === 'score' ? <FontAwesomeIcon icon="circle" /> : ''}
+              </th>
+              <th onClick={() => this.sortBy('recordfrac')}>
+                record fraction {sortBy === 'recordfrac' ? <FontAwesomeIcon icon="circle" /> : ''}
+              </th>
+              <th onClick={() => this.sortBy('recordtemp')}>
+                record temperature{' '}
+                {sortBy === 'recordtemp' ? <FontAwesomeIcon icon="circle" /> : ''}
+              </th>
             </tr>
           </thead>
           <tbody>
