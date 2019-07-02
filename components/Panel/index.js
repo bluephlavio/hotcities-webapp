@@ -54,7 +54,13 @@ class Panel extends Component {
     const { isOpen } = this.state;
     const { children, title } = this.props;
     return (
-      <div className={style.panel}>
+      <div
+        className={style.panel}
+        onMouseOver={() => this.setState({ isOpen: true })}
+        onFocus={() => null}
+        onMouseOut={() => this.setState({ isOpen: false })}
+        onBlur={() => null}
+      >
         <Bar title={title} toggle={this.toggle} icon={isOpen ? 'angle-down' : 'angle-up'} />
         <Collapse isOpen={isOpen}>
           <Details>{children}</Details>
