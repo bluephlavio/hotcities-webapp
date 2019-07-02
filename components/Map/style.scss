@@ -3,11 +3,3 @@
 .map {
   @extend %view;
 }
-
-:global {
-  .mapboxgl-canvas {
-    // flex: 1;
-    // height: 100%;
-    height: 200px;
-  }
-}
