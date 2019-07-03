@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Head from 'next/head';
 import ReactGA from 'react-ga';
 import About from '../components/About';
 
@@ -8,7 +9,15 @@ class AboutPage extends Component {
   }
 
   render() {
-    return <About />;
+    return (
+      <>
+        <Head>
+          <title>Hot Cities • About</title>
+          <meta name="description" content="Info about Hot Cities project." />
+        </Head>
+        <About />
+      </>
+    );
   }
 }
 

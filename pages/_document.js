@@ -7,6 +7,12 @@ class HotCitiesDocument extends Document {
     return (
       <html lang="en">
         <Head>
+          <title>Hot Cities • world hottest city, now.</title>
+          <meta
+            name="description"
+            content="Hot Cities monitors world cities temperatures in real time from global weather services to determine the hottest one, right now."
+          />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link href="https://fonts.googleapis.com/css?family=Quicksand:300" rel="stylesheet" />
           <link
             href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
