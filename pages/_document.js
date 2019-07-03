@@ -1,9 +1,6 @@
 import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
-import ReactGA from 'react-ga';
 import favicon from '../assets/favicon.ico';
-
-ReactGA.initialize('UA-55404180-2');
 
 class HotCitiesDocument extends Document {
   render() {

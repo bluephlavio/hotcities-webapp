@@ -1,5 +1,6 @@
 import React from 'react';
 import App, { Container } from 'next/app';
+import ReactGA from 'react-ga';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faBars,
@@ -31,6 +32,10 @@ library.add(
 );
 
 class HotCitiesApp extends App {
+  componentDidMount() {
+    ReactGA.initialize('UA-55404180-2');
+  }
+
   render() {
     const { Component, pageProps } = this.props;
     return (
