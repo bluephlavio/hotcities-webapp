@@ -1,4 +1,5 @@
 @import './_vars.scss';
+@import './_anim.scss';
 
 @mixin shade($color) {
   background: linear-gradient(to left, rgba($color, 0), rgba($color, 1), rgba($color, 0));
