@@ -4,28 +4,20 @@ import { Collapse } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import style from './style.scss';
 
-const Toggler = ({ toggle, icon }) => (
-  <button type="button" onClick={toggle}>
-    <FontAwesomeIcon icon={icon} />
-  </button>
-);
-
-Toggler.propTypes = {
-  toggle: PropTypes.func.isRequired,
-  icon: PropTypes.string.isRequired
-};
-
-const Bar = ({ title, toggle, icon }) => (
+const Bar = ({ title, toggle, icon, isLoading }) => (
   <div className={style.bar}>
     <h1>{title}</h1>
-    <Toggler toggle={toggle} icon={icon} />
+    <button type="button" onClick={toggle}>
+      <FontAwesomeIcon icon={icon} spin={isLoading} />
+    </button>
   </div>
 );
 
 Bar.propTypes = {
   title: PropTypes.string.isRequired,
   toggle: PropTypes.func.isRequired,
-  icon: PropTypes.string.isRequired
+  icon: PropTypes.string.isRequired,
+  isLoading: PropTypes.bool.isRequired
 };
 
 const Details = ({ children }) => <div className={style.details}>{children}</div>;
@@ -52,7 +44,7 @@ class Panel extends Component {
 
   render() {
     const { isOpen } = this.state;
-    const { children, title } = this.props;
+    const { children, title, isLoading } = this.props;
     return (
       <div
         className={style.panel}
@@ -61,10 +53,13 @@ class Panel extends Component {
         onMouseOut={() => this.setState({ isOpen: false })}
         onBlur={() => null}
       >
-        <Bar title={title} toggle={this.toggle} icon={isOpen ? 'angle-down' : 'angle-up'} />
-        <Collapse isOpen={isOpen}>
-          <Details>{children}</Details>
-        </Collapse>
+        <Bar
+          title={isLoading ? 'Loading...' : title()}
+          toggle={this.toggle}
+          icon={isLoading ? 'spinner' : isOpen ? 'angle-down' : 'angle-up'}
+          isLoading={isLoading}
+        />
+        <Collapse isOpen={isOpen}>{!isLoading && <Details>{children}</Details>}</Collapse>
       </div>
     );
   }
@@ -72,7 +67,8 @@ class Panel extends Component {
 
 Panel.propTypes = {
   children: PropTypes.node.isRequired,
-  title: PropTypes.string.isRequired
+  title: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired
 };
 
 export default Panel;

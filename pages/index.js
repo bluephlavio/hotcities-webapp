@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import fetch from 'isomorphic-unfetch';
 import Slideshow from '../components/Slideshow';
 import Panel from '../components/Panel';
@@ -8,7 +7,14 @@ import { formatNames, formatTemp, formatCountry, formatCoords } from '../helpers
 import config from '../config';
 
 class Index extends Component {
-  static async getInitialProps({ pageProps }) {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: true
+    };
+  }
+
+  async componentDidMount() {
     const { api } = config;
     const { data: record } = await fetch(`${api}/records/current`).then(res => res.json());
     const { geonameid } = record;
@@ -16,35 +22,26 @@ class Index extends Component {
     const { data: photos } = await fetch(`${api}/photos?geonameid=${geonameid}&limit=3`).then(res =>
       res.json()
     );
-    return { ...pageProps, record, city, photos };
+    this.setState({ isLoading: false, record, city, photos });
   }
 
   render() {
-    const { record, city, photos } = this.props;
-    const { name, localname, countryname, countrycode, lat, lng } = city;
-    const { temp } = record;
+    const { isLoading, record, city, photos } = this.state;
     return (
-      <React.Fragment>
-        <Slideshow photos={photos} />
-        <Panel title={formatNames(name, localname)}>
-          <Item value={formatTemp(temp)} icon="thermometer-full" />
-          <Item value={formatCountry(countryname, countrycode)} icon="globe" />
-          <Item value={formatCoords({ lng, lat })} icon="map-marker" />
+      <>
+        <Slideshow photos={isLoading ? [] : photos} />
+        <Panel title={() => formatNames(city.name, city.localname)} isLoading={isLoading}>
+          {!isLoading && (
+            <>
+              <Item value={formatTemp(record.temp)} icon="thermometer-full" />
+              <Item value={formatCountry(city.countryname, city.countrycode)} icon="globe" />
+              <Item value={formatCoords({ lng: city.lng, lat: city.lat })} icon="map-marker" />
+            </>
+          )}
         </Panel>
-      </React.Fragment>
+      </>
     );
   }
 }
-
-Index.propTypes = {
-  record: PropTypes.shape({
-    geonameid: PropTypes.number.isRequired,
-    temp: PropTypes.number.isRequired
-  }).isRequired,
-  city: PropTypes.shape({
-    name: PropTypes.string.isRequired
-  }).isRequired,
-  photos: PropTypes.arrayOf(PropTypes.object).isRequired
-};
 
 export default Index;

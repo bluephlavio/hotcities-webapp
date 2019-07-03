@@ -8,7 +8,8 @@ import {
   faThermometerFull,
   faGlobe,
   faMapMarker,
-  faCircle
+  faCircle,
+  faSpinner
 } from '@fortawesome/free-solid-svg-icons';
 import { faTwitter, faInstagram, faFacebook, faGithub } from '@fortawesome/free-brands-svg-icons';
 import Layout from '../components/Layout';
@@ -25,7 +26,8 @@ library.add(
   faThermometerFull,
   faGlobe,
   faMapMarker,
-  faCircle
+  faCircle,
+  faSpinner
 );
 
 class HotCitiesApp extends App {
