@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import fetch from 'isomorphic-unfetch';
+import ReactGA from 'react-ga';
 import Slideshow from '../components/Slideshow';
 import Panel from '../components/Panel';
 import Item from '../components/Item';
@@ -15,6 +16,7 @@ class Index extends Component {
   }
 
   async componentDidMount() {
+    ReactGA.pageview('/');
     const { api } = config;
     const { data: record } = await fetch(`${api}/records/current`).then(res => res.json());
     const { geonameid } = record;
