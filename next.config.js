@@ -5,7 +5,9 @@ module.exports = withImages(
   withSass({
     cssModules: true,
     exportPathMap: () => ({
-      '/': { page: '/' }
+      '/': { page: '/' },
+      '/stats': { page: '/stats' },
+      '/about': { page: '/about' }
     })
   })
 );
