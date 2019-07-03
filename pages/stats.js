@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import dynamic from 'next/dynamic';
-import PropTypes from 'prop-types';
 import fetch from 'isomorphic-unfetch';
 import Panel from '../components/Panel';
 import Ranking from '../components/Ranking';
@@ -15,36 +14,32 @@ const Map = dynamic(() => import('../components/Map'), {
 /* eslint-enable */
 
 class Stats extends Component {
-  static async getInitialProps({ pageProps }) {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: true
+    };
+  }
+
+  async componentDidMount() {
     const { api } = config;
     const { data } = await fetch(`${api}/stats?extra=name,localname,countrycode,lng,lat`).then(
       res => res.json()
     );
-    return { data, ...pageProps };
+    this.setState({ isLoading: false, data });
   }
 
   render() {
-    const { data } = this.props;
+    const { isLoading, data } = this.state;
     return (
-      <React.Fragment>
-        <Map data={data} />
-        <Panel title="Stats">
-          <Ranking data={data} />
+      <>
+        {isLoading ? <Loading /> : <Map data={data} />}
+        <Panel title={() => 'Stats'} isLoading={isLoading}>
+          <Ranking data={isLoading ? [] : data} />
         </Panel>
-      </React.Fragment>
+      </>
     );
   }
 }
-
-Stats.propTypes = {
-  data: PropTypes.arrayOf(
-    PropTypes.shape({
-      geonameid: PropTypes.number.isRequired,
-      recordfrac: PropTypes.number.isRequired,
-      recordtemp: PropTypes.number.isRequired,
-      score: PropTypes.number.isRequired
-    })
-  ).isRequired
-};
 
 export default Stats;
