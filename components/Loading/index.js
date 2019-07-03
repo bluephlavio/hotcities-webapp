@@ -1,8 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import style from './style.scss';
 
-export default () => (
-  <div className={style.loading}>
-    <h3>Loading...</h3>
-  </div>
-);
+const Loading = ({ children }) => <div className={style.loading}>{children}</div>;
+
+Loading.propTypes = {
+  children: PropTypes.node
+};
+
+Loading.defaultProps = {
+  children: <></>
+};
+
+export default Loading;

@@ -1,7 +1,6 @@
 @import '../../style/_mixins.scss';
 
 .loading {
-  @extend %space;
+  @extend %view;
   flex: 1;
-  vertical-align: middle;
 }
