@@ -32,7 +32,8 @@ library.add(
 );
 
 class HotCitiesApp extends App {
-  componentDidMount() {
+  constructor(props) {
+    super(props);
     ReactGA.initialize('UA-55404180-2');
   }
 
