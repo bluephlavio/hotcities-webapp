@@ -1,0 +1,15 @@
+{
+  "filename": "static/manifest.json",
+  "name": "Hot Cities • world hottest city, now.",
+  "short_name": "Hot Cities",
+  "description": "Global cities temperatures real-time monitor.",
+  "background_color": "#fff",
+  "theme_color": "#fc900c",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "192x192",
+      "type": "image/ico"
+    }
+  ]
+}

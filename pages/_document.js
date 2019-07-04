@@ -1,13 +1,12 @@
 import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
-import favicon from '../assets/favicon.ico';
+import favicon from '../static/favicon.ico';
 
 class HotCitiesDocument extends Document {
   render() {
     return (
       <html lang="en">
         <Head>
-          <title>Hot Cities • world hottest city, now.</title>
           <meta
             name="description"
             content="Hot Cities monitors world cities temperatures in real time from global weather services to determine the hottest one, right now."
@@ -19,6 +18,7 @@ class HotCitiesDocument extends Document {
             content="Hot Cities monitors world cities temperatures in real time from global weather services to determine the hottest one, right now."
           />
           <meta property="og:image" content={favicon} />
+          <link rel="manifest" href="/static/manifest.json" />
           <link href="https://fonts.googleapis.com/css?family=Quicksand:300" rel="stylesheet" />
           <link
             href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"

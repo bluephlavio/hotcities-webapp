@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Head from 'next/head';
 import fetch from 'isomorphic-unfetch';
 import ReactGA from 'react-ga';
 import Slideshow from '../components/Slideshow';
@@ -31,6 +32,9 @@ class Index extends Component {
     const { isLoading, record, city, photos } = this.state;
     return (
       <>
+        <Head>
+          <title>Hot Cities • world hottest city, now.</title>
+        </Head>
         <Slideshow photos={isLoading ? [] : photos} />
         <Panel title={() => formatNames(city.name, city.localname)} isLoading={isLoading}>
           {!isLoading && (
