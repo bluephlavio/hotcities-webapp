@@ -13,7 +13,7 @@ const Item = ({ value, icon }) => {
 };
 
 Item.propTypes = {
-  value: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   icon: PropTypes.string.isRequired
 };
 

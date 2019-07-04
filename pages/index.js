@@ -7,7 +7,7 @@ import Slideshow from '../components/Slideshow';
 import Panel from '../components/Panel';
 import Item from '../components/Item';
 import Thermometer from '../components/Thermometer';
-import { formatNames, formatTemp, formatCountry, formatCoords } from '../helpers/format';
+import { formatNames, formatCountry, formatCoords } from '../helpers/format';
 import config from '../config';
 
 const Title = ({ names, temp }) => (
@@ -57,7 +57,7 @@ class Index extends Component {
         >
           {!isLoading && (
             <>
-              <Item value={formatTemp(record.temp)} icon="thermometer-full" />
+              <Item value={city.population} icon="users" />
               <Item value={formatCountry(city.countryname, city.countrycode)} icon="globe" />
               <Item value={formatCoords({ lng: city.lng, lat: city.lat })} icon="map-marker" />
             </>
