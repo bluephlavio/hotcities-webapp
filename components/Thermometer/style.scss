@@ -1,0 +1,19 @@
+@import '../../style/_vars.scss';
+@import '../../style/_mixins.scss';
+
+.thermometer {
+  display: inline-block;
+  .temp {
+    font-size: 0.7em;
+  }
+  .meter {
+    height: 10px;
+    min-width: 100px;
+    border-right: 2px dashed $secondary-color;
+    display: flex;
+    align-items: stretch;
+    .level {
+      background-color: $accent-color;
+    }
+  }
+}

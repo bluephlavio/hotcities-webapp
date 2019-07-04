@@ -14,7 +14,7 @@ const Bar = ({ title, toggle, icon, isLoading }) => (
 );
 
 Bar.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
   toggle: PropTypes.func.isRequired,
   icon: PropTypes.string.isRequired,
   isLoading: PropTypes.bool.isRequired

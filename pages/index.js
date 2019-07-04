@@ -1,12 +1,27 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Head from 'next/head';
 import fetch from 'isomorphic-unfetch';
 import ReactGA from 'react-ga';
 import Slideshow from '../components/Slideshow';
 import Panel from '../components/Panel';
 import Item from '../components/Item';
+import Thermometer from '../components/Thermometer';
 import { formatNames, formatTemp, formatCountry, formatCoords } from '../helpers/format';
 import config from '../config';
+
+const Title = ({ names, temp }) => (
+  <div style={{ display: 'flex', alignItems: 'center', alignContent: 'space-between' }}>
+    <span style={{ flex: 0, whiteSpace: 'nowrap' }}>{names}</span>
+    <span style={{ width: '50px', textAlign: 'center' }}> • </span>
+    <Thermometer temp={temp} style={{ flex: 0 }} />
+  </div>
+);
+
+Title.propTypes = {
+  names: PropTypes.string.isRequired,
+  temp: PropTypes.number.isRequired
+};
 
 class Index extends Component {
   constructor(props) {
@@ -36,7 +51,10 @@ class Index extends Component {
           <title>Hot Cities • world hottest city, now.</title>
         </Head>
         <Slideshow photos={isLoading ? [] : photos} />
-        <Panel title={() => formatNames(city.name, city.localname)} isLoading={isLoading}>
+        <Panel
+          title={() => <Title names={formatNames(city.name, city.localname)} temp={record.temp} />}
+          isLoading={isLoading}
+        >
           {!isLoading && (
             <>
               <Item value={formatTemp(record.temp)} icon="thermometer-full" />
