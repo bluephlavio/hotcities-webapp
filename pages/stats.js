@@ -38,6 +38,11 @@ class Stats extends Component {
             name="description"
             content="Hot Cities collects statistics about global hottest cities and visualize them through maps and tables."
           />
+          <meta property="og:title" content="Hot Cities • Stats" />
+          <meta
+            property="og:description"
+            content="Hot Cities collects statistics about global hottest cities and visualize them through maps and tables."
+          />
         </Head>
         {isLoading ? <Loading /> : <Map data={data} />}
         <Panel title={() => 'Stats'} isLoading={isLoading}>

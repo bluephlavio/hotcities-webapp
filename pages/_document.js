@@ -13,6 +13,12 @@ class HotCitiesDocument extends Document {
             content="Hot Cities monitors world cities temperatures in real time from global weather services to determine the hottest one, right now."
           />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta property="og:title" content="Hot Cities • world hottest city, now." />
+          <meta
+            property="og:description"
+            content="Hot Cities monitors world cities temperatures in real time from global weather services to determine the hottest one, right now."
+          />
+          <meta property="og:image" content={favicon} />
           <link href="https://fonts.googleapis.com/css?family=Quicksand:300" rel="stylesheet" />
           <link
             href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"

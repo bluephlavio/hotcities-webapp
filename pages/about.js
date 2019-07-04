@@ -14,6 +14,8 @@ class AboutPage extends Component {
         <Head>
           <title>Hot Cities • About</title>
           <meta name="description" content="Info about Hot Cities project." />
+          <meta property="og:title" content="Hot Cities • About" />
+          <meta property="og:description" content="Info about Hot Cities project." />
         </Head>
         <About />
       </>
