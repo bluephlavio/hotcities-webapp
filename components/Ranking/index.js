@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { Table } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { formatNames, formatFracAsPerc, formatTemp } from '../../helpers/format';
+import {
+  formatNames,
+  formatFracAsPerc,
+  formatTemp
+} from '../../helpers/format';
 import style from './style.scss';
 
 class Ranking extends Component {
@@ -32,14 +36,24 @@ class Ranking extends Component {
               <th>#</th>
               <th>city</th>
               <th onClick={() => this.sortBy('score')}>
-                score {sortBy === 'score' ? <FontAwesomeIcon icon="circle" /> : ''}
+                score{' '}
+                {sortBy === 'score' ? <FontAwesomeIcon icon="circle" /> : ''}
               </th>
               <th onClick={() => this.sortBy('recordfrac')}>
-                record fraction {sortBy === 'recordfrac' ? <FontAwesomeIcon icon="circle" /> : ''}
+                record fraction{' '}
+                {sortBy === 'recordfrac' ? (
+                  <FontAwesomeIcon icon="circle" />
+                ) : (
+                  ''
+                )}
               </th>
               <th onClick={() => this.sortBy('recordtemp')}>
                 record temperature{' '}
-                {sortBy === 'recordtemp' ? <FontAwesomeIcon icon="circle" /> : ''}
+                {sortBy === 'recordtemp' ? (
+                  <FontAwesomeIcon icon="circle" />
+                ) : (
+                  ''
+                )}
               </th>
             </tr>
           </thead>
@@ -47,11 +61,17 @@ class Ranking extends Component {
             {_.chain(data)
               .sortBy(entry => -entry[sortBy])
               .map((entry, i) => {
-                const { name, localname, countrycode, recordfrac, recordtemp, score } = entry;
+                const {
+                  name,
+                  countrycode,
+                  recordfrac,
+                  recordtemp,
+                  score
+                } = entry;
                 return (
                   <tr key={name}>
                     <th scope="row">{i + 1}</th>
-                    <td>{`${formatNames(name, localname)} (${countrycode})`}</td>
+                    <td>{`${formatNames(entry)} (${countrycode})`}</td>
                     <td>{score.toFixed(2)}</td>
                     <td>{formatFracAsPerc(recordfrac)}</td>
                     <td>{formatTemp(recordtemp)}</td>
