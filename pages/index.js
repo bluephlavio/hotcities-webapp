@@ -7,14 +7,13 @@ import Slideshow from '../components/Slideshow';
 import Panel from '../components/Panel';
 import Item from '../components/Item';
 import Thermometer from '../components/Thermometer';
-import { formatNames, formatCountry, formatCoords } from '../helpers/format';
+import { formatNames, formatTemp, formatCountry, formatCoords } from '../helpers/format';
 import config from '../config';
 
 const Title = ({ names, temp }) => (
-  <div style={{ display: 'flex', alignItems: 'center', alignContent: 'space-between' }}>
-    <span style={{ flex: 0, whiteSpace: 'nowrap' }}>{names}</span>
-    <span style={{ width: '50px', textAlign: 'center' }}> • </span>
-    <Thermometer temp={temp} style={{ flex: 0 }} />
+  <div>
+    <div style={{ flex: 0, whiteSpace: 'nowrap' }}>{names}</div>
+    <Thermometer temp={temp} maxTemp={50} widthFactor={0.15} />
   </div>
 );
 
@@ -60,6 +59,7 @@ class Index extends Component {
               <Item value={city.population} icon="users" />
               <Item value={formatCountry(city.countryname, city.countrycode)} icon="globe" />
               <Item value={formatCoords({ lng: city.lng, lat: city.lat })} icon="map-marker" />
+              <Item value={formatTemp(record.temp)} icon="thermometer-full" />
             </>
           )}
         </Panel>

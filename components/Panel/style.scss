@@ -13,6 +13,9 @@
       flex: 1;
       color: $accent-color;
       font-size: $font-big;
+      @media (max-width: 320px) {
+        font-size: 1em;
+      }
     }
   }
   .details {

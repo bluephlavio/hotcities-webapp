@@ -2,17 +2,22 @@
 @import '../../style/_mixins.scss';
 
 .thermometer {
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   .temp {
-    font-size: 0.7em;
+    flex-wrap: nowrap;
+    font-size: 0.8em;
   }
   .meter {
-    height: 10px;
-    min-width: 100px;
-    border-right: 2px dashed $secondary-color;
+    @include shade($secondary-color);
+    height: 5px;
+    margin-top: 2px;
+    border-right: 2px solid $secondary-color;
     display: flex;
     align-items: stretch;
     .level {
+      justify-content: flex-start;
       background-color: $accent-color;
     }
   }
