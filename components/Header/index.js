@@ -7,7 +7,7 @@ import style from './style.scss';
 
 const Toggler = ({ toggle }) => (
   <button type="button" className="d-inline d-md-none" onClick={toggle}>
-    <FontAwesomeIcon icon="bars" />
+    <FontAwesomeIcon icon="bars" fixedWidth style={{ transform: 'translateY(-2px)' }} />
   </button>
 );
 
