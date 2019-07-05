@@ -8,18 +8,24 @@
     @extend %space;
     width: 100vw;
     display: flex;
+    align-items: center;
     align-content: space-between;
     h1 {
+      @extend %no-space;
       flex: 1;
       color: $accent-color;
       font-size: $font-big;
-      @media (max-width: 320px) {
-        font-size: 1em;
+      @media (max-width: $break-small) {
+        font-size: $font-medium;
       }
     }
   }
   .details {
     @extend %secondary;
     @extend %space;
+    font-size: $font-medium;
+    @media (max-width: $break-small) {
+      font-size: $font-small;
+    }
   }
 }
