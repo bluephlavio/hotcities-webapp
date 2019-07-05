@@ -17,16 +17,17 @@ import {
 } from '../helpers/format';
 import config from '../config';
 
-const Title = ({ names, temp }) => (
+const Title = ({ names, temp, maxTemp }) => (
   <div>
     <div style={{ flex: 0, whiteSpace: 'nowrap' }}>{names}</div>
-    <Thermometer temp={temp} maxTemp={50} widthFactor={0.15} />
+    <Thermometer temp={temp} maxTemp={maxTemp} widthFactor={0.15} />
   </div>
 );
 
 Title.propTypes = {
   names: PropTypes.string.isRequired,
-  temp: PropTypes.number.isRequired
+  temp: PropTypes.number.isRequired,
+  maxTemp: PropTypes.number.isRequired
 };
 
 class Index extends Component {
@@ -53,11 +54,28 @@ class Index extends Component {
     const { data: stats } = await fetch(`${api}/stats/${geonameid}`).then(res =>
       res.json()
     );
-    this.setState({ isLoading: false, record, city, photos, stats });
+    const { data: allTimeRecord } = await fetch(`${api}/records/record`).then(
+      res => res.json()
+    );
+    this.setState({
+      isLoading: false,
+      record,
+      city,
+      photos,
+      stats,
+      allTimeRecord
+    });
   }
 
   render() {
-    const { isLoading, record, city, photos, stats } = this.state;
+    const {
+      isLoading,
+      record,
+      city,
+      photos,
+      stats,
+      allTimeRecord
+    } = this.state;
     return (
       <>
         <Head>
@@ -65,7 +83,13 @@ class Index extends Component {
         </Head>
         <Slideshow photos={isLoading ? [] : photos} />
         <Panel
-          title={() => <Title names={formatNames(city)} temp={record.temp} />}
+          title={() => (
+            <Title
+              names={formatNames(city)}
+              temp={record.temp}
+              maxTemp={allTimeRecord.temp}
+            />
+          )}
           isLoading={isLoading}
         >
           {!isLoading && (

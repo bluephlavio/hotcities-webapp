@@ -7,7 +7,10 @@ const Thermometer = ({ temp, maxTemp, widthFactor }) => (
   <div className={style.thermometer}>
     <span className={style.temp}>{formatTemp(temp)}</span>
     <span className={style.meter} style={{ width: `${widthFactor * 100}%` }}>
-      <div className={style.level} style={{ width: `${(temp / maxTemp) * 100}%` }} />
+      <div
+        className={style.level}
+        style={{ width: `${(temp / maxTemp) * 100}%` }}
+      />
     </span>
   </div>
 );
