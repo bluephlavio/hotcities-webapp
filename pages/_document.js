@@ -26,6 +26,13 @@ class HotCitiesDocument extends Document {
             href="https://fonts.googleapis.com/css?family=Quicksand:300"
             rel="stylesheet"
           />
+<<<<<<< HEAD
+=======
+          <link
+            href="https://use.fontawesome.com/releases/v5.9.0/css/svg-with-js.css"
+            rel="stylesheet"
+          />
+>>>>>>> master
           <link
             href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
             rel="stylesheet"

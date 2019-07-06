@@ -1,7 +1,8 @@
 import React from 'react';
 import App, { Container } from 'next/app';
 import ReactGA from 'react-ga';
-import { library } from '@fortawesome/fontawesome-svg-core';
+import { library as faLib } from '@fortawesome/fontawesome-svg-core';
+import '@fortawesome/fontawesome-svg-core/styles.css';
 import {
   faBars,
   faAngleUp,
@@ -22,7 +23,7 @@ import {
 import Layout from '../components/Layout';
 import '../style/global.scss';
 
-library.add(
+faLib.add(
   faBars,
   faAngleUp,
   faAngleDown,

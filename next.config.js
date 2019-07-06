@@ -1,13 +1,16 @@
 const withSass = require('@zeit/next-sass');
+const withCss = require('@zeit/next-css');
 const withImages = require('next-images');
 
 module.exports = withImages(
-  withSass({
-    cssModules: true,
-    exportPathMap: () => ({
-      '/': { page: '/' },
-      '/stats': { page: '/stats' },
-      '/about': { page: '/about' }
+  withCss(
+    withSass({
+      cssModules: true,
+      exportPathMap: () => ({
+        '/': { page: '/' },
+        '/stats': { page: '/stats' },
+        '/about': { page: '/about' }
+      })
     })
-  })
+  )
 );
