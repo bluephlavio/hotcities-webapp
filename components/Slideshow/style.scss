@@ -16,6 +16,9 @@
     @extend %secondary;
     flex: 0;
     font-size: $font-small;
+    @media (max-width: $break-small) {
+      font-size: $font-tiny;
+    }
   }
 }
 

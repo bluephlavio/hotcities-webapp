@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Carousel, CarouselItem, CarouselControl, CarouselIndicators } from 'reactstrap';
+import {
+  Carousel,
+  CarouselItem,
+  CarouselControl,
+  CarouselIndicators
+} from 'reactstrap';
 import style from './style.scss';
 
 const Attribution = ({ photo }) => {
@@ -88,15 +93,26 @@ class Slideshow extends Component {
     const slides = photos.map(photo => {
       const { src } = photo;
       return (
-        <CarouselItem onExiting={this.onExiting} onExited={this.onExited} key={src}>
-          <div className={style.photo} style={{ backgroundImage: `url(${src})` }} />
+        <CarouselItem
+          onExiting={this.onExiting}
+          onExited={this.onExited}
+          key={src}
+        >
+          <div
+            className={style.photo}
+            style={{ backgroundImage: `url(${src})` }}
+          />
         </CarouselItem>
       );
     });
 
     return (
       <div className={style.slideshow}>
-        <Carousel activeIndex={activeIndex} next={this.next} previous={this.previous}>
+        <Carousel
+          activeIndex={activeIndex}
+          next={this.next}
+          previous={this.previous}
+        >
           <CarouselIndicators
             items={photos}
             activeIndex={activeIndex}
@@ -108,7 +124,11 @@ class Slideshow extends Component {
             directionText="Previous"
             onClickHandler={this.previous}
           />
-          <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
+          <CarouselControl
+            direction="next"
+            directionText="Next"
+            onClickHandler={this.next}
+          />
         </Carousel>
         {activePhoto && <Attribution photo={activePhoto} />}
       </div>

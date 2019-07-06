@@ -19,6 +19,9 @@
         @extend %no-space;
         @include muted($secondary-color);
         font-size: $font-medium;
+        @media (max-width: $break-small) {
+          font-size: $font-small;
+        }
       }
     }
     .nav {
@@ -28,7 +31,10 @@
         margin-top: 10px;
         a {
           text-decoration: none;
-          font-size: 1em;
+          font-size: $font-medium;
+          @media (max-width: $break-small) {
+            font-size: $font-small;
+          }
         }
       }
     }
