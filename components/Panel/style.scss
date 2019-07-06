@@ -6,7 +6,6 @@
   @extend %primary;
   .bar {
     @extend %space;
-    width: 100vw;
     display: flex;
     align-items: center;
     align-content: space-between;

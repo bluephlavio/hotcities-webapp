@@ -8,7 +8,7 @@ const Bar = ({ title, toggle, icon, isLoading }) => (
   <div className={style.bar}>
     <h1>{title}</h1>
     <button type="button" onClick={toggle}>
-      <FontAwesomeIcon icon={icon} spin={isLoading} />
+      <FontAwesomeIcon icon={icon} spin={isLoading} fixedWidth />
     </button>
   </div>
 );
@@ -20,7 +20,9 @@ Bar.propTypes = {
   isLoading: PropTypes.bool.isRequired
 };
 
-const Details = ({ children }) => <div className={style.details}>{children}</div>;
+const Details = ({ children }) => (
+  <div className={style.details}>{children}</div>
+);
 
 Details.propTypes = {
   children: PropTypes.node.isRequired
@@ -59,7 +61,9 @@ class Panel extends Component {
           icon={isLoading ? 'spinner' : isOpen ? 'angle-down' : 'angle-up'}
           isLoading={isLoading}
         />
-        <Collapse isOpen={isOpen}>{!isLoading && <Details>{children}</Details>}</Collapse>
+        <Collapse isOpen={isOpen}>
+          {!isLoading && <Details>{children}</Details>}
+        </Collapse>
       </div>
     );
   }

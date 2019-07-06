@@ -2,7 +2,12 @@
 @import './_anim.scss';
 
 @mixin shade($color) {
-  background: linear-gradient(to left, rgba($color, 0), rgba($color, 1), rgba($color, 0));
+  background: linear-gradient(
+    to left,
+    rgba($color, 0),
+    rgba($color, 1),
+    rgba($color, 0)
+  );
 }
 @mixin muted($color) {
   color: rgba($color, 0.5);

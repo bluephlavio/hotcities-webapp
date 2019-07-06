@@ -6,8 +6,8 @@ import style from './style.scss';
 const Item = ({ value, icon }) => {
   return (
     <div className={style.item}>
-      <FontAwesomeIcon icon={icon} fixedWidth className={style.icon} />
       <span className={style.value}>{value}</span>
+      <FontAwesomeIcon icon={icon} fixedWidth className={style.icon} />
     </div>
   );
 };

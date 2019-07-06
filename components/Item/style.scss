@@ -2,11 +2,16 @@
 @import '../../style/mixins.scss';
 
 .item {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  transform: translateX(16px);
   .icon {
-    width: 75px;
-    border-right: 1px dashed $accent-color;
+    width: 60px;
+    border-left: 1px dashed $accent-color;
   }
   .value {
     padding: 0 10px;
+    text-align: right;
   }
 }
