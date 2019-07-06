@@ -1,13 +1,25 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
-import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink } from 'reactstrap';
+import {
+  Navbar,
+  NavbarBrand,
+  NavbarToggler,
+  Collapse,
+  Nav,
+  NavItem,
+  NavLink
+} from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import style from './style.scss';
 
 const Toggler = ({ toggle }) => (
   <button type="button" className="d-inline d-md-none" onClick={toggle}>
-    <FontAwesomeIcon icon="bars" fixedWidth style={{ transform: 'translateY(-2px)' }} />
+    <FontAwesomeIcon
+      icon="bars"
+      fixedWidth
+      style={{ transform: 'translateY(-2px)' }}
+    />
   </button>
 );
 
@@ -50,12 +62,16 @@ class Header extends Component {
                 </NavLink>
               </NavItem>
               <NavItem className={style.navItem}>
-                <NavLink tag={props => <Link href="/stats">{props.children}</Link>}>
+                <NavLink
+                  tag={props => <Link href="/stats">{props.children}</Link>}
+                >
                   <a href="#/">Stats</a>
                 </NavLink>
               </NavItem>
               <NavItem className={style.navItem}>
-                <NavLink tag={props => <Link href="/about">{props.children}</Link>}>
+                <NavLink
+                  tag={props => <Link href="/about">{props.children}</Link>}
+                >
                   <a href="#/">About</a>
                 </NavLink>
               </NavItem>
