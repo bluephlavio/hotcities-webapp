@@ -13,7 +13,12 @@ import {
   faCircle,
   faSpinner
 } from '@fortawesome/free-solid-svg-icons';
-import { faTwitter, faInstagram, faFacebook, faGithub } from '@fortawesome/free-brands-svg-icons';
+import {
+  faTwitter,
+  faInstagram,
+  faFacebook,
+  faGithub
+} from '@fortawesome/free-brands-svg-icons';
 import Layout from '../components/Layout';
 import '../style/global.scss';
 
