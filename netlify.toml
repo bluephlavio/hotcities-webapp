@@ -1,0 +1,9 @@
+[[redirects]]
+	from = "https://api.hotcities.world"
+	to = "https://ib1335tybj.execute-api.eu-west-2.amazonaws.com/prod/"
+	status = 200
+
+[[redirects]]
+	from = "https://www.hotcities.world/api"
+	to = "https://ib1335tybj.execute-api.eu-west-2.amazonaws.com/prod/"
+	status = 200
