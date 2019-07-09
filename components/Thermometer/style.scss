@@ -10,7 +10,11 @@
     font-size: 0.8em;
   }
   .meter {
-    @include thermometer($secondary-color);
+    background: linear-gradient(
+      to right,
+      rgba($secondary-color, 1),
+      rgba($secondary-color, 0)
+    );
     height: 5px;
     margin-top: 2px;
     border-right: 2px solid $secondary-color;
