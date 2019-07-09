@@ -17,16 +17,22 @@ import {
 } from '../helpers/format';
 import config from '../config';
 
-const Title = ({ names, temp, maxTemp }) => (
+const Title = ({ names, temp, minTemp, maxTemp }) => (
   <div>
     <div style={{ flex: 0, whiteSpace: 'nowrap' }}>{names}</div>
-    <Thermometer temp={temp} maxTemp={maxTemp} widthFactor={0.15} />
+    <Thermometer
+      temp={temp}
+      minTemp={minTemp}
+      maxTemp={maxTemp}
+      widthFactor={0.15}
+    />
   </div>
 );
 
 Title.propTypes = {
   names: PropTypes.string.isRequired,
   temp: PropTypes.number.isRequired,
+  minTemp: PropTypes.number.isRequired,
   maxTemp: PropTypes.number.isRequired
 };
 
@@ -41,29 +47,10 @@ class Index extends Component {
   async componentDidMount() {
     ReactGA.pageview('/');
     const { api } = config;
-    const { data: record } = await fetch(`${api}/records/current`).then(res =>
-      res.json()
-    );
-    const { geonameid } = record;
-    const { data: city } = await fetch(`${api}/cities/${geonameid}`).then(res =>
-      res.json()
-    );
-    const { data: photos } = await fetch(
-      `${api}/photos?geonameid=${geonameid}&limit=3`
-    ).then(res => res.json());
-    const { data: stats } = await fetch(`${api}/stats/${geonameid}`).then(res =>
-      res.json()
-    );
-    const { data: allTimeRecord } = await fetch(`${api}/records/record`).then(
-      res => res.json()
-    );
+    const data = await fetch(`${api}/web/live`).then(res => res.json());
     this.setState({
       isLoading: false,
-      record,
-      city,
-      photos,
-      stats,
-      allTimeRecord
+      ...data
     });
   }
 
@@ -74,7 +61,8 @@ class Index extends Component {
       city,
       photos,
       stats,
-      allTimeRecord
+      maxTemp,
+      minTemp
     } = this.state;
     return (
       <>
@@ -87,7 +75,8 @@ class Index extends Component {
             <Title
               names={formatNames(city)}
               temp={record.temp}
-              maxTemp={allTimeRecord.temp}
+              minTemp={minTemp}
+              maxTemp={maxTemp}
             />
           )}
           isLoading={isLoading}
