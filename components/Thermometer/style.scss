@@ -10,7 +10,7 @@
     font-size: 0.8em;
   }
   .meter {
-    @include shade($secondary-color);
+    @include thermometer($secondary-color);
     height: 5px;
     margin-top: 2px;
     border-right: 2px solid $secondary-color;

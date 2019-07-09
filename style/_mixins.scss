@@ -12,6 +12,9 @@
 @mixin muted($color) {
   color: rgba($color, 0.5);
 }
+@mixin thermometer($color) {
+  background: linear-gradient(to right, rgba($color, 1), rgba($color, 0));
+}
 
 %space {
   margin: 0;

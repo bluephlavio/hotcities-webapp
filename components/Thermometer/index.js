@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { formatTemp } from '../../helpers/format';
 import style from './style.scss';
 
-const Thermometer = ({ temp, maxTemp, widthFactor }) => (
+const Thermometer = ({ temp, minTemp, maxTemp, widthFactor }) => (
   <div className={style.thermometer}>
     <span className={style.temp}>{formatTemp(temp)}</span>
     <span className={style.meter} style={{ width: `${widthFactor * 100}%` }}>
       <div
         className={style.level}
-        style={{ width: `${(temp / maxTemp) * 100}%` }}
+        style={{ width: `${((temp - minTemp) / (maxTemp - minTemp)) * 100}%` }}
       />
     </span>
   </div>
@@ -17,6 +17,7 @@ const Thermometer = ({ temp, maxTemp, widthFactor }) => (
 
 Thermometer.propTypes = {
   temp: PropTypes.number.isRequired,
+  minTemp: PropTypes.number.isRequired,
   maxTemp: PropTypes.number.isRequired,
   widthFactor: PropTypes.number
 };
