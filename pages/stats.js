@@ -22,9 +22,9 @@ class Stats extends Component {
 
   async componentDidMount() {
     const { api } = config;
-    const { data } = await fetch(`${api}/stats?extra=name,localname,countrycode,lng,lat`).then(
-      res => res.json()
-    );
+    const { data } = await fetch(
+      `${api}/stats?extra=name,localname,countrycode,lng,lat`
+    ).then(res => res.json());
     this.setState({ isLoading: false, data });
   }
 
@@ -42,6 +42,10 @@ class Stats extends Component {
           <meta
             property="og:description"
             content="Hot Cities collects statistics about global hottest cities and visualize them through maps and tables."
+          />
+          <link
+            href="https://api.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css"
+            rel="stylesheet"
           />
         </Head>
         {isLoading ? <Loading /> : <Map data={data} />}
