@@ -22,7 +22,6 @@ import {
   faGithub
 } from '@fortawesome/free-brands-svg-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'typeface-quicksand';
 import Layout from '../components/Layout';
 
 faLib.add(
