@@ -10,6 +10,68 @@ import {
 } from '../../helpers/format';
 import theme from '../../style/theme';
 
+const Header = ({ title, selected, onClick }) => (
+  <th onClick={onClick}>
+    <div className="header">
+      <FontAwesomeIcon icon={[selected ? 'fas' : 'far', 'circle']} />
+      <span className="sep" />
+      <span className="title">{title}</span>
+    </div>
+    <style jsx>
+      {`
+        .header {
+          display: flex;
+          flex-wrap: nowrap;
+          align-items: center;
+        }
+        .title {
+          white-space: nowrap;
+        }
+        .sep {
+          width: 3px;
+        }
+      `}
+    </style>
+  </th>
+);
+
+Header.propTypes = {
+  title: PropTypes.string.isRequired,
+  selected: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired
+};
+
+const Row = ({ index, name, recordfrac, recordtemp, score }) => (
+  <tr>
+    <th scope="row">{index}</th>
+    <td className="name">{name}</td>
+    <td className="score">{score.toFixed(2)}</td>
+    <td className="recordfrac">{formatFracAsPerc(recordfrac)}</td>
+    <td className="recordtemp">{formatTemp(recordtemp)}</td>
+    <style jsx>
+      {`
+        td {
+          color: ${theme.palette.accent};
+          white-space: wrap;
+        }
+        .score,
+        .recordfrac,
+        .recordtemp {
+          white-space: nowrap;
+        }
+      `}
+    </style>
+  </tr>
+);
+
+Row.propTypes = {
+  index: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  score: PropTypes.number.isRequired,
+  recordfrac: PropTypes.number.isRequired,
+  recordtemp: PropTypes.number.isRequired
+};
+
 class Ranking extends Component {
   constructor(props) {
     super(props);
@@ -35,26 +97,21 @@ class Ranking extends Component {
             <tr>
               <th>#</th>
               <th>city</th>
-              <th onClick={() => this.sortBy('score')}>
-                score{' '}
-                {sortBy === 'score' ? <FontAwesomeIcon icon="circle" /> : ''}
-              </th>
-              <th onClick={() => this.sortBy('recordfrac')}>
-                record fraction{' '}
-                {sortBy === 'recordfrac' ? (
-                  <FontAwesomeIcon icon="circle" />
-                ) : (
-                  ''
-                )}
-              </th>
-              <th onClick={() => this.sortBy('recordtemp')}>
-                record temperature{' '}
-                {sortBy === 'recordtemp' ? (
-                  <FontAwesomeIcon icon="circle" />
-                ) : (
-                  ''
-                )}
-              </th>
+              <Header
+                title="score"
+                selected={sortBy === 'score'}
+                onClick={() => this.sortBy('score')}
+              />
+              <Header
+                title="record %"
+                selected={sortBy === 'recordfrac'}
+                onClick={() => this.sortBy('recordfrac')}
+              />
+              <Header
+                title="max °C/°F"
+                selected={sortBy === 'recordtemp'}
+                onClick={() => this.sortBy('recordtemp')}
+              />
             </tr>
           </thead>
           <tbody>
@@ -69,18 +126,27 @@ class Ranking extends Component {
                   score
                 } = entry;
                 return (
-                  <tr key={name}>
-                    <th scope="row">{i + 1}</th>
-                    <td>{`${formatNames(entry)} (${countrycode})`}</td>
-                    <td>{score.toFixed(2)}</td>
-                    <td>{formatFracAsPerc(recordfrac)}</td>
-                    <td>{formatTemp(recordtemp)}</td>
-                  </tr>
+                  <Row
+                    key={name}
+                    index={i + 1}
+                    name={`${formatNames(entry)} (${countrycode})`}
+                    score={score}
+                    recordfrac={recordfrac}
+                    recordtemp={recordtemp}
+                  />
                 );
               })
               .value()}
           </tbody>
         </Table>
+        <style jsx global>
+          {`
+            th {
+              color: ${theme.palette.accent};
+              font-weight: 500;
+            }
+          `}
+        </style>
         <style jsx>
           {`
             .ranking {
@@ -88,10 +154,6 @@ class Ranking extends Component {
               color: ${theme.palette.accent};
               height: 160px;
               overflow: auto;
-            }
-            td,
-            th {
-              color: ${theme.palette.accent};
             }
           `}
         </style>
