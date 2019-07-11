@@ -21,7 +21,6 @@ import {
   faGithub
 } from '@fortawesome/free-brands-svg-icons';
 import Layout from '../components/Layout';
-import '../style/global.scss';
 
 faLib.add(
   faBars,

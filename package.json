@@ -30,7 +30,8 @@
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
     "react-ga": "^2.6.0",
-    "reactstrap": "^8.0.0"
+    "reactstrap": "^8.0.0",
+    "styled-jsx": "^3.2.1"
   },
   "devDependencies": {
     "eslint": "^5.16.0",

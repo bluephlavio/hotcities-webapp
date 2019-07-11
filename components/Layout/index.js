@@ -2,19 +2,43 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Header from '../Header';
 import Footer from '../Footer';
-import style from './style.scss';
+import globalStyles from '../../style/global';
 
 const Layout = props => {
   const { children } = props;
   return (
-    <div className={style.layout}>
-      <div className={style.header}>
+    <div className="layout">
+      <div className="header">
         <Header />
       </div>
-      <div className={style.main}>{children}</div>
-      <div className={style.footer}>
+      <div className="main">{children}</div>
+      <div className="footer">
         <Footer />
       </div>
+      <style jsx>
+        {`
+          .layout {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+          }
+          .header {
+            flex: 0;
+          }
+          .main {
+            flex: 1;
+            flex-basis: auto;
+            display: flex;
+            flex-direction: column;
+          }
+          .footer {
+            flex: 0;
+          }
+        `}
+      </style>
+      <style jsx global>
+        {globalStyles}
+      </style>
     </div>
   );
 };

@@ -8,7 +8,7 @@ import {
   formatFracAsPerc,
   formatTemp
 } from '../../helpers/format';
-import style from './style.scss';
+import theme from '../../style/theme';
 
 class Ranking extends Component {
   constructor(props) {
@@ -29,7 +29,7 @@ class Ranking extends Component {
     const { data } = this.props;
     const { sortBy } = this.state;
     return (
-      <div className={style.ranking}>
+      <div className="ranking">
         <Table size="sm" hover>
           <thead>
             <tr>
@@ -81,6 +81,20 @@ class Ranking extends Component {
               .value()}
           </tbody>
         </Table>
+        <style jsx>
+          {`
+            .ranking {
+              background-color: ${theme.palette.primary};
+              color: ${theme.palette.accent};
+              height: 160px;
+              overflow: auto;
+            }
+            td,
+            th {
+              color: ${theme.palette.accent};
+            }
+          `}
+        </style>
       </div>
     );
   }

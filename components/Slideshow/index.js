@@ -6,12 +6,12 @@ import {
   CarouselControl,
   CarouselIndicators
 } from 'reactstrap';
-import style from './style.scss';
+import theme from '../../style/theme';
 
 const Attribution = ({ photo }) => {
   const { url, title, owner, license } = photo;
   return (
-    <div className={style.attribution}>
+    <div className="attribution">
       <a href={url} rel="noopener noreferrer" target="_blank">
         {title || 'Untitled'}
       </a>
@@ -23,6 +23,14 @@ const Attribution = ({ photo }) => {
       <a href={license.url} rel="noopener noreferrer" target="_blank">
         {license.name}
       </a>
+      <style jsx>
+        {`
+          .attribution {
+            flex: 0;
+            font-size: ${theme.font.size.tiny};
+          }
+        `}
+      </style>
     </div>
   );
 };
@@ -98,16 +106,25 @@ class Slideshow extends Component {
           onExited={this.onExited}
           key={src}
         >
-          <div
-            className={style.photo}
-            style={{ backgroundImage: `url(${src})` }}
-          />
+          <div className="photo" style={{ backgroundImage: `url(${src})` }} />
+          <style jsx>
+            {`
+              .photo {
+                flex: 1;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-attachment: fixed;
+                filter: grayscale(1);
+              }
+            `}
+          </style>
         </CarouselItem>
       );
     });
 
     return (
-      <div className={style.slideshow}>
+      <div className="slideshow">
         <Carousel
           activeIndex={activeIndex}
           next={this.next}
@@ -131,6 +148,34 @@ class Slideshow extends Component {
           />
         </Carousel>
         {activePhoto && <Attribution photo={activePhoto} />}
+        <style jsx>
+          {`
+            .slideshow {
+              flex: 1;
+              display: flex;
+              flex-direction: column;
+              min-height: 250px;
+              animation: fadein 2s;
+              background-color: ${theme.palette.secondary};
+            }
+          `}
+        </style>
+        <style jsx global>
+          {`
+            .carousel,
+            .carousel-inner,
+            .carousel-item.active {
+              flex: 1;
+              display: flex;
+              flex-direction: column;
+            }
+            .carousel-indicators li {
+              width: 10px;
+              height: 10px;
+              border-radius: 100%;
+            }
+          `}
+        </style>
       </div>
     );
   }

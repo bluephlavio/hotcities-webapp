@@ -1,13 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import style from './style.scss';
+import theme from '../../style/theme';
 
 const Item = ({ value, icon }) => {
   return (
-    <div className={style.item}>
-      <span className={style.value}>{value}</span>
-      <FontAwesomeIcon icon={icon} fixedWidth className={style.icon} />
+    <div className="item">
+      <span className="value">{value}</span>
+      <FontAwesomeIcon icon={icon} fixedWidth className="icon" />
+      <style jsx>
+        {`
+          .item {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+          }
+          .icon {
+            width: 60px;
+            border-left: 1px dashed ${theme.palette.accent};
+          }
+          .value {
+            padding: 0 10px;
+            text-align: right;
+          }
+        `}
+      </style>
     </div>
   );
 };

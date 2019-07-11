@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import style from './style.scss';
+import theme from '../../style/theme';
 
 const SocialButton = ({ href, icon }) => (
   <button type="button" className="btn btn-social-icon">
@@ -17,9 +17,9 @@ SocialButton.propTypes = {
 };
 
 const Footer = () => (
-  <div className={style.footer}>
+  <div className="footer">
     <hr />
-    <div className={style.social}>
+    <div className="social">
       <SocialButton
         href="https://twitter.com/intent/user?screen_name=hotcitiesworld"
         icon="twitter"
@@ -37,6 +37,21 @@ const Footer = () => (
         icon="github"
       />
     </div>
+    <style jsx>
+      {`
+        .footer {
+          background-color: ${theme.palette.primary};
+          color: ${theme.palette.accent};
+        }
+
+        .social {
+          text-align: center;
+          margin: 0;
+          border: 0;
+          padding: ${theme.dim.padding};
+        }
+      `}
+    </style>
   </div>
 );
 

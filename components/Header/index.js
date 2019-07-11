@@ -11,15 +11,18 @@ import {
   NavLink
 } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import style from './style.scss';
+import theme from '../../style/theme';
 
 const Toggler = ({ toggle }) => (
-  <button type="button" className="d-inline d-md-none" onClick={toggle}>
-    <FontAwesomeIcon
-      icon="bars"
-      fixedWidth
-      style={{ transform: 'translateY(-2px)' }}
-    />
+  <button type="button" className="toggler d-inline d-md-none" onClick={toggle}>
+    <FontAwesomeIcon icon="bars" fixedWidth />
+    <style jsx>
+      {`
+        .toggler {
+          transform: translateY(-2px);
+        }
+      `}
+    </style>
   </button>
 );
 
@@ -47,28 +50,28 @@ class Header extends Component {
   render() {
     const { isOpen } = this.state;
     return (
-      <div className={style.header}>
-        <Navbar light expand="md" className={style.navbar}>
-          <NavbarBrand href="/" className={style.brand}>
-            <h1 className={style.title}>HOT CITIES</h1>
-            <p className={style.motto}>world&#39;s hottest city, now</p>
+      <div className="header">
+        <Navbar light expand="md">
+          <NavbarBrand href="/">
+            <h1 className="title">HOT CITIES</h1>
+            <p className="motto">world&#39;s hottest city, now</p>
           </NavbarBrand>
           <NavbarToggler tag={() => <Toggler toggle={this.toggle} />} />
           <Collapse isOpen={isOpen} navbar>
-            <Nav className={`ml-auto ${style.nav}`} navbar>
-              <NavItem className={style.navItem}>
+            <Nav navbar>
+              <NavItem>
                 <NavLink tag={props => <Link href="/">{props.children}</Link>}>
-                  <a href="#/">Home</a>
+                  <a href="#/">Live</a>
                 </NavLink>
               </NavItem>
-              <NavItem className={style.navItem}>
+              <NavItem>
                 <NavLink
                   tag={props => <Link href="/stats">{props.children}</Link>}
                 >
                   <a href="#/">Stats</a>
                 </NavLink>
               </NavItem>
-              <NavItem className={style.navItem}>
+              <NavItem>
                 <NavLink
                   tag={props => <Link href="/about">{props.children}</Link>}
                 >
@@ -79,6 +82,56 @@ class Header extends Component {
           </Collapse>
         </Navbar>
         <hr />
+        <style jsx global>
+          {`
+            .navbar {
+              display: flex;
+              flex-direction: row;
+              align-items: flex-end;
+              align-content: flex-end;
+            }
+            .navbar-brand {
+              margin: 0;
+              padding: 0;
+            }
+            .navbar-collapse {
+              display: flex;
+            }
+            .navbar-nav {
+              transform: translateY(-2px);
+              flex: 1;
+              display: flex;
+              justify-content: flex-end;
+            }
+            .nav-item {
+              margin-top: 10px;
+              margin-right: 10px;
+            }
+            .nav-item a {
+              text-decoration: none;
+              font-size: ${theme.font.size.medium};
+            }
+          `}
+        </style>
+        <style jsx>
+          {`
+            .title {
+              margin: 0;
+              color: ${theme.palette.accent};
+              font-size: ${theme.font.size.big};
+            }
+            .motto {
+              margin: 0;
+              color: ${theme.palette.secondary}88;
+              font-size: ${theme.font.size.medium};
+            }
+            @media (max-width: ${theme.dim.break.small}) {
+              .motto {
+                font-size: ${theme.font.size.small};
+              }
+            }
+          `}
+        </style>
       </div>
     );
   }

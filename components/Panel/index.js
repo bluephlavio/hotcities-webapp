@@ -2,14 +2,34 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Collapse } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import style from './style.scss';
+import theme from '../../style/theme';
 
 const Bar = ({ title, toggle, icon, isLoading }) => (
-  <div className={style.bar}>
+  <div className="bar">
     <h1>{title}</h1>
     <button type="button" onClick={toggle}>
       <FontAwesomeIcon icon={icon} spin={isLoading} fixedWidth />
     </button>
+    <style jsx>
+      {`
+        .bar {
+          margin: 0;
+          border: 0;
+          padding: ${theme.dim.padding};
+          display: flex;
+          align-items: center;
+          align-content: space-between;
+        }
+        h1 {
+          margin: 0;
+          border: 0;
+          padding: 0;
+          flex: 1;
+          color: ${theme.palette.accent};
+          font-size: ${theme.font.size.big};
+        }
+      `}
+    </style>
   </div>
 );
 
@@ -21,7 +41,29 @@ Bar.propTypes = {
 };
 
 const Details = ({ children }) => (
-  <div className={style.details}>{children}</div>
+  <div className="details">
+    {children}
+    <style jsx>
+      {`
+        .details {
+          margin: 0;
+          border: 0;
+          padding: ${theme.dim.padding};
+          background-color: ${theme.palette.primary};
+          color: ${theme.palette.accent};
+          font-size: ${theme.font.size.medium};
+        }
+
+        .details a {
+          color: rgba(${theme.palette.secondary}, 0.5);
+        }
+
+        .details a:hover {
+          color: ${theme.palette.accent};
+        }
+      `}
+    </style>
+  </div>
 );
 
 Details.propTypes = {
@@ -49,7 +91,7 @@ class Panel extends Component {
     const { children, title, isLoading } = this.props;
     return (
       <div
-        className={style.panel}
+        className="panel"
         onMouseOver={() => this.setState({ isOpen: true })}
         onFocus={() => null}
         onMouseOut={() => this.setState({ isOpen: false })}
@@ -64,6 +106,15 @@ class Panel extends Component {
         <Collapse isOpen={isOpen}>
           {!isLoading && <Details>{children}</Details>}
         </Collapse>
+        <style jsx>
+          {`
+            .panel {
+              flex: 0;
+              background-color: ${theme.palette.primary};
+              color: ${theme.palette.accent};
+            }
+          `}
+        </style>
       </div>
     );
   }

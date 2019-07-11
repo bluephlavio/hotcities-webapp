@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import mapboxgl from 'mapbox-gl';
 import { getLayer } from './helpers';
 import config from '../../config';
-import style from './style.scss';
+import theme from '../../style/theme';
 
 const {
   mapbox: { accessToken, mapstyle }
@@ -34,7 +34,22 @@ class Map extends Component {
   }
 
   render() {
-    return <div className={style.map} ref={this.containerRef} />;
+    return (
+      <div className="map" ref={this.containerRef}>
+        <style jsx>
+          {`
+            .map {
+              flex: 1;
+              display: flex;
+              flex-direction: column;
+              min-height: 250px;
+              animation: fadein 2s;
+              background-color: ${theme.palette.secondary};
+            }
+          `}
+        </style>
+      </div>
+    );
   }
 }
 
