@@ -1,6 +1,6 @@
 const theme = {
   font: {
-    family: '"Quicksand", sans-serif',
+    family: 'Quicksand, sans-serif',
     size: {
       tiny: '0.6em',
       small: '0.8em',

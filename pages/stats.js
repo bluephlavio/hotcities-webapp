@@ -6,6 +6,7 @@ import Panel from '../components/Panel';
 import Ranking from '../components/Ranking';
 import Loading from '../components/Loading';
 import config from '../config';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 const Map = dynamic(() => import('../components/Map'), {
   ssr: false,
@@ -43,10 +44,10 @@ class Stats extends Component {
             property="og:description"
             content="Hot Cities collects statistics about global hottest cities and visualize them through maps and tables."
           />
-          <link
+          {/* <link
             href="https://api.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css"
             rel="stylesheet"
-          />
+          /> */}
         </Head>
         {isLoading ? <Loading /> : <Map data={data} />}
         <Panel title={() => 'Stats'} isLoading={isLoading}>

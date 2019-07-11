@@ -17,6 +17,7 @@ export default css.global`
     border: 0;
     padding: 0;
     font-family: ${theme.font.family};
+    font-weight: 300;
     font-size: ${theme.font.size.medium};
   }
 
@@ -24,6 +25,14 @@ export default css.global`
     body {
       font-size: ${theme.font.size.small};
     }
+  }
+
+  h1 {
+    font-weight: 300;
+  }
+
+  th {
+    font-weight: 400;
   }
 
   a {

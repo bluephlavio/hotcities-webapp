@@ -16,22 +16,23 @@
     "@fortawesome/react-fontawesome": "^0.1.4",
     "@urbica/react-map-gl": "^1.6.1",
     "@zeit/next-css": "^1.0.1",
-    "@zeit/next-sass": "^1.0.1",
     "bootstrap": "^4.3.1",
     "formatcoords": "^1.1.3",
     "geojson": "^0.5.0",
     "isomorphic-unfetch": "^3.0.0",
     "lodash": "^4.17.11",
-    "mapbox-gl": "^1.0.0",
+    "mapbox-gl": "^1.1.0",
     "next": "^8.0.3",
+    "next-fonts": "^0.17.0",
     "next-images": "^1.1.1",
-    "node-sass": "^4.11.0",
+    "npm": "^6.10.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
     "react-ga": "^2.6.0",
     "reactstrap": "^8.0.0",
-    "styled-jsx": "^3.2.1"
+    "styled-jsx": "^3.2.1",
+    "typeface-quicksand": "0.0.71"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
@@ -41,9 +42,6 @@
     "eslint-plugin-jsx-a11y": "6.1.1",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "7.11.0",
-    "esm": ">=3.1.0",
-    "fstream": ">=1.0.12",
-    "prettier": "^1.17.0",
-    "tar": ">=2.2.2"
+    "prettier": "^1.17.0"
   }
 }
