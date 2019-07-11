@@ -6,7 +6,6 @@ import Panel from '../components/Panel';
 import Ranking from '../components/Ranking';
 import Loading from '../components/Loading';
 import config from '../config';
-import 'mapbox-gl/dist/mapbox-gl.css';
 
 const Map = dynamic(() => import('../components/Map'), {
   ssr: false,

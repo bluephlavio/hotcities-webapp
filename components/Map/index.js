@@ -4,6 +4,7 @@ import mapboxgl from 'mapbox-gl';
 import { getLayer } from './helpers';
 import config from '../../config';
 import theme from '../../style/theme';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 const {
   mapbox: { accessToken, mapstyle }
