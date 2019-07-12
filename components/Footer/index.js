@@ -4,10 +4,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import theme from '../../style/theme';
 
 const SocialButton = ({ href, icon }) => (
-  <button type="button" className="btn btn-social-icon">
+  <button type="button">
     <a href={href} target="_blank" rel="noopener noreferrer">
       <FontAwesomeIcon icon={['fab', icon]} />
     </a>
+    <style jsx>
+      {`
+        button {
+          font-size: 1.1em;
+          padding: 5px 10px;
+          margin: 2px;
+        }
+      `}
+    </style>
   </button>
 );
 

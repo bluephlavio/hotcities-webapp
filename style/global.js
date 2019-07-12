@@ -36,6 +36,7 @@ export default css.global`
   }
 
   a {
+    border: 0;
     color: ${theme.palette.secondary};
   }
 
@@ -49,6 +50,10 @@ export default css.global`
     padding: 0;
     color: ${theme.palette.accent};
     background: none;
+  }
+
+  button a {
+    border: 0;
   }
 
   button:hover {
