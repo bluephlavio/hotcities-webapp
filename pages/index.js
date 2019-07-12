@@ -45,8 +45,7 @@ Title.propTypes = {
   range: PropTypes.shape({
     minTemp: PropTypes.number.isRequired,
     maxTemp: PropTypes.number.isRequired
-  }).isRequired,
-  widthFactor: PropTypes.number.isRequired
+  }).isRequired
 };
 
 class Index extends Component {
@@ -60,44 +59,55 @@ class Index extends Component {
   async componentDidMount() {
     ReactGA.pageview('/');
     const { api } = config;
-    const data = await fetch(`${api}/web/live`).then(res => res.json());
+    const { data: record } = await fetch(
+      `${api}/records/current?extra=name,localname,population,lng,lat,countryname,countrycode`
+    ).then(res => res.json());
+    const { geonameid } = record;
+    const { data: photos } = await fetch(
+      `${api}/photos?geonameid=${geonameid}&limit=3`
+    ).then(res => res.json());
+    const { data: stats } = await fetch(`${api}/stats/${geonameid}`).then(res =>
+      res.json()
+    );
+    const {
+      data: { temp: maxTemp }
+    } = await fetch(`${api}/records/hottest`).then(res => res.json());
+    const {
+      data: { temp: minTemp }
+    } = await fetch(`${api}/records/coolest`).then(res => res.json());
+    const range = { minTemp, maxTemp };
     this.setState({
       isLoading: false,
-      ...data
+      record,
+      photos,
+      stats,
+      range
     });
   }
 
   render() {
-    const {
-      isLoading,
-      record,
-      city,
-      photos,
-      stats,
-      maxTemp,
-      minTemp
-    } = this.state;
+    const { isLoading, record, photos, stats, range } = this.state;
     return (
       <>
         <Head>
           <title>Hot Cities • world hottest city, now.</title>
         </Head>
-        <Slideshow photos={isLoading ? [] : photos} />
+        <Slideshow photos={photos || []} />
         <Panel
           title={() => (
             <Title
-              names={formatNames(city)}
+              names={formatNames(record)}
               temp={record.temp}
-              range={{ minTemp, maxTemp }}
+              range={range}
             />
           )}
           isLoading={isLoading}
         >
           {!isLoading && (
             <>
-              <Item value={formatPopulation(city.population)} icon="users" />
-              <Item value={formatCountry(city)} icon="globe" />
-              <Item value={formatCoords(city)} icon="map-marker" />
+              <Item value={formatPopulation(record.population)} icon="users" />
+              <Item value={formatCountry(record)} icon="globe" />
+              <Item value={formatCoords(record)} icon="map-marker" />
               <Item value={formatRank(stats)} icon="thermometer-full" />
             </>
           )}

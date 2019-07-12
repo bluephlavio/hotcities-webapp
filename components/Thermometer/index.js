@@ -51,7 +51,8 @@ Thermometer.propTypes = {
   range: PropTypes.shape({
     minTemp: PropTypes.number.isRequired,
     maxTemp: PropTypes.number.isRequired
-  }).isRequired
+  }).isRequired,
+  widthFactor: PropTypes.number.isRequired
 };
 
 export default Thermometer;
