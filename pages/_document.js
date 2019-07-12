@@ -26,7 +26,11 @@ class HotCitiesDocument extends Document {
           <link rel="manifest" href="/static/manifest.json" />
           <link href={favicon} rel="icon" type="image/x-icon" />
           <link
-            href="https://fonts.googleapis.com/css?family=Quicksand:300,500&display=swap"
+            href="https://fonts.googleapis.com/css?family=Quicksand:300"
+            rel="stylesheet"
+          />
+          <link
+            href="https://fonts.googleapis.com/css?family=Quicksand:500"
             rel="stylesheet"
           />
         </Head>
