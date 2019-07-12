@@ -59,23 +59,9 @@ class Index extends Component {
   async componentDidMount() {
     ReactGA.pageview('/');
     const { api } = config;
-    const { data: record } = await fetch(
-      `${api}/records/current?extra=name,localname,population,lng,lat,countryname,countrycode`
+    const { record, photos, stats, range } = await fetch(
+      `${api}/web/live`
     ).then(res => res.json());
-    const { geonameid } = record;
-    const { data: photos } = await fetch(
-      `${api}/photos?geonameid=${geonameid}&limit=3`
-    ).then(res => res.json());
-    const { data: stats } = await fetch(`${api}/stats/${geonameid}`).then(res =>
-      res.json()
-    );
-    const {
-      data: { temp: maxTemp }
-    } = await fetch(`${api}/records/hottest`).then(res => res.json());
-    const {
-      data: { temp: minTemp }
-    } = await fetch(`${api}/records/coolest`).then(res => res.json());
-    const range = { minTemp, maxTemp };
     this.setState({
       isLoading: false,
       record,
