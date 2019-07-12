@@ -26,8 +26,18 @@ const Attribution = ({ photo }) => {
       <style jsx>
         {`
           .attribution {
+            padding: ${theme.dim.padding};
             flex: 0;
             font-size: ${theme.font.size.tiny};
+            background: ${theme.palette.primary};
+            color: ${theme.palette.secondary};
+          }
+          a {
+            text-decoration: none;
+            color: ${theme.palette.secondary};
+          }
+          a:hover {
+            color: ${theme.palette.accent};
           }
         `}
       </style>
@@ -150,6 +160,15 @@ class Slideshow extends Component {
         {activePhoto && <Attribution photo={activePhoto} />}
         <style jsx>
           {`
+            @keyframes fadein {
+              from {
+                opacity: 0;
+              }
+
+              to {
+                opacity: 1;
+              }
+            }
             .slideshow {
               flex: 1;
               display: flex;

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Head from 'next/head';
 import fetch from 'isomorphic-unfetch';
 import ReactGA from 'react-ga';
-import _ from 'lodash';
 import Slideshow from '../components/Slideshow';
 import Panel from '../components/Panel';
 import Item from '../components/Item';
@@ -17,23 +16,37 @@ import {
 } from '../helpers/format';
 import config from '../config';
 
-const Title = ({ names, temp, minTemp, maxTemp }) => (
-  <div>
-    <div style={{ flex: 0, whiteSpace: 'nowrap' }}>{names}</div>
+const Title = ({ names, temp, range }) => (
+  <>
+    <div className="names">{names}</div>
     <Thermometer
+      className="thermometer"
       temp={temp}
-      minTemp={minTemp}
-      maxTemp={maxTemp}
+      range={range}
       widthFactor={0.15}
     />
-  </div>
+    <style jsx>
+      {`
+        .names {
+          flex: 0;
+          white-space: wrap;
+        }
+        .thermometer {
+          flex: 0;
+        }
+      `}
+    </style>
+  </>
 );
 
 Title.propTypes = {
   names: PropTypes.string.isRequired,
   temp: PropTypes.number.isRequired,
-  minTemp: PropTypes.number.isRequired,
-  maxTemp: PropTypes.number.isRequired
+  range: PropTypes.shape({
+    minTemp: PropTypes.number.isRequired,
+    maxTemp: PropTypes.number.isRequired
+  }).isRequired,
+  widthFactor: PropTypes.number.isRequired
 };
 
 class Index extends Component {
@@ -75,8 +88,7 @@ class Index extends Component {
             <Title
               names={formatNames(city)}
               temp={record.temp}
-              minTemp={minTemp}
-              maxTemp={maxTemp}
+              range={{ minTemp, maxTemp }}
             />
           )}
           isLoading={isLoading}

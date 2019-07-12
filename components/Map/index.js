@@ -39,6 +39,15 @@ class Map extends Component {
       <div className="map" ref={this.containerRef}>
         <style jsx>
           {`
+            @keyframes fadein {
+              from {
+                opacity: 0;
+              }
+
+              to {
+                opacity: 1;
+              }
+            }
             .map {
               flex: 1;
               display: flex;
