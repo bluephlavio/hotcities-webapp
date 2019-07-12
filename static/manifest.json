@@ -2,7 +2,7 @@
   "name": "hotcitiesworld",
   "short_name": "HotCities",
   "theme_color": "#fc900c",
-  "background_color": "#ffffff00",
+  "background_color": "rgba(255,255,255,0)",
   "display": "standalone",
   "Scope": "/",
   "start_url": "/",
