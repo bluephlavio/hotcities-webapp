@@ -1,6 +1,6 @@
 import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
-import favicon from '../static/favicon.ico';
+import favicon from '../static/images/icons/favicon.ico';
 
 class HotCitiesDocument extends Document {
   render() {
