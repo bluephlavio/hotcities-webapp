@@ -15,6 +15,9 @@ const Layout = props => {
       <div className="footer">
         <Footer />
       </div>
+      <style jsx global>
+        {globalStyles}
+      </style>
       <style jsx>
         {`
           .layout {
@@ -35,9 +38,6 @@ const Layout = props => {
             flex: 0;
           }
         `}
-      </style>
-      <style jsx global>
-        {globalStyles}
       </style>
     </div>
   );
