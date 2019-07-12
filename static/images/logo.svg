@@ -27,7 +27,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="15.084945"
-     inkscape:cx="-5.846764"
+     inkscape:cx="-8.2001037"
      inkscape:cy="24.59704"
      inkscape:document-units="px"
      inkscape:current-layer="SVGRoot"
@@ -55,7 +55,10 @@
   <g
      id="layer1"
      inkscape:groupmode="layer"
-     inkscape:label="Livello 1">
+     inkscape:label="Livello 1"
+     inkscape:export-xdpi="1024"
+     inkscape:export-ydpi="1024"
+     inkscape:export-filename="C:\Users\flavi\workspace\hotcities-webapp\static\images\icons\icon-512x512.png">
     <circle
        id="path3712"
        cx="24"
