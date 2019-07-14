@@ -29,6 +29,9 @@ class HotCitiesDocument extends Document {
             rel="preconnect"
             href="https://ib1335tybj.execute-api.eu-west-2.amazonaws.com/prod/"
           />
+          <link rel="preconnect" href="https://www.google.com" />
+          <link rel="preconnect" href="https://stats.g.doubleclick.net" />
+          <link rel="preconnect" href="https://www.google-analytics.com" />
           <link
             rel="preload"
             as="font"
