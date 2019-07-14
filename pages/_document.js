@@ -1,6 +1,8 @@
 import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
 import favicon from '../static/images/icons/favicon.ico';
+import ogImage from '../static/images/logo.png';
+import iosIcon from '../static/images/icons/icon-180x180.png';
 import theme from '../style/theme';
 
 class HotCitiesDocument extends Document {
@@ -22,7 +24,7 @@ class HotCitiesDocument extends Document {
             property="og:description"
             content="Hot Cities monitors world cities temperatures in real time from global weather services to determine the hottest one, right now."
           />
-          <meta property="og:image" content={favicon} />
+          <meta property="og:image" content={ogImage} />
           <link
             rel="preload"
             as="font"
@@ -31,7 +33,8 @@ class HotCitiesDocument extends Document {
             crossOrigin
           />
           <link rel="manifest" href="/static/manifest.json" />
-          <link href={favicon} rel="icon" type="image/x-icon" />
+          <link rel="icon" type="image/x-icon" href={favicon} />
+          <link rel="apple-touch-icon" href={iosIcon} />
         </Head>
         <body>
           <Main />
