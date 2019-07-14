@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import theme from '../../style/theme';
 
-const SocialButton = ({ href, icon }) => (
-  <button type="button">
+const SocialButton = ({ href, icon, label }) => (
+  <button type="button" aria-label={label}>
     <a href={href} target="_blank" rel="noopener noreferrer">
       <FontAwesomeIcon icon={['fab', icon]} />
     </a>
@@ -22,7 +22,8 @@ const SocialButton = ({ href, icon }) => (
 
 SocialButton.propTypes = {
   href: PropTypes.string.isRequired,
-  icon: PropTypes.string.isRequired
+  icon: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired
 };
 
 const Footer = () => (
@@ -32,18 +33,22 @@ const Footer = () => (
       <SocialButton
         href="https://twitter.com/intent/user?screen_name=hotcitiesworld"
         icon="twitter"
+        label="twitter"
       />
       <SocialButton
         href="https://twitter.com/intent/user?screen_name=hotcitiesworld"
         icon="instagram"
+        label="instagram"
       />
       <SocialButton
         href="https://twitter.com/intent/user?screen_name=hotcitiesworld"
         icon="facebook"
+        label="facebook"
       />
       <SocialButton
         href="https://twitter.com/intent/user?screen_name=hotcitiesworld"
         icon="github"
+        label="github"
       />
     </div>
     <style jsx>
