@@ -43,10 +43,13 @@ class Stats extends Component {
             property="og:description"
             content="Hot Cities collects statistics about global hottest cities and visualize them through maps and tables."
           />
-          {/* <link
-            href="https://api.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css"
-            rel="stylesheet"
-          /> */}
+          <link
+            rel="preload"
+            as="font"
+            type="font/woff2"
+            href="/static/fonts/quicksand-v9-latin-ext_latin-500.woff2"
+            crossOrigin
+          />
         </Head>
         {isLoading ? <Loading /> : <Map data={data} />}
         <Panel title={() => 'Stats'} isLoading={isLoading}>

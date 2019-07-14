@@ -6,6 +6,7 @@ export default css.global`
     font-family: 'Quicksand';
     font-style: normal;
     font-weight: 300;
+    font-display: block;
     src: url('../static/fonts/quicksand-v9-latin-ext_latin-300.eot'); /* IE9 Compat Modes */
     src: local('Quicksand Light'), local('Quicksand-Light'),
         url('../static/fonts/quicksand-v9-latin-ext_latin-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
@@ -19,6 +20,7 @@ export default css.global`
     font-family: 'Quicksand';
     font-style: normal;
     font-weight: 500;
+    font-display: block;
     src: url('../static/fonts/quicksand-v9-latin-ext_latin-500.eot'); /* IE9 Compat Modes */
     src: local('Quicksand Medium'), local('Quicksand-Medium'),
         url('../static/fonts/quicksand-v9-latin-ext_latin-500.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
