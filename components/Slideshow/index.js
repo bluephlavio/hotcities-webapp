@@ -26,7 +26,7 @@ const Attribution = ({ photo }) => {
       <style jsx>
         {`
           .attribution {
-            padding: ${theme.dim.padding};
+            padding: 2px 20px;
             flex: 0;
             font-size: ${theme.font.size.tiny};
             background: ${theme.palette.primary};

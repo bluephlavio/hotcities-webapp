@@ -2,7 +2,7 @@ const theme = {
   font: {
     family: 'Quicksand, sans-serif',
     size: {
-      tiny: '0.8em',
+      tiny: '0.7em',
       small: '0.9em',
       medium: '1.0em',
       big: '1.6em'
