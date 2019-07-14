@@ -26,6 +26,10 @@ class HotCitiesDocument extends Document {
           />
           <meta property="og:image" content={ogImage} />
           <link
+            rel="preconnect"
+            href="https://ib1335tybj.execute-api.eu-west-2.amazonaws.com/prod/"
+          />
+          <link
             rel="preload"
             as="font"
             type="font/woff2"
