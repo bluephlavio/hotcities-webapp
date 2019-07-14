@@ -48,7 +48,7 @@ class Stats extends Component {
             as="font"
             type="font/woff2"
             href="/static/fonts/quicksand-v9-latin-ext_latin-500.woff2"
-            crossOrigin
+            crossOrigin="anonymous"
           />
         </Head>
         {isLoading ? <Loading /> : <Map data={data} />}

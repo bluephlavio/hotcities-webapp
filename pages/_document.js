@@ -30,7 +30,7 @@ class HotCitiesDocument extends Document {
             as="font"
             type="font/woff2"
             href="/static/fonts/quicksand-v9-latin-ext_latin-300.woff2"
-            crossOrigin
+            crossOrigin="anonymous"
           />
           <link rel="manifest" href="/static/manifest.json" />
           <link rel="icon" type="image/x-icon" href={favicon} />
