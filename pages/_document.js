@@ -30,6 +30,7 @@ class HotCitiesDocument extends Document {
             href="https://ib1335tybj.execute-api.eu-west-2.amazonaws.com/prod/"
             crossOrigin="anonymous"
           />
+          <link rel="preconnect" href="https://www.google.it" />
           <link rel="preconnect" href="https://www.google.com" />
           <link rel="preconnect" href="https://stats.g.doubleclick.net" />
           <link rel="preconnect" href="https://www.google-analytics.com" />
