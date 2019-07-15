@@ -14,7 +14,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import theme from '../../style/theme';
 
 const Toggler = ({ toggle }) => (
-  <button type="button" className="toggler d-inline d-md-none" onClick={toggle}>
+  <button
+    type="button"
+    className="toggler d-inline d-md-none"
+    aria-label="toggler"
+    onClick={toggle}
+  >
     <FontAwesomeIcon icon="bars" fixedWidth />
     <style jsx>
       {`
@@ -52,7 +57,7 @@ class Header extends Component {
     return (
       <div className="header">
         <Navbar light expand="md">
-          <NavbarBrand href="/">
+          <NavbarBrand href="/" aria-label="home">
             <h1 className="title">HOT CITIES</h1>
             <p className="motto">world&#39;s hottest city, now</p>
           </NavbarBrand>

@@ -7,7 +7,7 @@ import theme from '../../style/theme';
 const Bar = ({ title, toggle, icon, isLoading }) => (
   <div className="bar">
     <h1>{title}</h1>
-    <button type="button" onClick={toggle}>
+    <button type="button" onClick={toggle} aria-label="expand">
       <FontAwesomeIcon icon={icon} spin={isLoading} fixedWidth />
     </button>
     <style jsx>

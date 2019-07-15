@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import theme from '../../style/theme';
 
-const SocialButton = ({ href, icon, label }) => (
-  <button type="button" aria-label={label}>
-    <a href={href} target="_blank" rel="noopener noreferrer">
+const SocialButton = ({ href, icon }) => (
+  <button type="button" aria-label={icon}>
+    <a href={href} target="_blank" rel="noopener noreferrer" aria-label={icon}>
       <FontAwesomeIcon icon={['fab', icon]} />
     </a>
     <style jsx>
@@ -22,8 +22,7 @@ const SocialButton = ({ href, icon, label }) => (
 
 SocialButton.propTypes = {
   href: PropTypes.string.isRequired,
-  icon: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired
+  icon: PropTypes.string.isRequired
 };
 
 const Footer = () => (
@@ -33,22 +32,18 @@ const Footer = () => (
       <SocialButton
         href="https://twitter.com/intent/user?screen_name=hotcitiesworld"
         icon="twitter"
-        label="twitter"
       />
       <SocialButton
-        href="https://twitter.com/intent/user?screen_name=hotcitiesworld"
+        href="https://www.instagram.com/hotcitiesworld"
         icon="instagram"
-        label="instagram"
       />
       <SocialButton
-        href="https://twitter.com/intent/user?screen_name=hotcitiesworld"
+        href="https://www.facebook.com/hotcitiesworld"
         icon="facebook"
-        label="facebook"
       />
       <SocialButton
-        href="https://twitter.com/intent/user?screen_name=hotcitiesworld"
+        href="https://github.com/bluephlavio/hotcities-webapp"
         icon="github"
-        label="github"
       />
     </div>
     <style jsx>

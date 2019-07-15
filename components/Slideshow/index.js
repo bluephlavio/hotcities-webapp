@@ -150,11 +150,13 @@ class Slideshow extends Component {
             direction="prev"
             directionText="Previous"
             onClickHandler={this.previous}
+            aria-label="prev"
           />
           <CarouselControl
             direction="next"
             directionText="Next"
             onClickHandler={this.next}
+            aria-label="next"
           />
         </Carousel>
         {activePhoto && <Attribution photo={activePhoto} />}
