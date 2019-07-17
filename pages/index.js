@@ -54,13 +54,17 @@ class Index extends Component {
   }
 
   async componentDidMount() {
-    ReactGA.pageview('/');
-    const { api } = config;
-    const { data } = await fetch(`${api}/web/live`).then(res => res.json());
-    this.setState({
-      isLoading: false,
-      data
-    });
+    try {
+      ReactGA.pageview('/');
+      const { api } = config;
+      const { data } = await fetch(`${api}/web/live`).then(res => res.json());
+      this.setState({
+        isLoading: false,
+        data
+      });
+    } catch (err) {
+      this.setState({ isLoading: true });
+    }
   }
 
   render() {

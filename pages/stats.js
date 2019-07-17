@@ -21,9 +21,13 @@ class Stats extends Component {
   }
 
   async componentDidMount() {
-    const { api } = config;
-    const { data } = await fetch(`${api}/web/stats`).then(res => res.json());
-    this.setState({ isLoading: false, data });
+    try {
+      const { api } = config;
+      const { data } = await fetch(`${api}/web/stats`).then(res => res.json());
+      this.setState({ isLoading: false, data });
+    } catch (err) {
+      this.setState({ isLoading: true });
+    }
   }
 
   render() {
