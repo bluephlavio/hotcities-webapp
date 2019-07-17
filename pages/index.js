@@ -16,13 +16,13 @@ import {
 } from '../helpers/format';
 import config from '../config';
 
-const Title = ({ names, temp, range }) => (
+const Title = ({ names, temp, temprange }) => (
   <>
     <div className="names">{names}</div>
     <Thermometer
       className="thermometer"
       temp={temp}
-      range={range}
+      temprange={temprange}
       widthFactor={0.15}
     />
     <style jsx>
@@ -42,10 +42,7 @@ const Title = ({ names, temp, range }) => (
 Title.propTypes = {
   names: PropTypes.string.isRequired,
   temp: PropTypes.number.isRequired,
-  range: PropTypes.shape({
-    minTemp: PropTypes.number.isRequired,
-    maxTemp: PropTypes.number.isRequired
-  }).isRequired
+  temprange: PropTypes.arrayOf(PropTypes.number).isRequired
 };
 
 class Index extends Component {
@@ -59,42 +56,40 @@ class Index extends Component {
   async componentDidMount() {
     ReactGA.pageview('/');
     const { api } = config;
-    const { record, photos, stats, range } = await fetch(
-      `${api}/web/live`
-    ).then(res => res.json());
+    const { data } = await fetch(`${api}/web/live`).then(res => res.json());
     this.setState({
       isLoading: false,
-      record,
-      photos,
-      stats,
-      range
+      data
     });
   }
 
   render() {
-    const { isLoading, record, photos, stats, range } = this.state;
+    const { isLoading, data } = this.state;
     return (
       <>
         <Head>
           <title>Hot Cities • world hottest city, now.</title>
         </Head>
-        <Slideshow photos={photos || []} />
+        <Slideshow photos={!isLoading ? data.current.photos : []} />
         <Panel
           title={() => (
             <Title
-              names={formatNames(record)}
-              temp={record.temp}
-              range={range}
+              names={formatNames(data.current)}
+              temp={data.current.temp}
+              temprange={data.stats.temprange}
             />
           )}
           isLoading={isLoading}
         >
           {!isLoading && (
             <>
-              <Item value={formatPopulation(record.population)} icon="users" />
-              <Item value={formatCountry(record)} icon="globe" />
-              <Item value={formatCoords(record)} icon="map-marker" />
-              <Item value={formatRank(stats)} icon="thermometer-full" />
+              <Item
+                value={formatPopulation(data.current.population)}
+                icon="users"
+              />
+              <Item value={formatCountry(data.current)} icon="globe" />
+              <Item value={formatCoords(data.current)} icon="map-marker" />
+              <Item value={formatRank(data.current)} icon="thermometer-full" />
             </>
           )}
         </Panel>

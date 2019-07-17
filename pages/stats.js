@@ -22,9 +22,7 @@ class Stats extends Component {
 
   async componentDidMount() {
     const { api } = config;
-    const { data } = await fetch(
-      `${api}/stats?extra=name,localname,countrycode,lng,lat`
-    ).then(res => res.json());
+    const { data } = await fetch(`${api}/web/stats`).then(res => res.json());
     this.setState({ isLoading: false, data });
   }
 
@@ -51,9 +49,9 @@ class Stats extends Component {
             crossOrigin="anonymous"
           />
         </Head>
-        {isLoading ? <Loading /> : <Map data={data} />}
+        {isLoading ? <Loading /> : <Map data={data.ranking} />}
         <Panel title={() => 'Stats'} isLoading={isLoading}>
-          <Ranking data={isLoading ? [] : data} />
+          <Ranking data={isLoading ? [] : data.ranking} />
         </Panel>
       </>
     );

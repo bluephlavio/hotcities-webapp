@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import { formatTemp } from '../../helpers/format';
 import theme from '../../style/theme';
 
-const Thermometer = ({ temp, range, widthFactor }) => {
-  const { minTemp, maxTemp } = range;
+const Thermometer = ({ temp, temprange, widthFactor }) => {
+  const minTemp = temprange[0];
+  const maxTemp = temprange[1];
   return (
     <div className="thermometer">
       <span className="temp">{formatTemp(temp)}</span>
@@ -48,10 +49,7 @@ const Thermometer = ({ temp, range, widthFactor }) => {
 
 Thermometer.propTypes = {
   temp: PropTypes.number.isRequired,
-  range: PropTypes.shape({
-    minTemp: PropTypes.number.isRequired,
-    maxTemp: PropTypes.number.isRequired
-  }).isRequired,
+  temprange: PropTypes.arrayOf(PropTypes.number).isRequired,
   widthFactor: PropTypes.number.isRequired
 };
 
