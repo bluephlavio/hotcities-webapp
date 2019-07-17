@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import fetch from 'isomorphic-unfetch';
+import ReactGA from 'react-ga';
 import Panel from '../components/Panel';
 import Ranking from '../components/Ranking';
 import Loading from '../components/Loading';
@@ -22,6 +23,7 @@ class Stats extends Component {
 
   async componentDidMount() {
     try {
+      ReactGA.pageview('/stats');
       const { api } = config;
       const { data } = await fetch(`${api}/web/stats`).then(res => res.json());
       this.setState({ isLoading: false, data });
