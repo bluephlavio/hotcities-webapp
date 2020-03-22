@@ -3,9 +3,9 @@
   "extends": ["airbnb", "prettier"],
   "plugins": ["prettier"],
   "rules": {
+    "no-nested-ternary": "off",
     "prettier/prettier": ["error"],
     "react/jsx-filename-extension": "off",
-    "react/jsx-one-expression-per-line": "off",
-    "no-nested-ternary": "off"
+    "react/jsx-one-expression-per-line": "off"
   }
 }

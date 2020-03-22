@@ -3,3 +3,5 @@ dist/
 .next/
 out/
 lighthouse/
+
+.vscode

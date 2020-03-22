@@ -1,4 +1,4 @@
 [[redirects]]
-	from = "/api/*"
-	to = "https://ib1335tybj.execute-api.eu-west-2.amazonaws.com/prod/:splat"
-	status = 200
+from = "/api/*"
+to = "https://ib1335tybj.execute-api.eu-west-2.amazonaws.com/prod/:splat"
+status = 200

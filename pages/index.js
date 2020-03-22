@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
+import dynamic from 'next/dynamic';
 import fetch from 'isomorphic-unfetch';
 import ReactGA from 'react-ga';
-import Slideshow from '../components/Slideshow';
+// import Slideshow from '../components/Slideshow';
 import Panel from '../components/Panel';
+import Loading from '../components/Loading';
 import Item from '../components/Item';
 import Thermometer from '../components/Thermometer';
 import {
@@ -15,6 +17,11 @@ import {
   formatPopulation
 } from '../helpers/format';
 import config from '../config';
+
+const Map = dynamic(() => import('../components/Map'), {
+  ssr: false,
+  loading: Loading
+});
 
 const Title = ({ names, temp, temprange }) => (
   <>
@@ -74,7 +81,10 @@ class Index extends Component {
         <Head>
           <title>Hot Cities • world hottest city, now.</title>
         </Head>
-        <Slideshow photos={!isLoading ? data.current.photos : []} />
+        <Map
+          center={isLoading ? [0, 0] : [data.current.lng, data.current.lat]}
+          zoom={12}
+        />
         <Panel
           title={() => (
             <Title

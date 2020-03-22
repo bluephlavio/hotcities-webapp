@@ -19,19 +19,28 @@ class Map extends Component {
   }
 
   componentDidMount() {
-    const { data } = this.props;
+    const { center, zoom, style, data } = this.props;
     const container = this.containerRef.current;
-    const map = new mapboxgl.Map({
+    this.map = new mapboxgl.Map({
       container,
-      style: mapstyle,
-      zoom: 1,
-      center: [0, 0]
+      style,
+      zoom,
+      center
     });
 
-    map.on('load', () => {
-      const layer = getLayer(data);
-      map.addLayer(layer);
-    });
+    if (data) {
+      this.map.on('load', () => {
+        const layer = getLayer(data);
+        this.map.addLayer(layer);
+      });
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    const { center, zoom } = this.props;
+    if (prevProps.center !== center || prevProps.zoom !== zoom) {
+      this.map.flyTo({ center, zoom });
+    }
   }
 
   render() {
@@ -64,6 +73,9 @@ class Map extends Component {
 }
 
 Map.propTypes = {
+  center: PropTypes.arrayOf(PropTypes.number),
+  zoom: PropTypes.number,
+  style: PropTypes.string,
   data: PropTypes.arrayOf(
     PropTypes.shape({
       lng: PropTypes.number.isRequired,
@@ -71,7 +83,14 @@ Map.propTypes = {
       recordfrac: PropTypes.number.isRequired,
       recordtemp: PropTypes.number.isRequired
     })
-  ).isRequired
+  )
+};
+
+Map.defaultProps = {
+  center: [0, 0],
+  zoom: 1,
+  style: mapstyle,
+  data: undefined
 };
 
 export default Map;
