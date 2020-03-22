@@ -39,7 +39,7 @@ class Map extends Component {
   componentDidUpdate(prevProps) {
     const { center, zoom } = this.props;
     if (prevProps.center !== center || prevProps.zoom !== zoom) {
-      this.map.flyTo({ center, zoom });
+      this.map.flyTo({ center, zoom, speed: 0.2 });
     }
   }
 

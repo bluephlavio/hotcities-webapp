@@ -83,7 +83,7 @@ class Index extends Component {
         </Head>
         <Map
           center={isLoading ? [0, 0] : [data.current.lng, data.current.lat]}
-          zoom={12}
+          zoom={isLoading ? 0 : 12}
         />
         <Panel
           title={() => (
