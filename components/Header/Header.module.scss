@@ -1,0 +1,17 @@
+.title {
+  margin: 0;
+  color: $color-accent;
+  font-size: $font-size-big;
+}
+
+.motto {
+  margin: 0;
+  color: rgba($color-secondary, 0.5);
+  font-size: $font-size-medium;
+}
+
+@media (max-width: $dim-breakpoints-small) {
+  .motto {
+    font-size: $font-size-small;
+  }
+}

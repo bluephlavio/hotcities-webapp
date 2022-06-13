@@ -1,11 +1,20 @@
 {
   "parser": "babel-eslint",
-  "extends": ["airbnb", "prettier"],
+  "extends": ["plugin:import/errors", "airbnb", "prettier"],
   "plugins": ["prettier"],
   "rules": {
     "no-nested-ternary": "off",
     "prettier/prettier": ["error"],
     "react/jsx-filename-extension": "off",
-    "react/jsx-one-expression-per-line": "off"
+    "react/jsx-one-expression-per-line": "off",
+    "react/prop-types": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "extensions": [".js", ".jsx", "*.scss"],
+        "map": [["@", "."]]
+      }
+    }
   }
 }

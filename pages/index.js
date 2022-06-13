@@ -1,115 +1,69 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
-import fetch from 'isomorphic-unfetch';
-import ReactGA from 'react-ga';
-// import Slideshow from '../components/Slideshow';
-import Panel from '../components/Panel';
-import Loading from '../components/Loading';
-import Item from '../components/Item';
-import Thermometer from '../components/Thermometer';
+import useApi from '@/hooks/useApi';
+import usePageView from '@/hooks/usePageView';
+import Panel from '@/components/Panel';
+import Loading from '@/components/Loading';
+import Item from '@/components/Item';
+import Thermometer from '@/components/Thermometer';
 import {
   formatNames,
   formatRank,
   formatCountry,
   formatCoords,
   formatPopulation
-} from '../helpers/format';
-import config from '../config';
+} from '@/helpers/format';
 
-const Map = dynamic(() => import('../components/Map'), {
+const Map = dynamic(() => import('@/components/Map'), {
   ssr: false,
   loading: Loading
 });
 
-const Title = ({ names, temp, temprange }) => (
-  <>
-    <div className="names">{names}</div>
-    <Thermometer
-      className="thermometer"
-      temp={temp}
-      temprange={temprange}
-      widthFactor={0.15}
-    />
-    <style jsx>
-      {`
-        .names {
-          flex: 0;
-          white-space: wrap;
-        }
-        .thermometer {
-          flex: 0;
-        }
-      `}
-    </style>
-  </>
-);
+const IndexPage = () => {
+  usePageView('/');
 
-Title.propTypes = {
-  names: PropTypes.string.isRequired,
-  temp: PropTypes.number.isRequired,
-  temprange: PropTypes.arrayOf(PropTypes.number).isRequired
+  const { isLoading, data } = useApi({ method: 'get', path: 'web/live' });
+
+  return (
+    <>
+      <Head>
+        <title>Hot Cities • world hottest city, now.</title>
+      </Head>
+      <Map
+        center={isLoading ? [0, 0] : [data?.current?.lng, data?.current?.lat]}
+        zoom={isLoading ? 0 : 12}
+      />
+      <Panel
+        Title={() => (
+          <>
+            <h1 style={{ flex: 0, whiteSpace: 'wrap' }}>
+              {formatNames(data?.current)}
+            </h1>
+            <Thermometer
+              temp={data?.current?.temp}
+              temprange={data?.stats?.temprange}
+              widthFactor={0.15}
+              style={{ flex: 0 }}
+            />
+          </>
+        )}
+        isLoading={isLoading}
+      >
+        {!isLoading && (
+          <>
+            <Item
+              value={formatPopulation(data?.current?.population)}
+              icon="users"
+            />
+            <Item value={formatCountry(data?.current)} icon="globe" />
+            <Item value={formatCoords(data?.current)} icon="map-marker" />
+            <Item value={formatRank(data?.current)} icon="thermometer-full" />
+          </>
+        )}
+      </Panel>
+    </>
+  );
 };
 
-class Index extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isLoading: true
-    };
-  }
-
-  async componentDidMount() {
-    try {
-      ReactGA.pageview('/');
-      const { api } = config;
-      const { data } = await fetch(`${api}/web/live`).then(res => res.json());
-      this.setState({
-        isLoading: false,
-        data
-      });
-    } catch (err) {
-      this.setState({ isLoading: true });
-    }
-  }
-
-  render() {
-    const { isLoading, data } = this.state;
-    return (
-      <>
-        <Head>
-          <title>Hot Cities • world hottest city, now.</title>
-        </Head>
-        <Map
-          center={isLoading ? [0, 0] : [data.current.lng, data.current.lat]}
-          zoom={isLoading ? 0 : 12}
-        />
-        <Panel
-          title={() => (
-            <Title
-              names={formatNames(data.current)}
-              temp={data.current.temp}
-              temprange={data.stats.temprange}
-            />
-          )}
-          isLoading={isLoading}
-        >
-          {!isLoading && (
-            <>
-              <Item
-                value={formatPopulation(data.current.population)}
-                icon="users"
-              />
-              <Item value={formatCountry(data.current)} icon="globe" />
-              <Item value={formatCoords(data.current)} icon="map-marker" />
-              <Item value={formatRank(data.current)} icon="thermometer-full" />
-            </>
-          )}
-        </Panel>
-      </>
-    );
-  }
-}
-
-export default Index;
+export default IndexPage;

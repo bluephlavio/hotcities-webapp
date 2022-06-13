@@ -1,0 +1,17 @@
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.map {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 250px;
+  animation: fadein 2s;
+  background-color: $color-secondary;
+}

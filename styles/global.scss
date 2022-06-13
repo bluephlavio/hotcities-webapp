@@ -1,0 +1,114 @@
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+body {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  font-family: $font-family;
+  font-weight: 300;
+  font-size: $font-size-medium;
+}
+
+@media (max-width: $dim-breakpoints-small) {
+  body {
+    font-size: $font-size-small;
+  }
+}
+
+h1 {
+  font-weight: 300;
+}
+
+th {
+  font-weight: 400;
+}
+
+a {
+  border: 0;
+  color: $color-secondary;
+}
+
+a:hover {
+  color: $color-accent;
+}
+
+button {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  color: $color-accent;
+  background: none;
+}
+
+button a {
+  border: 0;
+}
+
+button:hover {
+  color: $color-secondary;
+  outline: none;
+  cursor: pointer;
+}
+
+button:focus {
+  color: $color-accent;
+  outline: none;
+}
+
+hr {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  background: linear-gradient(
+    to left,
+    rgba($color-secondary, 0),
+    rgba($color-secondary, 1),
+    rgba($color-secondary, 0)
+  );
+  height: 1px;
+}
+
+th {
+  color: $color-accent;
+  font-weight: 500;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  align-content: flex-end;
+}
+
+.navbar-brand {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-collapse {
+  display: flex;
+}
+
+.navbar-nav {
+  transform: translateY(-2px);
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nav-item {
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.nav-item a {
+  text-decoration: none;
+  font-size: $font-size-medium;
+}

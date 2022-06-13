@@ -1,0 +1,17 @@
+.bar {
+  margin: 0;
+  border: 0;
+  padding: $dim-padding;
+  display: flex;
+  align-items: center;
+  align-content: space-between;
+
+  .title {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    flex: 1;
+    color: $color-accent;
+    font-size: $font-size-big;
+  }
+}

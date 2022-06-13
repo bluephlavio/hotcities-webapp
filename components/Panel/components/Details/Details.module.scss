@@ -1,0 +1,16 @@
+.details {
+  margin: 0;
+  border: 0;
+  padding: $dim-padding;
+  background-color: $color-primary;
+  color: $color-accent;
+  font-size: $font-size-medium;
+}
+
+.details a {
+  color: rgba($color-secondary, 0.5);
+}
+
+.details a:hover {
+  color: $color-accent;
+}

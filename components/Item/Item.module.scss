@@ -1,0 +1,17 @@
+.item {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.icon {
+  display: flex;
+  justify-content: right;
+  width: 30px;
+  border-left: 1px dashed $color-accent;
+}
+
+.value {
+  padding: 0 10px;
+  text-align: right;
+}
