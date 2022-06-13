@@ -1,0 +1,12 @@
+.row {
+  td {
+    color: $color-accent;
+    white-space: wrap;
+  }
+
+  .score,
+  .recordfrac,
+  .recordtemp {
+    white-space: nowrap;
+  }
+}

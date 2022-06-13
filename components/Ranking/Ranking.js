@@ -18,7 +18,7 @@ const Ranking = ({ data }) => {
       <Table size="sm" hover>
         <thead>
           <tr>
-            <th></th>
+            <th />
             <th>city</th>
             <Header
               title="score"
@@ -26,12 +26,12 @@ const Ranking = ({ data }) => {
               onClick={handleSortBy('score')}
             />
             <Header
-              title="record %"
+              title="record time share"
               selected={sortBy === 'recordfrac'}
               onClick={handleSortBy('recordfrac')}
             />
             <Header
-              title="max @/components/°F"
+              title="record temperature"
               selected={sortBy === 'recordtemp'}
               onClick={handleSortBy('recordtemp')}
             />

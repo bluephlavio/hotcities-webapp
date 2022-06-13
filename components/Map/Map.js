@@ -15,8 +15,8 @@ const Map = ({ center = [0, 0], zoom = 1, style = mapstyle, data }) => {
 
   const mapRef = React.useRef();
 
-  const prevCenter = usePrevious(center, [0, 0]);
-  const prevZoom = usePrevious(zoom, 1);
+  const prevCenter = usePrevious(center);
+  const prevZoom = usePrevious(zoom);
 
   React.useEffect(() => {
     const container = containerRef.current;
@@ -40,7 +40,7 @@ const Map = ({ center = [0, 0], zoom = 1, style = mapstyle, data }) => {
   React.useEffect(() => {
     if (prevCenter !== center || prevZoom !== zoom) {
       if (mapRef.current) {
-        mapRef.current.flyTo({ center, zoom });
+        mapRef.current.flyTo({ center, zoom, speed: 0.3 });
       }
     }
   }, [center, zoom]);

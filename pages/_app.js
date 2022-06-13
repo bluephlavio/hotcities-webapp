@@ -22,9 +22,8 @@ import {
   faGithub
 } from '@fortawesome/free-brands-svg-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Layout from '../components/Layout';
-import { accent } from '../styles/_variables.scss';
-import '../styles/global.scss';
+import Layout from '@/components/Layout';
+import '@/styles/global.scss';
 
 faLib.add(
   faBars,
@@ -56,7 +55,7 @@ const HotCitiesApp = ({ Component, pageProps }) => {
           content="Hot Cities monitors world cities temperatures in real time from global weather services to determine the hottest one, right now."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content={accent} />
+        <meta name="theme-color" content="#fc900c" />
         <meta
           property="og:title"
           content="Hot Cities • world hottest city, now."
@@ -66,25 +65,6 @@ const HotCitiesApp = ({ Component, pageProps }) => {
           content="Hot Cities monitors world cities temperatures in real time from global weather services to determine the hottest one, right now."
         />
         <meta property="og:image" content="/images/logo.png" />
-        <link
-          rel="preconnect"
-          href="https://ib1335tybj.execute-api.eu-west-2.amazonaws.com/prod/"
-          crossOrigin="anonymous"
-        />
-        <link rel="preconnect" href="https://www.google.it" />
-        <link rel="preconnect" href="https://www.google.com" />
-        <link rel="preconnect" href="https://stats.g.doubleclick.net" />
-        <link rel="preconnect" href="https://www.google-analytics.com" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="true"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap"
-          rel="stylesheet"
-        />
         <link rel="manifest" href="/manifest.json" />
         <link rel="icon" type="image/x-icon" href="/images/icons/favicon.ico" />
         <link rel="apple-touch-icon" href="/images/icons/icon-180x180.png" />

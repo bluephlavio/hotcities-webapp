@@ -7,7 +7,7 @@ module.exports = {
     '/about': { page: '/about' }
   }),
   sassOptions: {
-    includePaths: [path.join(__dirname, 'styles')],
+    includePaths: [path.join(__dirname, 'styles', 'theme')],
     prependData: `@import "_variables.scss";`
   }
 };
