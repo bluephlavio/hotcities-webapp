@@ -8,7 +8,19 @@ const About = () => (
       Hot Cities monitors world cities temperatures in real time from global
       weather services to determine the hottest one, right now.
     </InfoBit>
-    <InfoBit section="Why">Because hot is cool</InfoBit>
+    <InfoBit section="Why">
+      Because hot is cool
+      <span role="img" aria-label="hot">
+        🔥
+      </span>
+      <span role="img" aria-label="cool">
+        ✨
+      </span>
+      <span role="img" aria-label="love">
+        ❤️
+      </span>
+      .
+    </InfoBit>
     <InfoBit section="What is a city">
       Human settlements with a minimum population of half a milion inhabitants
       are considered.
@@ -81,7 +93,9 @@ const About = () => (
       </a>
       .
     </InfoBit>
-    <InfoBit section="Contact">contact@hotcities.worl</InfoBit>
+    <InfoBit section="Contact">
+      <pre>contact@hotcities.world</pre>
+    </InfoBit>
   </div>
 );
 

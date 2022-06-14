@@ -1,3 +1,9 @@
 .infobit {
   color: $color-accent;
+
+  b {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
 }

@@ -7,7 +7,7 @@ import {
   Collapse,
   Nav,
   NavItem,
-  NavLink
+  NavLink,
 } from 'reactstrap';
 import Toggler from './components/Toggler';
 import styles from './Header.module.scss';
@@ -30,19 +30,14 @@ const Header = () => {
         <Collapse isOpen={isOpen} navbar>
           <Nav navbar>
             <NavItem>
-              <NavLink tag={props => <Link href="/">{props.children}</Link>}>
+              <NavLink tag={(props) => <Link href="/">{props.children}</Link>}>
                 <a href="/">Live</a>
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink
-                tag={props => <Link href="/stats">{props.children}</Link>}
+                tag={(props) => <Link href="/about">{props.children}</Link>}
               >
-                <a href="/stats">Stats</a>
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink tag={props => <Link href="href">{props.children}</Link>}>
                 <a href="about">About</a>
               </NavLink>
             </NavItem>

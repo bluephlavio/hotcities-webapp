@@ -24,18 +24,20 @@ const Map = ({ center = [0, 0], zoom = 1, style = mapstyle, data }) => {
       container,
       style,
       zoom,
-      center
+      center,
     });
+  }, []);
 
+  React.useEffect(() => {
     const map = mapRef.current;
 
-    if (data) {
+    if (map && data) {
       map.on('load', () => {
         const layer = getLayer(data);
         map.addLayer(layer);
       });
     }
-  }, []);
+  }, [data]);
 
   React.useEffect(() => {
     if (prevCenter !== center || prevZoom !== zoom) {

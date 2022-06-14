@@ -2,4 +2,23 @@
   flex: 0;
   background-color: $color-primary;
   color: $color-accent;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba($color-secondary, 0.02);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      rgba($color-secondary, 0) 33%,
+      rgba($color-secondary, 1) 50%,
+      rgba($color-secondary, 0) 66%
+    );
+  }
 }
