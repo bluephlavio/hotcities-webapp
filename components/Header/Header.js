@@ -1,14 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import {
-  Navbar,
-  NavbarBrand,
-  NavbarToggler,
-  Collapse,
-  Nav,
-  NavItem,
-  NavLink,
-} from 'reactstrap';
+import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink } from 'reactstrap';
 import Toggler from './components/Toggler';
 import styles from './Header.module.scss';
 
@@ -31,14 +23,12 @@ const Header = () => {
           <Nav navbar>
             <NavItem>
               <NavLink tag={(props) => <Link href="/">{props.children}</Link>}>
-                <a href="/">Live</a>
+                <Link href="/">Live</Link>
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink
-                tag={(props) => <Link href="/about">{props.children}</Link>}
-              >
-                <a href="about">About</a>
+              <NavLink tag={(props) => <Link href="/about">{props.children}</Link>}>
+                <Link href="/about">About</Link>
               </NavLink>
             </NavItem>
           </Nav>

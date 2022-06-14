@@ -2,7 +2,9 @@ import React from 'react';
 import { formatFracAsPerc, formatTemp } from '@/helpers/format';
 import styles from './Row.module.scss';
 
-const Row = ({ index, name, recordfrac, recordtemp, score }) => (
+const Row = ({
+  index, name, recordfrac, recordtemp, score,
+}) => (
   <tr className={styles.row}>
     <th scope="row">{index}</th>
     <td className={styles.name}>{name}</td>

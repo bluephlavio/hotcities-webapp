@@ -11,7 +11,7 @@ const Thermometer = ({ temp, temprange, widthFactor }) => {
         <div
           className={styles.level}
           style={{
-            width: `${((temp - minTemp) / (maxTemp - minTemp)) * 100}%`
+            width: `${((temp - minTemp) / (maxTemp - minTemp)) * 100}%`,
           }}
         />
       </span>

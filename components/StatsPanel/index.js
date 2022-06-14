@@ -1,2 +1,1 @@
-export { default } from "./StatsPanel"
-
+export { default } from './StatsPanel';

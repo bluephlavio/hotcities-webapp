@@ -1,5 +1,5 @@
 import React from 'react';
-import _ from 'lodash';
+import lodash from 'lodash';
 import { Table } from 'reactstrap';
 import useData from '@/hooks/useData';
 import { formatNames } from '@/helpers/format';
@@ -21,13 +21,9 @@ const Ranking = () => {
       <Table size="sm" hover>
         <thead>
           <tr>
-            <th />
+            <th aria-label="label" />
             <th>city</th>
-            <Header
-              title="score"
-              selected={sortBy === 'score'}
-              onClick={handleSortBy('score')}
-            />
+            <Header title="score" selected={sortBy === 'score'} onClick={handleSortBy('score')} />
             <Header
               title="record time share"
               selected={sortBy === 'recordfrac'}
@@ -41,12 +37,12 @@ const Ranking = () => {
           </tr>
         </thead>
         <tbody>
-          {_.chain(data?.ranking || [])
+          {lodash
+            .chain(data?.ranking || [])
             .sortBy((entry) => -entry[sortBy])
             .slice(0, 30)
             .map((entry, i) => {
-              const { name, countrycode, recordfrac, recordtemp, score } =
-                entry;
+              const { name, countrycode, recordfrac, recordtemp, score } = entry;
               return (
                 <Row
                   key={`${name}-${score}-${recordfrac}-${recordtemp}`}

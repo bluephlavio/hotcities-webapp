@@ -12,14 +12,14 @@ import {
   faGlobe,
   faMapMarker,
   faCircle as fasCircle,
-  faSpinner
+  faSpinner,
 } from '@fortawesome/free-solid-svg-icons';
 import { faCircle as farCircle } from '@fortawesome/free-regular-svg-icons';
 import {
   faTwitter,
   faInstagram,
   faFacebook,
-  faGithub
+  faGithub,
 } from '@fortawesome/free-brands-svg-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Layout from '@/components/Layout';
@@ -39,7 +39,7 @@ faLib.add(
   faMapMarker,
   fasCircle,
   farCircle,
-  faSpinner
+  faSpinner,
 );
 
 const HotCitiesApp = ({ Component, pageProps }) => {

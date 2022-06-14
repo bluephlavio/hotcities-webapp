@@ -9,20 +9,18 @@ export const calcScore = (recordFrac, recordTemp, tempRange) => {
   return recordFrac * recordTempFrac ** 5 * 100;
 };
 
-export const getSorterFunction =
-  (key, tempRange) =>
-  ({ recordfrac, recordtemp }) => {
-    switch (key) {
-      case 'recordfrac':
-        return -recordfrac;
+export const getSorterFunction = (key, tempRange) => ({ recordfrac, recordtemp }) => {
+  switch (key) {
+    case 'recordfrac':
+      return -recordfrac;
 
-      case 'recordtemp':
-        return -recordtemp;
+    case 'recordtemp':
+      return -recordtemp;
 
-      case 'score':
-        return -calcScore(recordfrac, recordtemp, tempRange);
+    case 'score':
+      return -calcScore(recordfrac, recordtemp, tempRange);
 
-      default:
-        return 0;
-    }
-  };
+    default:
+      return 0;
+  }
+};

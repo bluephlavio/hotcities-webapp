@@ -1,2 +1,1 @@
-export { default } from "./LivePanel"
-
+export { default } from './LivePanel';
