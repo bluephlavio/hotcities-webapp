@@ -1,14 +1,6 @@
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  .temp {
-    position: relative;
-    font-size: $font-size-big;
-    text-align: center;
-    // transform: translate(-50%, 0%);
-  }
+  width: 100%;
+  min-width: 200px;
 
   .meter {
     width: 100%;

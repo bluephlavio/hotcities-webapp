@@ -1,6 +1,5 @@
 import React from 'react';
 import lodash from 'lodash';
-// import { Table } from 'reactstrap';
 import useData from '@/hooks/useData';
 import { formatNames } from '@/helpers/format';
 import Header from './components/Header';

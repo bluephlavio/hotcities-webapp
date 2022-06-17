@@ -7,7 +7,7 @@ const Thermometer = ({ className, ...rest }) => {
   const level = useLevel();
 
   return (
-    <div className={classNames(className, styles.container)} {...rest}>
+    <div className={classNames({ className }, styles.container)} {...rest}>
       <span className={styles.meter}>
         <span
           className={styles.level}

@@ -1,3 +1,7 @@
 .toggler {
   transform: translateY(-2px);
+
+  @media (min-width: $dim-breakpoints-small) {
+    display: none;
+  }
 }

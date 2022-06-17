@@ -4,4 +4,8 @@
   padding: $dim-padding;
   background-color: $color-primary;
   color: $color-accent;
+
+  .mail {
+    font-family: monospace;
+  }
 }

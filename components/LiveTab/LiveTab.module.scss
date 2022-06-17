@@ -4,19 +4,37 @@
 
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-end;
     align-items: center;
-
-    .city {
-      margin-right: 50px;
-    }
+    gap: 0px 10px;
 
     .temp {
-      margin-left: 50px;
+      flex: 1;
+
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 0px 10px;
+
+      .thermometer {
+        flex: 1;
+      }
+
+      h3 {
+        white-space: nowrap;
+      }
     }
 
-    .thermometer {
-      flex: 1;
+    @media (min-width: $dim-breakpoints-small) {
+      gap: 0px 9%;
+
+      .city {
+        font-size: $font-size-big;
+      }
+
+      .temp {
+        flex: 1;
+        gap: 0px 9%;
+      }
     }
   }
 
