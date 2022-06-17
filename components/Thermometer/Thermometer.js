@@ -1,17 +1,18 @@
 import React from 'react';
-import { formatTemp } from '@/helpers/format';
+import classNames from 'classnames';
+import useLevel from '@/hooks/useLevel';
 import styles from './Thermometer.module.scss';
 
-const Thermometer = ({ temp, temprange, widthFactor }) => {
-  const [minTemp, maxTemp] = temprange;
+const Thermometer = ({ className, ...rest }) => {
+  const level = useLevel();
+
   return (
-    <div className={styles.thermometer}>
-      <span className={styles.temp}>{formatTemp(temp)}</span>
-      <span className={styles.meter} style={{ width: `${widthFactor * 100}%` }}>
-        <div
+    <div className={classNames(className, styles.container)} {...rest}>
+      <span className={styles.meter}>
+        <span
           className={styles.level}
           style={{
-            width: `${((temp - minTemp) / (maxTemp - minTemp)) * 100}%`,
+            width: `${level * 100}%`,
           }}
         />
       </span>

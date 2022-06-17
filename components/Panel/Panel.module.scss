@@ -1,24 +1,22 @@
-.panel {
-  flex: 0;
-  background-color: $color-primary;
-  color: $color-accent;
-  cursor: pointer;
+.container {
+  position: relative;
 
-  &:hover {
-    background-color: rgba($color-secondary, 0.02);
+  flex: 1;
+
+  color: $color-accent;
+
+  .navigation {
+    position: absolute;
+    bottom: 100%;
+
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
   }
 
-  &::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(
-      to right,
-      rgba($color-secondary, 0) 33%,
-      rgba($color-secondary, 1) 50%,
-      rgba($color-secondary, 0) 66%
-    );
+  .info {
+    padding: 10px 20px;
+    background-color: $color-primary;
   }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import lodash from 'lodash';
-import { Table } from 'reactstrap';
+// import { Table } from 'reactstrap';
 import useData from '@/hooks/useData';
 import { formatNames } from '@/helpers/format';
 import Header from './components/Header';
@@ -18,27 +18,19 @@ const Ranking = () => {
 
   return (
     <div className={styles.ranking}>
-      <Table size="sm" hover>
+      <table>
         <thead>
           <tr>
             <th aria-label="label" />
             <th>city</th>
             <Header title="score" selected={sortBy === 'score'} onClick={handleSortBy('score')} />
-            <Header
-              title="record time share"
-              selected={sortBy === 'recordfrac'}
-              onClick={handleSortBy('recordfrac')}
-            />
-            <Header
-              title="record temperature"
-              selected={sortBy === 'recordtemp'}
-              onClick={handleSortBy('recordtemp')}
-            />
+            <Header title="time share" selected={sortBy === 'recordfrac'} onClick={handleSortBy('recordfrac')} />
+            <Header title="max temp" selected={sortBy === 'recordtemp'} onClick={handleSortBy('recordtemp')} />
           </tr>
         </thead>
         <tbody>
           {lodash
-            .chain(data?.ranking || [])
+            .chain(data?.stats?.ranking || [])
             .sortBy((entry) => -entry[sortBy])
             .slice(0, 30)
             .map((entry, i) => {
@@ -56,7 +48,7 @@ const Ranking = () => {
             })
             .value()}
         </tbody>
-      </Table>
+      </table>
     </div>
   );
 };

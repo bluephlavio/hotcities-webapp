@@ -22,14 +22,10 @@ const Header = () => {
         <Collapse isOpen={isOpen} navbar>
           <Nav navbar>
             <NavItem>
-              <NavLink tag={(props) => <Link href="/">{props.children}</Link>}>
-                <Link href="/">Live</Link>
-              </NavLink>
+              <NavLink tag={(props) => <Link href="/">{props.children}</Link>}>Live</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={(props) => <Link href="/about">{props.children}</Link>}>
-                <Link href="/about">About</Link>
-              </NavLink>
+              <NavLink tag={(props) => <Link href="/about">{props.children}</Link>}>About</NavLink>
             </NavItem>
           </Nav>
         </Collapse>

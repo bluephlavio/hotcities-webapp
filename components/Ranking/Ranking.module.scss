@@ -1,5 +1,27 @@
 .ranking {
-  color: $color-accent;
-  // height: 160px;
   overflow: auto;
+  color: $color-accent;
+
+  table {
+    table-layout: fixed;
+    width: 100%;
+
+    thead {
+      font-family: monospace;
+
+      border-bottom: 1px solid rgba($color-secondary, 0.5);
+
+      th {
+        padding: 10px 0px;
+      }
+    }
+
+    tr th:nth-child(1) {
+      width: 50px;
+    }
+
+    tr th:nth-child(2) {
+      width: 42%;
+    }
+  }
 }

@@ -5,8 +5,7 @@ import { providerDataContext } from '@/contexts/data';
 import usePageView from '@/hooks/usePageView';
 import Loading from '@/components/Loading';
 import useData from '@/hooks/useData';
-import LivePanel from '@/components/LivePanel';
-import StatsPanel from '@/components/StatsPanel';
+import Panel from '@/components/Panel';
 
 const Map = dynamic(() => import('@/components/Map'), {
   ssr: false,
@@ -16,7 +15,7 @@ const Map = dynamic(() => import('@/components/Map'), {
 const IndexPage = providerDataContext(() => {
   usePageView('/');
 
-  const { isLoading, data } = useData();
+  const { isLoading, data, focus } = useData();
 
   return (
     <>
@@ -24,12 +23,11 @@ const IndexPage = providerDataContext(() => {
         <title>Hot Cities • world hottest city, now.</title>
       </Head>
       <Map
-        center={isLoading ? [0, 0] : [data?.current?.lng, data?.current?.lat]}
-        zoom={isLoading ? 3 : 7}
-        data={data?.ranking}
+        center={isLoading || focus === 'stats' ? [0, 25] : [data?.current?.lng, data?.current?.lat]}
+        zoom={isLoading || focus === 'stats' ? 2 : 7}
+        data={data?.stats?.ranking}
       />
-      <LivePanel />
-      <StatsPanel />
+      <Panel />
     </>
   );
 });

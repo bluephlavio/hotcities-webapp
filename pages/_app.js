@@ -13,14 +13,10 @@ import {
   faMapMarker,
   faCircle as fasCircle,
   faSpinner,
+  faXmark,
 } from '@fortawesome/free-solid-svg-icons';
 import { faCircle as farCircle } from '@fortawesome/free-regular-svg-icons';
-import {
-  faTwitter,
-  faInstagram,
-  faFacebook,
-  faGithub,
-} from '@fortawesome/free-brands-svg-icons';
+import { faTwitter, faInstagram, faFacebook, faGithub } from '@fortawesome/free-brands-svg-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Layout from '@/components/Layout';
 import '@/styles/global.scss';
@@ -40,6 +36,7 @@ faLib.add(
   fasCircle,
   farCircle,
   faSpinner,
+  faXmark
 );
 
 const HotCitiesApp = ({ Component, pageProps }) => {
@@ -56,10 +53,7 @@ const HotCitiesApp = ({ Component, pageProps }) => {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#fc900c" />
-        <meta
-          property="og:title"
-          content="Hot Cities • world hottest city, now."
-        />
+        <meta property="og:title" content="Hot Cities • world hottest city, now." />
         <meta
           property="og:description"
           content="Hot Cities monitors world cities temperatures in real time from global weather services to determine the hottest one, right now."

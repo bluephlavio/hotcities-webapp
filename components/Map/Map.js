@@ -10,9 +10,7 @@ const { accessToken, mapstyle } = mapbox;
 
 mapboxgl.accessToken = accessToken;
 
-const Map = ({
-  center = [0, 0], zoom = 1, style = mapstyle, data,
-}) => {
+const Map = ({ center = [0, 0], zoom = 1, style = mapstyle, data }) => {
   const containerRef = React.useRef();
 
   const mapRef = React.useRef();

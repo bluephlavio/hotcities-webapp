@@ -1,17 +1,17 @@
 .item {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
 }
 
 .icon {
   display: flex;
-  justify-content: right;
+  justify-content: flex-start;
   width: 30px;
-  border-left: 1px dashed $color-accent;
+  border-right: 1px dashed $color-accent;
 }
 
 .value {
   padding: 0 10px;
-  text-align: right;
+  text-align: left;
 }

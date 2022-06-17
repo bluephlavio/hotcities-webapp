@@ -7,7 +7,8 @@
     "plugin:import/errors",
     "plugin:react/recommended",
     "airbnb",
-    "plugin:@next/next/recommended"
+    "plugin:@next/next/recommended",
+    "prettier"
   ],
   "parserOptions": {
     "ecmaFeatures": {
@@ -16,7 +17,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "prettier"],
+  "plugins": ["react", "react-hooks", "next", "jsx-a11y", "import", "prettier"],
   "rules": {
     "object-curly-newline": "off",
     "no-restricted-exports": "off",

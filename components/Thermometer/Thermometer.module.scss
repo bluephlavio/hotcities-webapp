@@ -1,28 +1,27 @@
-.thermometer {
+.container {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-}
+  align-items: center;
 
-.temp {
-  flex-wrap: nowrap;
-  font-size: 0.8em;
-}
+  .temp {
+    position: relative;
+    font-size: $font-size-big;
+    text-align: center;
+    // transform: translate(-50%, 0%);
+  }
 
-.meter {
-  background: linear-gradient(
-    to right,
-    rgba($color-secondary, 1),
-    rgba($color-secondary, 0)
-  );
-  height: 5px;
-  margin-top: 2px;
-  border-right: 1px solid $color-secondary;
-  display: flex;
-  align-items: stretch;
-}
+  .meter {
+    width: 100%;
+    background: linear-gradient(to right, rgba($color-secondary, 1), rgba($color-secondary, 0));
+    height: 5px;
+    margin-top: 2px;
+    border-right: 1px solid $color-secondary;
+    display: flex;
+    align-items: stretch;
+  }
 
-.level {
-  justify-content: flex-start;
-  background-color: $color-accent;
+  .level {
+    justify-content: flex-start;
+    background-color: $color-accent;
+  }
 }

@@ -12,7 +12,7 @@ const useApi = ({ path, ...rest }) => {
       try {
         const res = await axios({
           url: `${api}/${path}`,
-          ...rest
+          ...rest,
         });
         setData(res?.data?.data);
         setError(null);
