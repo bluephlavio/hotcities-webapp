@@ -1,5 +1,7 @@
 .selector {
-  margin: 0px 10px;
+  z-index: 1000;
+
+  margin: 0px 3px;
   padding: 0px 50px;
 
   flex: 0;
@@ -9,13 +11,13 @@
   text-transform: uppercase;
   letter-spacing: 0.2em;
 
-  background-color: rgba($color-secondary, 0.5);
-  color: $color-accent;
+  background-color: mix($color-primary, $color-secondary, 75%);
+  color: $color-secondary;
 
   border-radius: 20px 20px 0px 0px;
 
   &:hover {
-    background: rgba($color-primary, 0.7);
+    background-color: mix($color-primary, $color-secondary, 90%);
     color: $color-secondary;
   }
 }
