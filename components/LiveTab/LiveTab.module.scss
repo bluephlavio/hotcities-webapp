@@ -1,11 +1,15 @@
 .container {
   .bar {
-    padding: 10px 0;
+    padding: 0px;
 
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: 0px 10px;
+
+    h2 {
+      margin: 0px;
+    }
 
     .temp {
       flex: 1;
@@ -14,6 +18,10 @@
       flex-direction: row;
       align-items: center;
       gap: 0px 10px;
+
+      h3 {
+        margin: 0px;
+      }
 
       .thermometer {
         flex: 1;

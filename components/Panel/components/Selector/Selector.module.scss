@@ -1,25 +1,31 @@
 .selector {
-  z-index: 1000;
+  padding: 5px 10px;
 
-  margin: 0px 3px;
-  padding: 0px 50px;
-
-  flex: 0;
+  flex: 1;
 
   font-family: $font-family;
-  font-size: $font-size-big;
-  font-weight: 500;
+  font-size: $font-size-medium;
   text-transform: uppercase;
   letter-spacing: 0.2em;
 
   background-color: mix($color-primary, $color-secondary, 75%);
   color: $color-secondary;
 
-  border-radius: 20px 20px 0px 0px;
-
   &:hover {
     background-color: mix($color-primary, $color-secondary, 90%);
     color: $color-secondary;
+  }
+
+  @media screen and (min-width: $dim-breakpoints-small) {
+    padding: 10px 12px;
+  }
+
+  @media screen and (min-width: $dim-breakpoints-medium) {
+    padding: 10px 15px;
+  }
+
+  @media screen and (min-width: $dim-breakpoints-large) {
+    padding: 10px 20px;
   }
 }
 

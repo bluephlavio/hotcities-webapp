@@ -7,7 +7,19 @@
   background-color: $color-primary;
 
   header {
-    padding: 10px 10px;
+    padding: 10px;
+
+    @media screen and (min-width: $dim-breakpoints-small) {
+      padding: 12px;
+    }
+
+    @media screen and (min-width: $dim-breakpoints-medium) {
+      padding: 15px;
+    }
+
+    @media screen and (min-width: $dim-breakpoints-large) {
+      padding: 20px;
+    }
 
     .wrapper {
       display: flex;
@@ -37,6 +49,9 @@
       align-items: flex-start;
 
       a {
+        padding: 10px 0px;
+
+        font-size: $font-size-medium;
         text-decoration: none;
       }
 

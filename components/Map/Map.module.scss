@@ -8,7 +8,12 @@
 }
 
 .map {
-  min-height: 64vh;
-  animation: fadein 2s;
+  position: sticky;
+  top: -15vh;
+
+  min-height: 60vh;
+
   background-color: $color-secondary;
+
+  animation: fadein 2s;
 }

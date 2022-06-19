@@ -7,10 +7,17 @@
   }
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   border: 0;
   padding: 0;
+
+  width: 100vw;
+
   font-family: $font-family;
   font-weight: 300;
   font-size: 14px;
@@ -36,10 +43,6 @@ body {
 
 h1 {
   font-weight: 300;
-}
-
-th {
-  font-weight: 400;
 }
 
 a {
@@ -80,9 +83,4 @@ hr {
   padding: 0;
   background: linear-gradient(to left, rgba($color-secondary, 0), rgba($color-secondary, 1), rgba($color-secondary, 0));
   height: 1px;
-}
-
-th {
-  color: $color-accent;
-  font-weight: 500;
 }
