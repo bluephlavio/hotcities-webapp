@@ -4,7 +4,7 @@ import styles from './Header.module.scss';
 
 const Header = ({ title, selected, onClick }) => (
   <th onClick={onClick} className={styles.header}>
-    <button>
+    <button type="button">
       <FontAwesomeIcon icon={[selected ? 'fas' : 'far', 'circle']} />
       <span className={styles.title}>{title}</span>
     </button>

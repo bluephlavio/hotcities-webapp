@@ -14,8 +14,7 @@ const Header = () => {
   const router = useRouter();
 
   React.useEffect(() => {
-    const handleRouteChange = (url) => {
-      console.log('hey');
+    const handleRouteChange = () => {
       handleToggle();
     };
     router.events.on('routeChangeStart', handleRouteChange);

@@ -13,7 +13,7 @@ const Selector = ({ focus, children }) => {
   const isActive = focus === activeFocus;
 
   return (
-    <button onClick={handleSelect} className={classNames(styles.selector, { [styles.active]: isActive })}>
+    <button type="button" onClick={handleSelect} className={classNames(styles.selector, { [styles.active]: isActive })}>
       {children}
     </button>
   );
