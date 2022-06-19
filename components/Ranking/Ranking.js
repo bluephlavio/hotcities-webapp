@@ -1,5 +1,6 @@
 import React from 'react';
 import lodash from 'lodash';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useData from '@/hooks/useData';
 import { formatNames } from '@/helpers/format';
 import Header from './components/Header';
@@ -8,6 +9,12 @@ import styles from './Ranking.module.scss';
 
 const Ranking = () => {
   const { data } = useData();
+
+  const [limit, setLimit] = React.useState(10);
+
+  const handleMore = () => {
+    setLimit(limit + 10);
+  };
 
   const [sortBy, setSortBy] = React.useState('score');
 
@@ -31,7 +38,7 @@ const Ranking = () => {
           {lodash
             .chain(data?.stats?.ranking || [])
             .sortBy((entry) => -entry[sortBy])
-            .slice(0, 30)
+            .slice(0, limit)
             .map((entry, i) => {
               const { name, countrycode, recordfrac, recordtemp, score } = entry;
               return (
@@ -48,6 +55,10 @@ const Ranking = () => {
             .value()}
         </tbody>
       </table>
+      <button type="button" onClick={handleMore} className={styles.more}>
+        <span>more</span>
+        <FontAwesomeIcon icon={['fa', 'angle-down']} />
+      </button>
     </div>
   );
 };
