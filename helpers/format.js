@@ -3,8 +3,8 @@ import formatcoords from 'formatcoords';
 export const formatNames = ({ name, localname }) =>
   `${name}${localname && localname !== name ? ` / ${localname}` : ''}`;
 
-export const formatTemp = temp =>
-  `${temp.toFixed(1)} °C / ${(temp * 1.8 + 32).toFixed(1)} °F`;
+export const formatTemp = (temp, decimals = 0) =>
+  `${temp.toFixed(decimals)} °C / ${(temp * 1.8 + 32).toFixed(decimals)} °F`;
 
 export const formatCountry = ({ countryname: name, countrycode: code }) =>
   `${name} (${code})`;
@@ -12,7 +12,7 @@ export const formatCountry = ({ countryname: name, countrycode: code }) =>
 export const formatCoords = ({ lng, lat }) =>
   formatcoords({ lng, lat }).format({ decimalPlaces: 0 });
 
-export const formatFracAsPerc = frac => `${(frac * 100).toFixed(1)} %`;
+export const formatFracAsPerc = (frac, decimals = 0) => `${(frac * 100).toFixed(decimals)} %`;
 
 export const formatRank = ({ rank, score }) =>
   `Ranked ${rank}th with a score of ${score.toFixed(2)}`;
