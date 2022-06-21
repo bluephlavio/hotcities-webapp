@@ -1,48 +1,29 @@
 .container {
   .bar {
-    padding: 0px;
-
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas: "city city" "thermometer temp";
     align-items: center;
-    gap: 0px 10px;
+    grid-gap: 0rem 2rem;
 
-    h2 {
-      margin: 0px;
+    .city {
+      grid-area: city;
+      margin: 0.25rem 0rem;
+    }
+
+    .thermometer {
+      grid-area: thermometer;
     }
 
     .temp {
-      flex: 1;
-
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: 0px 10px;
-
-      h3 {
-        margin: 0px;
-      }
-
-      .thermometer {
-        flex: 1;
-      }
-
-      h3 {
-        white-space: nowrap;
-      }
+      grid-area: temp;
+      margin: 0.25rem 0rem;
+      justify-self: end;
     }
 
     @media (min-width: $dim-breakpoints-small) {
-      gap: 0px 9%;
-
-      .city {
-        font-size: $font-size-big;
-      }
-
-      .temp {
-        flex: 1;
-        gap: 0px 9%;
-      }
+      grid-template-columns: auto 1fr auto;
+      grid-template-areas: "city thermometer temp";
     }
   }
 

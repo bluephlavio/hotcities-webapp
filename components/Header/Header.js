@@ -27,10 +27,12 @@ const Header = () => {
     <div className={styles.container}>
       <header>
         <div className={styles.wrapper}>
-          <div aria-label="home" className={styles.brand}>
-            <h1 className={styles.title}>HOT CITIES</h1>
-            <p className={styles.motto}>world&#39;s hottest city, now</p>
-          </div>
+            <Link href="/">
+                <a aria-label="home" className={styles.brand}>
+                  <h1 className={styles.title}>HOT CITIES</h1>
+                  <p className={styles.motto}>world&#39;s hottest city, now</p>
+                </a>
+            </Link>
           <Toggler toggle={handleToggle} />
           <nav className={styles.desktop}>
             <Link href="/">Live</Link>

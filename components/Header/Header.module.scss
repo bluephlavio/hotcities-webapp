@@ -27,6 +27,8 @@
       align-items: center;
 
       .brand {
+        text-decoration: none;
+
         .title {
           margin: 0;
           color: $color-accent;
@@ -35,8 +37,9 @@
 
         .motto {
           margin: 0;
-          color: rgba($color-secondary, 0.5);
+          color: rgba($color-secondary, 0.7);
           font-size: $font-size-medium;
+          letter-spacing: 0.1em;
         }
       }
     }

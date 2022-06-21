@@ -14,10 +14,8 @@ const LiveTab = () => {
     <div className={styles.container}>
       <div className={styles.bar}>
         <h2 className={styles.city}>{formatNames(data?.current)}</h2>
-        <div className={styles.temp}>
-          <Thermometer className={styles.thermometer} />
-          <h3>{formatTemp(data?.current?.temp)}</h3>
-        </div>
+        <Thermometer className={styles.thermometer} />
+        <h3 className={styles.temp}>{formatTemp(data?.current?.temp)}</h3>
       </div>
       <p>
         Some info about the 🔥<b>current hottest city</b> in the 🌍<b>world</b>
