@@ -1,11 +1,7 @@
 .container {
-  h1, p {
-    margin: 0.5rem 0rem;
-  }
-  
   h1 {
-    font-size: $font-size-large;
-    font-weight: 700;
-    letter-spacing: 0.2em;
+    margin: 0.5rem 0rem;
+
+    @include typography-heading;
   }
 }

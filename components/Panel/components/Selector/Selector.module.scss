@@ -1,12 +1,9 @@
 .selector {
-  padding: 5px 10px;
+  padding: 0.5rem;
 
   flex: 1;
 
-  font-family: $font-family;
-  font-size: $font-size-medium;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
+  @include typography-capitalized;
 
   background-color: mix($color-primary, $color-secondary, 75%);
   color: $color-secondary;

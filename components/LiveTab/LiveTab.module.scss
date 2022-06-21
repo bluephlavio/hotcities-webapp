@@ -2,13 +2,14 @@
   .bar {
     display: grid;
     grid-template-columns: 1fr auto;
-    grid-template-areas: "city city" "thermometer temp";
+    grid-template-areas: 'city city' 'thermometer temp';
     align-items: center;
     grid-gap: 0rem 2rem;
 
     .city {
       grid-area: city;
-      margin: 0.25rem 0rem;
+
+      @include typography-heading;
     }
 
     .thermometer {
@@ -17,23 +18,24 @@
 
     .temp {
       grid-area: temp;
-      margin: 0.25rem 0rem;
       justify-self: end;
+
+      @include typography-normal($font-size-large);
+      white-space: nowrap;
     }
 
     @media (min-width: $dim-breakpoints-small) {
       grid-template-columns: auto 1fr auto;
-      grid-template-areas: "city thermometer temp";
+      grid-template-areas: 'city thermometer temp';
     }
   }
 
   p {
-    font-weight: 500;
-    letter-spacing: 0.1em;
+    @include typography-normal($font-size-large);
 
     b {
       text-decoration: underline;
-      margin-left: 5px;
+      margin-left: 0.5rem;
     }
   }
 }

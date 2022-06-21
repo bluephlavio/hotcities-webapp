@@ -7,19 +7,7 @@
   background-color: $color-primary;
 
   header {
-    padding: 10px;
-
-    @media screen and (min-width: $dim-breakpoints-small) {
-      padding: 12px;
-    }
-
-    @media screen and (min-width: $dim-breakpoints-medium) {
-      padding: 15px;
-    }
-
-    @media screen and (min-width: $dim-breakpoints-large) {
-      padding: 20px;
-    }
+    @include spacing;
 
     .wrapper {
       display: flex;
@@ -30,16 +18,11 @@
         text-decoration: none;
 
         .title {
-          margin: 0;
-          color: $color-accent;
-          font-size: $font-size-big;
+          @include typography-heading;
         }
 
-        .motto {
-          margin: 0;
-          color: rgba($color-secondary, 0.7);
-          font-size: $font-size-medium;
-          letter-spacing: 0.1em;
+        .slogan {
+          @include typography-slogan;
         }
       }
     }
@@ -52,9 +35,8 @@
       align-items: flex-start;
 
       a {
-        padding: 10px 0px;
+        padding: 1rem 0px;
 
-        font-size: $font-size-medium;
         text-decoration: none;
       }
 
@@ -69,20 +51,16 @@
       align-self: flex-end;
 
       a {
-        margin: 0px 20px;
-
         text-decoration: none;
+
+        + a {
+          margin-left: 1rem;
+        }
       }
 
       @media (max-width: $dim-breakpoints-small) {
         display: none;
       }
-    }
-  }
-
-  @media (max-width: $dim-breakpoints-small) {
-    .motto {
-      font-size: $font-size-small;
     }
   }
 }

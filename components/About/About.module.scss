@@ -1,7 +1,6 @@
 .about {
-  margin: 0;
-  border: 0;
-  padding: $dim-padding;
+  @include spacing;
+
   background-color: $color-primary;
   color: $color-accent;
 

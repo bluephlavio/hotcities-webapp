@@ -1,14 +1,12 @@
 .ranking {
   overflow: auto;
-  color: $color-accent;
 
   table {
     width: 100%;
     min-width: 600px;
 
-    border-collapse: collapse;
-
     table-layout: fixed;
+    border-collapse: collapse;
 
     thead {
       tr {
@@ -17,13 +15,9 @@
 
       th,
       th button {
-        padding: 5px 0px;
+        padding: 0.5rem 0;
 
-        font-family: monospace;
-        font-size: $font-size-small;
-        font-weight: 700;
-        text-transform: uppercase;
-        text-align: left;
+        @include typography-normal($font-size: $font-size-small);
       }
     }
 
@@ -37,13 +31,9 @@
   }
 
   .more {
-    padding: 10px;
+    padding: 1rem 0;
 
-    font-family: $font-family;
-    font-size: $font-size-large;
-    font-weight: 700;
-
-    letter-spacing: 0.2em;
+    @include typography-capitalized;
 
     color: rgba($color-secondary, 0.5);
 
@@ -52,7 +42,8 @@
     }
 
     span {
-      margin: 0px 16px;
+      margin-left: 30px;
+      margin-right: 1rem;
     }
   }
 }

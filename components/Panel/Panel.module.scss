@@ -1,31 +1,17 @@
 .container {
-
   flex: 1;
 
   color: $color-accent;
 
-  .navigation {  
-  position: sticky;
-  top: 45vh;
+  .navigation {
+    position: sticky;
+    top: 45vh;
 
     display: flex;
     justify-content: center;
   }
 
   .info {
-    padding: 10px;
-    background-color: $color-primary;
-
-    @media screen and (min-width: $dim-breakpoints-small) {
-      padding: 12px;
-    }
-
-    @media screen and (min-width: $dim-breakpoints-medium) {
-      padding: 15px;
-    }
-
-    @media screen and (min-width: $dim-breakpoints-large) {
-      padding: 20px;
-    }
+    @include spacing;
   }
 }

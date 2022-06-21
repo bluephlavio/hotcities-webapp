@@ -1,0 +1,70 @@
+@mixin typography-heading {
+  margin: 0.5rem 0;
+
+  font-family: $font-family;
+  font-size: $font-size-huge;
+  font-weight: 300;
+
+  color: $color-accent;
+}
+
+@mixin typography-slogan {
+  margin: 0.5rem 0;
+
+  font-family: $font-family;
+  font-size: $font-size-small;
+  font-weight: 300;
+
+  letter-spacing: 0.2rem;
+
+  color: rgba($color-secondary, 0.8);
+
+  @media (min-width: $dim-breakpoints-small) {
+    .slogan {
+      font-size: $font-size-medium;
+    }
+  }
+}
+
+@mixin typography-normal($font-size: $font-size-medium) {
+  font-family: $font-family;
+  font-size: $font-size;
+  font-weight: 300;
+
+  color: $color-accent;
+}
+
+@mixin typography-capitalized {
+  font-family: $font-family;
+  font-size: $font-size-large;
+  font-weight: 300;
+
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+
+  color: $color-accent;
+}
+
+@mixin typography-small {
+  font-family: $font-family;
+  font-size: $font-size-small;
+  font-weight: 300;
+
+  color: $color-accent;
+}
+
+@mixin spacing {
+  padding: 10px;
+
+  @media screen and (min-width: $dim-breakpoints-small) {
+    padding: 12px;
+  }
+
+  @media screen and (min-width: $dim-breakpoints-medium) {
+    padding: 15px;
+  }
+
+  @media screen and (min-width: $dim-breakpoints-large) {
+    padding: 20px;
+  }
+}

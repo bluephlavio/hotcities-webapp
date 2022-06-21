@@ -4,16 +4,21 @@
 
   .meter {
     width: 100%;
-    background: linear-gradient(to right, rgba($color-secondary, 1), rgba($color-secondary, 0));
     height: 5px;
+
     margin-top: 2px;
-    border-right: 1px solid $color-secondary;
+
     display: flex;
     align-items: stretch;
+
+    background: linear-gradient(to right, rgba($color-secondary, 1), rgba($color-secondary, 0));
+
+    border-right: 1px solid $color-secondary;
   }
 
   .level {
     justify-content: flex-start;
+
     background-color: $color-accent;
   }
 }
