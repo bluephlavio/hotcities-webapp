@@ -1,16 +1,10 @@
 import React from 'react';
 import Head from 'next/head';
-import dynamic from 'next/dynamic';
 import { providerDataContext } from '@/contexts/data';
 import usePageView from '@/hooks/usePageView';
-import Loading from '@/components/Loading';
 import useData from '@/hooks/useData';
 import Panel from '@/components/Panel';
-
-const Map = dynamic(() => import('@/components/Map'), {
-  ssr: false,
-  loading: Loading,
-});
+import Map from '@/components/Map';
 
 const IndexPage = providerDataContext(() => {
   usePageView('/');
