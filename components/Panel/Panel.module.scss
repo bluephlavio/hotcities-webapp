@@ -1,9 +1,13 @@
 .container {
+
   flex: 1;
 
   color: $color-accent;
 
-  .navigation {
+  .navigation {  
+  position: sticky;
+  top: 45vh;
+
     display: flex;
     justify-content: center;
   }
