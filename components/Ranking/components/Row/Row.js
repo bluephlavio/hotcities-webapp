@@ -8,7 +8,7 @@ const Row = ({
   <tr className={styles.row}>
     <th scope="row">{index}</th>
     <td className={styles.name}>{name}</td>
-    <td className={styles.score}>{score.toFixed(2)}</td>
+    <td className={styles.score}>{score.toFixed(1)}</td>
     <td className={styles.recordfrac}>{formatFracAsPerc(recordfrac)}</td>
     <td className={styles.recordtemp}>{formatTemp(recordtemp)}</td>
   </tr>
