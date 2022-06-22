@@ -3,7 +3,7 @@
 
   table {
     width: 100%;
-    min-width: 600px;
+    min-width: 50rem;
 
     table-layout: fixed;
     border-collapse: collapse;
@@ -17,7 +17,9 @@
       th button {
         padding: 0.5rem 0;
 
-        @include typography-normal($font-size: $font-size-small);
+        @include typography-large;
+
+        text-align: left;
       }
     }
 
@@ -27,6 +29,12 @@
 
     tr th:nth-child(2) {
       width: 42%;
+    }
+
+    tr th:nth-child(3),
+    tr th:nth-child(4),
+    tr th:nth-child(5) {
+      width: 16ch;
     }
   }
 

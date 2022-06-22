@@ -1,12 +1,30 @@
 .header {
   button {
+    width: 100%;
+
+    padding: 0 1rem;
+
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
-  }
 
-  .title {
-    white-space: nowrap;
-    margin-left: 5px;
+    cursor: pointer;
+
+    .title {
+      margin-left: 5px;
+
+      padding: 0.2rem;
+
+      @include typography-large;
+      white-space: nowrap;
+
+      border-bottom: 1px dashed rgba($color-secondary, 0.1);
+
+      &:hover {
+        background-color: rgba($color-secondary, 0.1);
+
+        border-bottom: 1px dashed $color-accent;
+      }
+    }
   }
 }

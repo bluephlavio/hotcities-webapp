@@ -20,7 +20,7 @@
       grid-area: temp;
       justify-self: end;
 
-      @include typography-normal($font-size-large);
+      @include typography-large;
       white-space: nowrap;
     }
 
@@ -31,7 +31,7 @@
   }
 
   p {
-    @include typography-normal($font-size-large);
+    @include typography-large;
 
     b {
       text-decoration: underline;
