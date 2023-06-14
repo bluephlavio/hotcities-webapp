@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import ReactGA from 'react-ga';
+import ReactGA from 'react-ga4';
 import { library as faLib } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import {
@@ -40,7 +40,7 @@ faLib.add(
 
 const HotCitiesApp = ({ Component, pageProps }) => {
   React.useEffect(() => {
-    ReactGA.initialize('UA-55404180-2');
+    ReactGA.initialize('G-7W12E1MDES');
   }, []);
 
   return (
