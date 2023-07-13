@@ -1,15 +1,14 @@
 {
-	"name": "hotcities-webapp",
-	"image": "mcr.microsoft.com/devcontainers/javascript-node:0-20",
-	"forwardPorts": [3000],
-	"postCreateCommand": "yarn install",
-	"customizations": {
-		"vscode": {
-			"extensions": [
-				"dbaeumer.vscode-eslint",
-				"esbenp.prettier-vscode",
-				"GitHub.copilot-nightly"
-			]
-		}
-	}
+  "name": "hotcities-webapp",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:0-20",
+  "forwardPorts": [3000],
+  "postCreateCommand": "yarn install",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "editor.formatOnSave": true
+      },
+      "extensions": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode", "GitHub.copilot-nightly"]
+    }
+  }
 }

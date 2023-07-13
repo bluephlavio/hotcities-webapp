@@ -1,13 +1,50 @@
 import React from 'react';
-import useApi from '@/hooks/useApi';
+import useGraphql from '@/hooks/useGraphql';
 import DataContext from './DataContext';
 
 const DataProvider = ({ children }) => {
-  const { isLoading, data, error } = useApi({ method: 'get', path: 'web' });
+  const { isLoading, data, error } = useGraphql({
+    query: `
+      query {
+        current {
+          temp
+          city {
+            name
+            localname
+            lng
+            lat
+            population
+            countryname
+            countrycode
+          }
+        }
+        ranking {
+          recordtemp
+          recordfrac
+          score
+          rank
+          city {
+            name
+            localname
+            lng
+            lat
+            countrycode
+          }
+        }
+        temprange
+      }
+    `,
+    variables: {},
+  });
 
   const [focus, setFocus] = React.useState('live');
 
-  return <DataContext.Provider value={{ isLoading, data, error, focus, setFocus }}>{children}</DataContext.Provider>;
+  const contextValue = React.useMemo(
+    () => ({ isLoading, data, error, focus, setFocus }),
+    [isLoading, data, error, focus, setFocus]
+  );
+
+  return <DataContext.Provider value={contextValue}>{children}</DataContext.Provider>;
 };
 
 export const providerDataContext =

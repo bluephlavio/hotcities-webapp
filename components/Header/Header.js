@@ -27,7 +27,7 @@ const Header = () => {
     <div className={styles.container}>
       <header>
         <div className={styles.wrapper}>
-          <Link href="/" passHref>
+          <Link legacyBehavior href="/" passHref>
             <a aria-label="home" className={styles.brand} href="dummy">
               <h1 className={styles.title}>HOT CITIES</h1>
               <p className={styles.slogan}>world&#39;s hottest city, now</p>
@@ -35,14 +35,22 @@ const Header = () => {
           </Link>
           <Toggler toggle={handleToggle} />
           <nav className={styles.desktop}>
-            <Link href="/">Live</Link>
-            <Link href="/about">About</Link>
+            <Link legacyBehavior href="/">
+              Live
+            </Link>
+            <Link legacyBehavior href="/about">
+              About
+            </Link>
           </nav>
         </div>
         {isOpen && (
           <nav className={styles.mobile}>
-            <Link href="/">Live</Link>
-            <Link href="/about">About</Link>
+            <Link legacyBehavior href="/">
+              Live
+            </Link>
+            <Link legacyBehavior href="/about">
+              About
+            </Link>
           </nav>
         )}
       </header>

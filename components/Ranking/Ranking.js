@@ -36,16 +36,17 @@ const Ranking = () => {
         </thead>
         <tbody>
           {lodash
-            .chain(data?.stats?.ranking || [])
+            .chain(data?.ranking || [])
             .sortBy((entry) => -entry[sortBy])
             .slice(0, limit)
             .map((entry, i) => {
-              const { name, countrycode, recordfrac, recordtemp, score } = entry;
+              const { city, recordfrac, recordtemp, score } = entry;
+              const { name, localname, countrycode } = city;
               return (
                 <Row
                   key={`${name}-${score}-${recordfrac}-${recordtemp}`}
                   index={i + 1}
-                  name={`${formatNames(entry)} (${countrycode})`}
+                  name={`${formatNames({ name, localname })} (${countrycode})`}
                   score={score}
                   recordfrac={recordfrac}
                   recordtemp={recordtemp}
