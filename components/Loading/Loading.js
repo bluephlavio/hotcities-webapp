@@ -5,7 +5,8 @@ import styles from './Loading.module.scss';
 const Loading = () => (
   <div className={styles.loading}>
     <FontAwesomeIcon icon="spinner" spin />
-    <span>Loading...</span></div>
+    <span>Loading...</span>
+  </div>
 );
 
 export default Loading;

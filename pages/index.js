@@ -11,15 +11,18 @@ const IndexPage = providerDataContext(() => {
 
   const { isLoading, data, focus } = useData();
 
+  const lng = data?.current?.city?.lng || 0;
+  const lat = data?.current?.city?.lat || 0;
+
   return (
     <>
       <Head>
         <title>Hot Cities • world hottest city, now.</title>
       </Head>
       <Map
-        center={isLoading || focus === 'stats' ? [0, 25] : [data?.current?.lng, data?.current?.lat]}
+        center={isLoading || focus === 'stats' ? [0, 25] : [lng, lat]}
         zoom={isLoading || focus === 'stats' ? 2 : 7}
-        data={data?.stats?.ranking}
+        data={data?.ranking}
       />
       <Panel />
     </>

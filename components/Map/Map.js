@@ -20,24 +20,35 @@ const Map = ({ center = [0, 0], zoom = 1, style = mapstyle, data }) => {
 
   React.useEffect(() => {
     const container = containerRef.current;
+
     mapRef.current = new mapboxgl.Map({
       container,
       style,
       zoom,
       center,
     });
+
+    return () => {
+      mapRef.current.remove();
+    };
   }, []);
 
   React.useEffect(() => {
     const map = mapRef.current;
 
     if (map && data) {
-      map.on('load', () => {
-        const layer = getLayer(data);
+      const layer = getLayer(data);
+      if (map.loaded() && !map.getLayer('records')) {
         map.addLayer(layer);
-      });
+      } else {
+        map.on('load', () => {
+          if (!map.getLayer('records')) {
+            map.addLayer(layer);
+          }
+        });
+      }
     }
-  }, [data]);
+  }, [mapRef.current, data]);
 
   React.useEffect(() => {
     if (prevCenter !== center || prevZoom !== zoom) {

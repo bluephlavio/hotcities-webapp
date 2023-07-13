@@ -1,17 +1,22 @@
 import GeoJSON from 'geojson';
 import _ from 'lodash';
 
-export const geojsonify = (data) => GeoJSON.parse(
-  data.map((entry) => {
-    const { recordfrac, recordtemp } = entry;
-    return {
-      ...entry,
-      radius: Math.sqrt(recordfrac),
-      opacity: recordtemp,
-    };
-  }),
-  { Point: ['lat', 'lng'] },
-);
+export const geojsonify = (data) => {
+  const geojson = GeoJSON.parse(
+    data.map((entry) => {
+      const { recordfrac, recordtemp, city } = entry;
+      const { lng, lat } = city;
+      return {
+        lng,
+        lat,
+        radius: Math.sqrt(recordfrac),
+        opacity: recordtemp,
+      };
+    }),
+    { Point: ['lat', 'lng'] }
+  );
+  return geojson;
+};
 
 export const getLayer = (data) => ({
   id: 'records',

@@ -1,8 +1,10 @@
+import '@/styles/global.scss';
+import '@fortawesome/fontawesome-svg-core/styles.css';
+
 import React from 'react';
 import Head from 'next/head';
 import ReactGA from 'react-ga4';
-import { library as faLib } from '@fortawesome/fontawesome-svg-core';
-import '@fortawesome/fontawesome-svg-core/styles.css';
+import Layout from '@/components/Layout';
 import {
   faBars,
   faAngleUp,
@@ -17,10 +19,10 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { faCircle as farCircle } from '@fortawesome/free-regular-svg-icons';
 import { faTwitter, faInstagram, faFacebook, faGithub } from '@fortawesome/free-brands-svg-icons';
-import Layout from '@/components/Layout';
-import '@/styles/global.scss';
 
-faLib.add(
+const { library } = require('@fortawesome/fontawesome-svg-core');
+
+library.add(
   faBars,
   faAngleUp,
   faAngleDown,
